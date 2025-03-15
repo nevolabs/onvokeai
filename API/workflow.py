@@ -2,11 +2,15 @@ from langgraph.graph import StateGraph, END
 from models import SOPState
 from sop_generator import generate_sop_html
 
+
+
 async def generate_sop_node(state: SOPState) -> SOPState:
     """Node to generate structured SOP JSON."""
     sop_json = await generate_sop_html(state.KB , state.pdf_text, state.event_data)
     state.sop_json = sop_json  
     return state  
+
+
 
 def create_workflow():
     graph = StateGraph(SOPState)
