@@ -31,6 +31,7 @@ class SOP(BaseModel):
 
 # State class for LangGraph
 class SOPState(BaseModel):
+    KB: str = ""
     pdf_text: str = ""
     event_data: List[Dict[str, Any]] = []  # Assuming event_data is a list of dicts from your JSON
     sop_json: Optional[SOP] = None  # Store the generated SOP as a Pydantic model

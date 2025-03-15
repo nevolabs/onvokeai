@@ -7,7 +7,7 @@ import json
 # Initialize LLM
 llm = ChatGoogleGenerativeAI(model="gemini-2.0-flash-exp", temperature=0.7)
 
-async def generate_sop_html(pdf_text: str, event_data: dict) -> SOP:
+async def generate_sop_html(KB:str ,pdf_text: str, event_data: dict) -> SOP:
     """Generate SOP JSON documentation using Pydantic parser."""
     try:
         combined_text = pdf_text
@@ -34,17 +34,22 @@ async def generate_sop_html(pdf_text: str, event_data: dict) -> SOP:
             Input Data:
             - **Process Description:** {combined_text}
             - **Additional Context:** {event_text}
+            
+            **Knowledge Base**
+            {KB}
+
 
             Output JSON must follow this schema:
             {format_instructions}
             """,
-            input_variables=["combined_text", "event_text", "format_instructions"],
+            input_variables=["combined_text", "event_text","KB",  "format_instructions"],
         )
 
         # Format the prompt with instructions from the parser
         prompt_text = prompt.format(
             combined_text=combined_text,
             event_text=event_text,
+            KB=KB,
             format_instructions=parser.get_format_instructions(),
         )
 
