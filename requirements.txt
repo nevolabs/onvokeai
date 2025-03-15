@@ -1,0 +1,9 @@
+fastapi
+uvicorn
+dotenv
+llama-cloud-services
+llama-index
+langchain-google-genai
+langgraph
+PyPDF2
+python-multipart
