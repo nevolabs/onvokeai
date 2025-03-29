@@ -33,7 +33,7 @@ class SOP(BaseModel):
 class SOPState(BaseModel):
     KB: str = ""
     pdf_text: str = ""
-    event_data: List[Dict[str, Any]] = []  # Assuming event_data is a list of dicts from your JSON
+    event_data: dict 
     sop_json: Optional[SOP] = None  # Store the generated SOP as a Pydantic model
 
     class Config:
