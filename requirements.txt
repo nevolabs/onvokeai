@@ -7,3 +7,9 @@ langchain-google-genai
 langgraph
 PyPDF2
 python-multipart
+supabase
+llama_index
+sentence-transformers
+torch
+llama-index-vector-stores-supabase
+reportlab

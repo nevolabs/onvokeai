@@ -25,7 +25,7 @@ def get_free_embedding(text: str):
     """
     return embedding_model.encode(text).tolist()
 
-def fetch_relevant_jira_issues(user_id: str, query: str, top_k: int = 5):
+def fetch_relevant_jira_issues(user_id: str, query: str, top_k: int = 2):
     """
     Fetch relevant Jira issues for a user by first filtering on `user_id`,
     then performing a vector similarity search on the `embedding` column.
