@@ -72,6 +72,7 @@ class TechnicalArticle(BaseModel):
 class SOPState(BaseModel):
     KB: str = ""
     pdf_text: str = ""
+    user_query: str = ""
     event_data: dict 
     sop_json: Optional[TechnicalArticle] = None  # Store the generated SOP as a Pydantic model
 

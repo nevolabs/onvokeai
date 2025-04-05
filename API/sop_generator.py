@@ -9,11 +9,11 @@ from langchain.prompts import PromptTemplate
 from typing import Dict, Any
 import json
 from pydantic import ValidationError
-from prompts.technical_article_prompt import TechnicalArticlePrompt
+from prompts.technical_article_prompt import prompt_template
 # Initialize LLM
-llm = ChatGoogleGenerativeAI(model="gemini-2.5-pro-preview-03-25", temperature=0.7)
+llm = ChatGoogleGenerativeAI(model="gemini-2.5-pro-preview-03-25", temperature=0)
 
-async def generate_sop_html(KB: str, pdf_text: str, event_data: dict) -> Dict[str, Any]:
+async def generate_sop_html(KB: str, pdf_text: str, event_data: dict , user_query: str) -> Dict[str, Any]:
     """Generate SOP documentation and return validated JSON dict."""
     try:
         combined_text = pdf_text
@@ -23,8 +23,8 @@ async def generate_sop_html(KB: str, pdf_text: str, event_data: dict) -> Dict[st
         parser = JsonOutputParser(pydantic_object=TechnicalArticle)
 
         prompt = PromptTemplate(
-        template=TechnicalArticlePrompt,
-        input_variables=["combined_text", "event_text", "KB", "format_instructions"],
+        template=prompt_template,
+        input_variables=["combined_text", "event_text", "KB", "user_query", "format_instructions"],
         partial_variables={"format_instructions": parser.get_format_instructions()}
     )
 
@@ -33,7 +33,8 @@ async def generate_sop_html(KB: str, pdf_text: str, event_data: dict) -> Dict[st
         json_output = await chain.ainvoke({
             "combined_text": combined_text,
             "event_text": event_text,
-            "KB": KB
+            "KB": KB,
+            "user_query": user_query,
         })
 
         # Validate the structure by creating the model (but return the dict)

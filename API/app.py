@@ -45,6 +45,8 @@ def create_pdf_from_screenshots(screenshot_paths: List[str], output_path: str):
         c.showPage()
     
     c.save()
+    
+    
 @app.post("/generate_sop/")
 async def generate_sop_api(
     user_id: str = Form(...),
@@ -130,7 +132,7 @@ async def generate_sop_api(
         """
 
         # Initialize SOPState with the Knowledge Base
-        initial_state = SOPState(KB=knowledge_base, pdf_text=pdf_text, event_data=event_data)
+        initial_state = SOPState(KB=knowledge_base, pdf_text=pdf_text, event_data=event_data , user_query=query)
 
         # Run workflow
         result = await workflow.ainvoke(initial_state)
@@ -142,7 +144,8 @@ async def generate_sop_api(
         # Delete files from Supabase storage after successful processing
         # We'll delete the entire user directory since we want to clean up everything
         try:
-            supabase.storage.from_('log_data').remove(storage_files_to_delete)
+            print(f"Deleting files from storage: {storage_files_to_delete}")
+            # supabase.storage.from_('log_data').remove(storage_files_to_delete)
         except Exception as e:
             print(f"Warning: Error deleting files from storage: {str(e)}")
 
