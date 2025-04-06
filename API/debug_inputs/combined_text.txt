@@ -20,9 +20,21 @@
 
 Sun 30 Mar 2:56PM
 
-# Web App for DeepSeek
+nevolabslor 0 Web App for DeepSeek Todos Meet - for visiting YouTube localhost:3 How to Wrii localhost:3 My Sto X Ke
 
-# My Store
+% admin shopify comgstoreliimtzz-ik/customers/new
+
+Sharing https://docs.google.com to meet.google.com Share this tab instead Stop sharing
+
+# shopify
+
+# Unsaved changes
+
+# Discard
+
+# Save
+
+# MS My Store
 
 # Home
 
@@ -40,15 +52,23 @@ Sun 30 Mar 2:56PM
 
 # Content
 
+Customer agreed to receive marketing emails.
+
 # Analytics
+
+Customer agreed to receive SMS marketing text messages.
 
 # Marketing
 
 # Discounts
 
+You should ask your customers for permission before you subscribe them to your marketing emails or SMS.
+
 # Sales channels
 
 # Online Store
+
+# Default address
 
 # Apps
 
@@ -56,20 +76,8 @@ Sun 30 Mar 2:56PM
 
 # Settings
 
-# Default address
-
 # Tax settings
 
 # Collect tax
-
-Customer agreed to receive marketing emails.
-
-Customer agreed to receive SMS marketing text messages.
-
-You should ask your customers for permission before you subscribe them to your marketing emails or SMS.
-
-The primary address of this customer
-
-Add address
 
 MAR 30

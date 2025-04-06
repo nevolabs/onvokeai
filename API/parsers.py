@@ -15,10 +15,12 @@ async def parse_pdf(file_path: str) -> str:
     try:
         # Use LlamaParse's async method directly instead of SimpleDirectoryReader
         documents = await parser.aload_data(file_path)
-        return documents
+        return documents[0].text
     except Exception as e:
         return f"Error parsing PDF: {str(e)}"
     
+    
+
 async def parse_json(file_path: str) -> str:
     """Load JSON file content as raw string without parsing"""
     try:
