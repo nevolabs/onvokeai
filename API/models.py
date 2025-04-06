@@ -73,7 +73,7 @@ class SOPState(BaseModel):
     KB: str = ""
     pdf_text: str = ""
     user_query: str = ""
-    event_data: dict 
+    event_data:str = ""  # Accept both list and raw string
     sop_json: Optional[TechnicalArticle] = None  # Store the generated SOP as a Pydantic model
 
     class Config:

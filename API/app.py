@@ -116,6 +116,11 @@ async def generate_sop_api(
             raise Exception(pdf_text)
         
         event_data = await parse_json(json_temp_path)
+        if not event_data:  # Check if list is empty
+            raise HTTPException(
+                status_code=400, 
+                detail="No valid event data found in JSON file"
+            )
         if isinstance(event_data, list) and "error" in event_data[0]:
             raise Exception(event_data[0]["error"])
 

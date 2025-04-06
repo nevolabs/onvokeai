@@ -1,0 +1,1937 @@
+[
+  {
+    "event": "click",
+    "tag": "span",
+    "id": "",
+    "classList": [
+      "Polaris-Text--root",
+      "Polaris-Text--bodyMd",
+      "Polaris-Text--semibold"
+    ],
+    "text": "Products",
+    "value": "",
+    "placeholder": "",
+    "pageURL": "https://admin.shopify.com/store/j1mtzz-ik?ui_locales=en-IN",
+    "pageTitle": "My Store Â· Home Â· Shopify",
+    "newURL": "https://admin.shopify.com/store/j1mtzz-ik?ui_locales=en-IN",
+    "timestamp": "2025-03-30T09:20:13.224Z",
+    "scrollPosition": 0,
+    
+  },
+  {
+    "event": "click",
+    "tag": "span",
+    "id": "",
+    "classList": [
+      "Polaris-Text--root",
+      "Polaris-Text--bodySm",
+      "Polaris-Text--semibold"
+    ],
+    "text": "Add product",
+    "value": "",
+    "placeholder": "",
+    "pageURL": "https://admin.shopify.com/store/j1mtzz-ik/products",
+    "pageTitle": "My Store Â· Products Â· Shopify",
+    "newURL": "https://admin.shopify.com/store/j1mtzz-ik/products",
+    "timestamp": "2025-03-30T09:20:29.489Z",
+    "scrollPosition": 0,
+    
+  },
+  {
+    "event": "pageChange",
+    "newURL": "https://admin.shopify.com/store/j1mtzz-ik/products/new",
+    "previousURL": "https://admin.shopify.com/store/j1mtzz-ik/products",
+    "pageTitle": "My Store Â· Products Â· Shopify",
+    "pageURL": "https://admin.shopify.com/store/j1mtzz-ik/products/new",
+    "timestamp": "2025-03-30T09:20:30.216Z",
+    "scrollPosition": 0,
+    "tag": "page",
+    "text": "My Store Â· Products Â· Shopify",
+    "id": "",
+    "classList": [],
+    "placeholder": "",
+    "value": "",
+    
+  },
+  {
+    "event": "click",
+    "tag": "input",
+    "id": ":r2m:",
+    "classList": [
+      "Polaris-TextField__Input"
+    ],
+    "text": "",
+    "value": "",
+    "placeholder": "Short sleeve t-shirt",
+    "pageURL": "https://admin.shopify.com/store/j1mtzz-ik/products/new",
+    "pageTitle": "My Store Â· Products Â· New Â· Shopify",
+    "newURL": "https://admin.shopify.com/store/j1mtzz-ik/products/new",
+    "timestamp": "2025-03-30T09:20:32.848Z",
+    "scrollPosition": 0,
+    
+  },
+  {
+    "event": "input",
+    "tag": "input",
+    "id": ":r2m:",
+    "classList": [
+      "Polaris-TextField__Input"
+    ],
+    "text": "",
+    "value": "S",
+    "placeholder": "Short sleeve t-shirt",
+    "pageURL": "https://admin.shopify.com/store/j1mtzz-ik/products/new",
+    "pageTitle": "My Store Â· Products Â· New Â· Shopify",
+    "newURL": "https://admin.shopify.com/store/j1mtzz-ik/products/new",
+    "timestamp": "2025-03-30T09:20:37.216Z",
+    "scrollPosition": 0,
+    
+  },
+  {
+    "event": "input",
+    "tag": "input",
+    "id": ":r2m:",
+    "classList": [
+      "Polaris-TextField__Input"
+    ],
+    "text": "",
+    "value": "Sh",
+    "placeholder": "Short sleeve t-shirt",
+    "pageURL": "https://admin.shopify.com/store/j1mtzz-ik/products/new",
+    "pageTitle": "My Store Â· Products Â· New Â· Shopify",
+    "newURL": "https://admin.shopify.com/store/j1mtzz-ik/products/new",
+    "timestamp": "2025-03-30T09:20:37.620Z",
+    "scrollPosition": 0,
+    
+  },
+  {
+    "event": "input",
+    "tag": "input",
+    "id": ":r2m:",
+    "classList": [
+      "Polaris-TextField__Input"
+    ],
+    "text": "",
+    "value": "Shi",
+    "placeholder": "Short sleeve t-shirt",
+    "pageURL": "https://admin.shopify.com/store/j1mtzz-ik/products/new",
+    "pageTitle": "My Store Â· Products Â· New Â· Shopify",
+    "newURL": "https://admin.shopify.com/store/j1mtzz-ik/products/new",
+    "timestamp": "2025-03-30T09:20:37.731Z",
+    "scrollPosition": 0,
+    
+  },
+  {
+    "event": "input",
+    "tag": "input",
+    "id": ":r2m:",
+    "classList": [
+      "Polaris-TextField__Input"
+    ],
+    "text": "",
+    "value": "Shir",
+    "placeholder": "Short sleeve t-shirt",
+    "pageURL": "https://admin.shopify.com/store/j1mtzz-ik/products/new",
+    "pageTitle": "My Store Â· Products Â· New Â· Shopify",
+    "newURL": "https://admin.shopify.com/store/j1mtzz-ik/products/new",
+    "timestamp": "2025-03-30T09:20:37.953Z",
+    "scrollPosition": 0,
+    
+  },
+  {
+    "event": "input",
+    "tag": "input",
+    "id": ":r2m:",
+    "classList": [
+      "Polaris-TextField__Input"
+    ],
+    "text": "",
+    "value": "Shirt",
+    "placeholder": "Short sleeve t-shirt",
+    "pageURL": "https://admin.shopify.com/store/j1mtzz-ik/products/new",
+    "pageTitle": "My Store Â· Products Â· New Â· Shopify",
+    "newURL": "https://admin.shopify.com/store/j1mtzz-ik/products/new",
+    "timestamp": "2025-03-30T09:20:38.096Z",
+    "scrollPosition": 0,
+    
+  },
+  {
+    "event": "input",
+    "tag": "input",
+    "id": ":r2m:",
+    "classList": [
+      "Polaris-TextField__Input"
+    ],
+    "text": "",
+    "value": "Shirt ",
+    "placeholder": "Short sleeve t-shirt",
+    "pageURL": "https://admin.shopify.com/store/j1mtzz-ik/products/new",
+    "pageTitle": "My Store Â· Products Â· New Â· Shopify",
+    "newURL": "https://admin.shopify.com/store/j1mtzz-ik/products/new",
+    "timestamp": "2025-03-30T09:20:51.189Z",
+    "scrollPosition": 0,
+    
+  },
+  {
+    "event": "input",
+    "tag": "input",
+    "id": ":r2m:",
+    "classList": [
+      "Polaris-TextField__Input"
+    ],
+    "text": "",
+    "value": "Shirt S",
+    "placeholder": "Short sleeve t-shirt",
+    "pageURL": "https://admin.shopify.com/store/j1mtzz-ik/products/new",
+    "pageTitle": "My Store Â· Products Â· New Â· Shopify",
+    "newURL": "https://admin.shopify.com/store/j1mtzz-ik/products/new",
+    "timestamp": "2025-03-30T09:20:51.487Z",
+    "scrollPosition": 0,
+    
+  },
+  {
+    "event": "input",
+    "tag": "input",
+    "id": ":r2m:",
+    "classList": [
+      "Polaris-TextField__Input"
+    ],
+    "text": "",
+    "value": "Shirt Sm",
+    "placeholder": "Short sleeve t-shirt",
+    "pageURL": "https://admin.shopify.com/store/j1mtzz-ik/products/new",
+    "pageTitle": "My Store Â· Products Â· New Â· Shopify",
+    "newURL": "https://admin.shopify.com/store/j1mtzz-ik/products/new",
+    "timestamp": "2025-03-30T09:20:51.615Z",
+    "scrollPosition": 0,
+    
+  },
+  {
+    "event": "input",
+    "tag": "input",
+    "id": ":r2m:",
+    "classList": [
+      "Polaris-TextField__Input"
+    ],
+    "text": "",
+    "value": "Shirt Sma",
+    "placeholder": "Short sleeve t-shirt",
+    "pageURL": "https://admin.shopify.com/store/j1mtzz-ik/products/new",
+    "pageTitle": "My Store Â· Products Â· New Â· Shopify",
+    "newURL": "https://admin.shopify.com/store/j1mtzz-ik/products/new",
+    "timestamp": "2025-03-30T09:20:51.730Z",
+    "scrollPosition": 0,
+    
+  },
+  {
+    "event": "input",
+    "tag": "input",
+    "id": ":r2m:",
+    "classList": [
+      "Polaris-TextField__Input"
+    ],
+    "text": "",
+    "value": "Shirt Smal",
+    "placeholder": "Short sleeve t-shirt",
+    "pageURL": "https://admin.shopify.com/store/j1mtzz-ik/products/new",
+    "pageTitle": "My Store Â· Products Â· New Â· Shopify",
+    "newURL": "https://admin.shopify.com/store/j1mtzz-ik/products/new",
+    "timestamp": "2025-03-30T09:20:51.884Z",
+    "scrollPosition": 0,
+    
+  },
+  {
+    "event": "input",
+    "tag": "input",
+    "id": ":r2m:",
+    "classList": [
+      "Polaris-TextField__Input"
+    ],
+    "text": "",
+    "value": "Shirt Small",
+    "placeholder": "Short sleeve t-shirt",
+    "pageURL": "https://admin.shopify.com/store/j1mtzz-ik/products/new",
+    "pageTitle": "My Store Â· Products Â· New Â· Shopify",
+    "newURL": "https://admin.shopify.com/store/j1mtzz-ik/products/new",
+    "timestamp": "2025-03-30T09:20:52.036Z",
+    "scrollPosition": 0,
+    
+  },
+  {
+    "event": "click",
+    "tag": "span",
+    "id": "",
+    "classList": [
+      "Polaris-Text--root",
+      "Polaris-Text--bodySm",
+      "Polaris-Text--medium"
+    ],
+    "text": "Upload new",
+    "value": "",
+    "placeholder": "",
+    "pageURL": "https://admin.shopify.com/store/j1mtzz-ik/products/new",
+    "pageTitle": "My Store Â· Products Â· New Â· Shopify",
+    "newURL": "https://admin.shopify.com/store/j1mtzz-ik/products/new",
+    "timestamp": "2025-03-30T09:21:00.929Z",
+    "scrollPosition": 0,
+    
+  },
+  {
+    "event": "click",
+    "tag": "input",
+    "id": ":r3d:",
+    "classList": [],
+    "text": "",
+    "value": "",
+    "placeholder": "",
+    "pageURL": "https://admin.shopify.com/store/j1mtzz-ik/products/new",
+    "pageTitle": "My Store Â· Products Â· New Â· Shopify",
+    "newURL": "https://admin.shopify.com/store/j1mtzz-ik/products/new",
+    "timestamp": "2025-03-30T09:21:00.930Z",
+    "scrollPosition": 0,
+    
+  },
+  {
+    "event": "input",
+    "tag": "input",
+    "id": ":r3d:",
+    "classList": [],
+    "text": "",
+    "value": "",
+    "placeholder": "",
+    "pageURL": "https://admin.shopify.com/store/j1mtzz-ik/products/new",
+    "pageTitle": "My Store Â· Products Â· New Â· Shopify",
+    "newURL": "https://admin.shopify.com/store/j1mtzz-ik/products/new",
+    "timestamp": "2025-03-30T09:21:02.350Z",
+    "scrollPosition": 0,
+    
+  },
+  {
+    "event": "click",
+    "tag": "input",
+    "id": ":r3h:",
+    "classList": [
+      "Polaris-TextField__Input"
+    ],
+    "text": "",
+    "value": "",
+    "placeholder": "0.00",
+    "pageURL": "https://admin.shopify.com/store/j1mtzz-ik/products/new",
+    "pageTitle": "My Store Â· Products Â· New Â· Shopify",
+    "newURL": "https://admin.shopify.com/store/j1mtzz-ik/products/new",
+    "timestamp": "2025-03-30T09:21:04.741Z",
+    "scrollPosition": 0,
+    
+  },
+  {
+    "event": "input",
+    "tag": "input",
+    "id": ":r3h:",
+    "classList": [
+      "Polaris-TextField__Input"
+    ],
+    "text": "",
+    "value": "5",
+    "placeholder": "0.00",
+    "pageURL": "https://admin.shopify.com/store/j1mtzz-ik/products/new",
+    "pageTitle": "My Store Â· Products Â· New Â· Shopify",
+    "newURL": "https://admin.shopify.com/store/j1mtzz-ik/products/new",
+    "timestamp": "2025-03-30T09:21:06.112Z",
+    "scrollPosition": 0,
+    
+  },
+  {
+    "event": "input",
+    "tag": "input",
+    "id": ":r3h:",
+    "classList": [
+      "Polaris-TextField__Input"
+    ],
+    "text": "",
+    "value": "50",
+    "placeholder": "0.00",
+    "pageURL": "https://admin.shopify.com/store/j1mtzz-ik/products/new",
+    "pageTitle": "My Store Â· Products Â· New Â· Shopify",
+    "newURL": "https://admin.shopify.com/store/j1mtzz-ik/products/new",
+    "timestamp": "2025-03-30T09:21:06.341Z",
+    "scrollPosition": 0,
+    
+  },
+  {
+    "event": "input",
+    "tag": "input",
+    "id": ":r3h:",
+    "classList": [
+      "Polaris-TextField__Input"
+    ],
+    "text": "",
+    "value": "500",
+    "placeholder": "0.00",
+    "pageURL": "https://admin.shopify.com/store/j1mtzz-ik/products/new",
+    "pageTitle": "My Store Â· Products Â· New Â· Shopify",
+    "newURL": "https://admin.shopify.com/store/j1mtzz-ik/products/new",
+    "timestamp": "2025-03-30T09:21:06.913Z",
+    "scrollPosition": 0,
+    
+  },
+  {
+    "event": "click",
+    "tag": "input",
+    "id": ":r3i:",
+    "classList": [
+      "Polaris-TextField__Input",
+      "Polaris-TextField__Input--suffixed"
+    ],
+    "text": "",
+    "value": "",
+    "placeholder": "0.00",
+    "pageURL": "https://admin.shopify.com/store/j1mtzz-ik/products/new",
+    "pageTitle": "My Store Â· Products Â· New Â· Shopify",
+    "newURL": "https://admin.shopify.com/store/j1mtzz-ik/products/new",
+    "timestamp": "2025-03-30T09:21:09.923Z",
+    "scrollPosition": 0,
+    
+  },
+  {
+    "event": "input",
+    "tag": "input",
+    "id": ":r3i:",
+    "classList": [
+      "Polaris-TextField__Input",
+      "Polaris-TextField__Input--suffixed"
+    ],
+    "text": "",
+    "value": "6",
+    "placeholder": "0.00",
+    "pageURL": "https://admin.shopify.com/store/j1mtzz-ik/products/new",
+    "pageTitle": "My Store Â· Products Â· New Â· Shopify",
+    "newURL": "https://admin.shopify.com/store/j1mtzz-ik/products/new",
+    "timestamp": "2025-03-30T09:21:11.303Z",
+    "scrollPosition": 0,
+    
+  },
+  {
+    "event": "input",
+    "tag": "input",
+    "id": ":r3i:",
+    "classList": [
+      "Polaris-TextField__Input",
+      "Polaris-TextField__Input--suffixed"
+    ],
+    "text": "",
+    "value": "60",
+    "placeholder": "0.00",
+    "pageURL": "https://admin.shopify.com/store/j1mtzz-ik/products/new",
+    "pageTitle": "My Store Â· Products Â· New Â· Shopify",
+    "newURL": "https://admin.shopify.com/store/j1mtzz-ik/products/new",
+    "timestamp": "2025-03-30T09:21:11.483Z",
+    "scrollPosition": 0,
+    
+  },
+  {
+    "event": "input",
+    "tag": "input",
+    "id": ":r3i:",
+    "classList": [
+      "Polaris-TextField__Input",
+      "Polaris-TextField__Input--suffixed"
+    ],
+    "text": "",
+    "value": "600",
+    "placeholder": "0.00",
+    "pageURL": "https://admin.shopify.com/store/j1mtzz-ik/products/new",
+    "pageTitle": "My Store Â· Products Â· New Â· Shopify",
+    "newURL": "https://admin.shopify.com/store/j1mtzz-ik/products/new",
+    "timestamp": "2025-03-30T09:21:11.635Z",
+    "scrollPosition": 0,
+    
+  },
+  {
+    "event": "click",
+    "tag": "div",
+    "id": "",
+    "classList": [
+      "Polaris-BlockStack"
+    ],
+    "text": "Priceâ‚¹Compare-at priceâ‚¹Charge tax on this product",
+    "value": "",
+    "placeholder": "",
+    "pageURL": "https://admin.shopify.com/store/j1mtzz-ik/products/new",
+    "pageTitle": "My Store Â· Products Â· New Â· Shopify",
+    "newURL": "https://admin.shopify.com/store/j1mtzz-ik/products/new",
+    "timestamp": "2025-03-30T09:21:12.450Z",
+    "scrollPosition": 0,
+    
+  },
+  {
+    "event": "click",
+    "tag": "span",
+    "id": "",
+    "classList": [
+      "Polaris-Choice__Control"
+    ],
+    "text": "",
+    "value": "",
+    "placeholder": "",
+    "pageURL": "https://admin.shopify.com/store/j1mtzz-ik/products/new",
+    "pageTitle": "My Store Â· Products Â· New Â· Shopify",
+    "newURL": "https://admin.shopify.com/store/j1mtzz-ik/products/new",
+    "timestamp": "2025-03-30T09:21:15.394Z",
+    "scrollPosition": 0,
+    
+  },
+  {
+    "event": "click",
+    "tag": "input",
+    "id": "InventoryCardAllowOutOfStockPurchases",
+    "classList": [
+      "Polaris-Checkbox__Input"
+    ],
+    "text": "",
+    "value": "",
+    "placeholder": "",
+    "pageURL": "https://admin.shopify.com/store/j1mtzz-ik/products/new",
+    "pageTitle": "My Store Â· Products Â· New Â· Shopify",
+    "newURL": "https://admin.shopify.com/store/j1mtzz-ik/products/new",
+    "timestamp": "2025-03-30T09:21:15.395Z",
+    "scrollPosition": 0,
+    
+  },
+  {
+    "event": "click",
+    "tag": "input",
+    "id": "ShippingCardWeight",
+    "classList": [
+      "Polaris-TextField__Input"
+    ],
+    "text": "",
+    "value": "0.0",
+    "placeholder": "0.0",
+    "pageURL": "https://admin.shopify.com/store/j1mtzz-ik/products/new",
+    "pageTitle": "My Store Â· Products Â· New Â· Shopify",
+    "newURL": "https://admin.shopify.com/store/j1mtzz-ik/products/new",
+    "timestamp": "2025-03-30T09:21:17.316Z",
+    "scrollPosition": 0,
+    
+  },
+  {
+    "event": "input",
+    "tag": "input",
+    "id": "ShippingCardWeight",
+    "classList": [
+      "Polaris-TextField__Input"
+    ],
+    "text": "",
+    "value": "5",
+    "placeholder": "0.0",
+    "pageURL": "https://admin.shopify.com/store/j1mtzz-ik/products/new",
+    "pageTitle": "My Store Â· Products Â· New Â· Shopify",
+    "newURL": "https://admin.shopify.com/store/j1mtzz-ik/products/new",
+    "timestamp": "2025-03-30T09:21:18.597Z",
+    "scrollPosition": 0,
+    
+  },
+  {
+    "event": "click",
+    "tag": "button",
+    "id": "",
+    "classList": [
+      "_ContextualButton_1c7zd_1",
+      "_Primary_1c7zd_28",
+      "_Disabled_1c7zd_39",
+      "_Loading_1c7zd_50"
+    ],
+    "text": "LoadingSave",
+    "value": "",
+    "placeholder": "",
+    "pageURL": "https://admin.shopify.com/store/j1mtzz-ik/products/new",
+    "pageTitle": "My Store Â· Products Â· New Â· Shopify",
+    "newURL": "https://admin.shopify.com/store/j1mtzz-ik/products/new",
+    "timestamp": "2025-03-30T09:21:28.445Z",
+    "scrollPosition": 0,
+    
+  },
+  {
+    "event": "pageChange",
+    "newURL": "https://admin.shopify.com/store/j1mtzz-ik/products/14978920513905",
+    "previousURL": "https://admin.shopify.com/store/j1mtzz-ik/products/new",
+    "pageTitle": "My Store Â· Products Â· New Â· Shopify",
+    "pageURL": "https://admin.shopify.com/store/j1mtzz-ik/products/14978920513905",
+    "timestamp": "2025-03-30T09:21:31.631Z",
+    "scrollPosition": 0,
+    "tag": "page",
+    "text": "My Store Â· Products Â· New Â· Shopify",
+    "id": "",
+    "classList": [],
+    "placeholder": "",
+    "value": "",
+    
+  },
+  {
+    "event": "click",
+    "tag": "a",
+    "id": "",
+    "classList": [
+      "Polaris-Link",
+      "Polaris-Link--monochrome"
+    ],
+    "text": "Continue setting up your store.",
+    "value": "",
+    "placeholder": "",
+    "pageURL": "https://admin.shopify.com/store/j1mtzz-ik",
+    "pageTitle": "My Store Â· Products Â· Shirt Small Â· Shopify",
+    "newURL": "https://admin.shopify.com/store/j1mtzz-ik",
+    "timestamp": "2025-03-30T09:21:35.859Z",
+    "scrollPosition": 0,
+    
+  },
+  {
+    "event": "pageChange",
+    "newURL": "https://admin.shopify.com/store/j1mtzz-ik",
+    "previousURL": "https://admin.shopify.com/store/j1mtzz-ik/products/14978920513905",
+    "pageTitle": "My Store Â· Products Â· Shirt Small Â· Shopify",
+    "pageURL": "https://admin.shopify.com/store/j1mtzz-ik",
+    "timestamp": "2025-03-30T09:21:35.782Z",
+    "scrollPosition": 0,
+    "tag": "page",
+    "text": "My Store Â· Products Â· Shirt Small Â· Shopify",
+    "id": "",
+    "classList": [],
+    "placeholder": "",
+    "value": "",
+    
+  },
+  {
+    "event": "click",
+    "tag": "span",
+    "id": "",
+    "classList": [
+      "Polaris-Text--root",
+      "Polaris-Text--bodyMd",
+      "Polaris-Text--semibold"
+    ],
+    "text": "Customers",
+    "value": "",
+    "placeholder": "",
+    "pageURL": "https://admin.shopify.com/store/j1mtzz-ik/customers",
+    "pageTitle": "My Store Â· Customers Â· Shopify",
+    "newURL": "https://admin.shopify.com/store/j1mtzz-ik/customers",
+    "timestamp": "2025-03-30T09:21:44.373Z",
+    "scrollPosition": 0,
+    
+  },
+  {
+    "event": "pageChange",
+    "newURL": "https://admin.shopify.com/store/j1mtzz-ik/customers",
+    "previousURL": "https://admin.shopify.com/store/j1mtzz-ik",
+    "pageTitle": "My Store Â· Home Â· Shopify",
+    "pageURL": "https://admin.shopify.com/store/j1mtzz-ik/customers",
+    "timestamp": "2025-03-30T09:21:44.209Z",
+    "scrollPosition": 0,
+    "tag": "page",
+    "text": "My Store Â· Home Â· Shopify",
+    "id": "",
+    "classList": [],
+    "placeholder": "",
+    "value": "",
+    
+  },
+  {
+    "event": "click",
+    "tag": "a",
+    "id": "",
+    "classList": [
+      "Polaris-Button",
+      "Polaris-Button--pressable",
+      "Polaris-Button--variantPrimary",
+      "Polaris-Button--sizeMedium",
+      "Polaris-Button--textAlignCenter"
+    ],
+    "text": "Add customer",
+    "value": "",
+    "placeholder": "",
+    "pageURL": "https://admin.shopify.com/store/j1mtzz-ik/customers/new",
+    "pageTitle": "My Store Â· New customer Â· Shopify",
+    "newURL": "https://admin.shopify.com/store/j1mtzz-ik/customers/new",
+    "timestamp": "2025-03-30T09:21:52.815Z",
+    "scrollPosition": 0,
+    
+  },
+  {
+    "event": "pageChange",
+    "newURL": "https://admin.shopify.com/store/j1mtzz-ik/customers/new",
+    "previousURL": "https://admin.shopify.com/store/j1mtzz-ik/customers",
+    "pageTitle": "My Store Â· Customers Â· Shopify",
+    "pageURL": "https://admin.shopify.com/store/j1mtzz-ik/customers/new",
+    "timestamp": "2025-03-30T09:21:52.696Z",
+    "scrollPosition": 0,
+    "tag": "page",
+    "text": "My Store Â· Customers Â· Shopify",
+    "id": "",
+    "classList": [],
+    "placeholder": "",
+    "value": "",
+    
+  },
+  {
+    "event": "click",
+    "tag": "input",
+    "id": ":req:",
+    "classList": [
+      "Polaris-TextField__Input"
+    ],
+    "text": "",
+    "value": "",
+    "placeholder": "",
+    "pageURL": "https://admin.shopify.com/store/j1mtzz-ik/customers/new",
+    "pageTitle": "My Store Â· New customer Â· Shopify",
+    "newURL": "https://admin.shopify.com/store/j1mtzz-ik/customers/new",
+    "timestamp": "2025-03-30T09:21:56.464Z",
+    "scrollPosition": 0,
+    
+  },
+  {
+    "event": "input",
+    "tag": "input",
+    "id": ":req:",
+    "classList": [
+      "Polaris-TextField__Input"
+    ],
+    "text": "",
+    "value": "D",
+    "placeholder": "",
+    "pageURL": "https://admin.shopify.com/store/j1mtzz-ik/customers/new",
+    "pageTitle": "My Store Â· New customer Â· Shopify",
+    "newURL": "https://admin.shopify.com/store/j1mtzz-ik/customers/new",
+    "timestamp": "2025-03-30T09:21:57.268Z",
+    "scrollPosition": 0,
+    
+  },
+  {
+    "event": "input",
+    "tag": "input",
+    "id": ":req:",
+    "classList": [
+      "Polaris-TextField__Input"
+    ],
+    "text": "",
+    "value": "Da",
+    "placeholder": "",
+    "pageURL": "https://admin.shopify.com/store/j1mtzz-ik/customers/new",
+    "pageTitle": "My Store Â· New customer Â· Shopify",
+    "newURL": "https://admin.shopify.com/store/j1mtzz-ik/customers/new",
+    "timestamp": "2025-03-30T09:21:57.464Z",
+    "scrollPosition": 0,
+    
+  },
+  {
+    "event": "input",
+    "tag": "input",
+    "id": ":req:",
+    "classList": [
+      "Polaris-TextField__Input"
+    ],
+    "text": "",
+    "value": "Dan",
+    "placeholder": "",
+    "pageURL": "https://admin.shopify.com/store/j1mtzz-ik/customers/new",
+    "pageTitle": "My Store Â· New customer Â· Shopify",
+    "newURL": "https://admin.shopify.com/store/j1mtzz-ik/customers/new",
+    "timestamp": "2025-03-30T09:21:57.571Z",
+    "scrollPosition": 0,
+    
+  },
+  {
+    "event": "input",
+    "tag": "input",
+    "id": ":req:",
+    "classList": [
+      "Polaris-TextField__Input"
+    ],
+    "text": "",
+    "value": "Danu",
+    "placeholder": "",
+    "pageURL": "https://admin.shopify.com/store/j1mtzz-ik/customers/new",
+    "pageTitle": "My Store Â· New customer Â· Shopify",
+    "newURL": "https://admin.shopify.com/store/j1mtzz-ik/customers/new",
+    "timestamp": "2025-03-30T09:21:57.715Z",
+    "scrollPosition": 0,
+    
+  },
+  {
+    "event": "click",
+    "tag": "input",
+    "id": ":rer:",
+    "classList": [
+      "Polaris-TextField__Input"
+    ],
+    "text": "",
+    "value": "",
+    "placeholder": "",
+    "pageURL": "https://admin.shopify.com/store/j1mtzz-ik/customers/new",
+    "pageTitle": "My Store Â· New customer Â· Shopify",
+    "newURL": "https://admin.shopify.com/store/j1mtzz-ik/customers/new",
+    "timestamp": "2025-03-30T09:21:58.649Z",
+    "scrollPosition": 0,
+    
+  },
+  {
+    "event": "input",
+    "tag": "input",
+    "id": ":rer:",
+    "classList": [
+      "Polaris-TextField__Input"
+    ],
+    "text": "",
+    "value": "S",
+    "placeholder": "",
+    "pageURL": "https://admin.shopify.com/store/j1mtzz-ik/customers/new",
+    "pageTitle": "My Store Â· New customer Â· Shopify",
+    "newURL": "https://admin.shopify.com/store/j1mtzz-ik/customers/new",
+    "timestamp": "2025-03-30T09:21:59.041Z",
+    "scrollPosition": 0,
+    
+  },
+  {
+    "event": "input",
+    "tag": "input",
+    "id": ":rer:",
+    "classList": [
+      "Polaris-TextField__Input"
+    ],
+    "text": "",
+    "value": "Sa",
+    "placeholder": "",
+    "pageURL": "https://admin.shopify.com/store/j1mtzz-ik/customers/new",
+    "pageTitle": "My Store Â· New customer Â· Shopify",
+    "newURL": "https://admin.shopify.com/store/j1mtzz-ik/customers/new",
+    "timestamp": "2025-03-30T09:21:59.173Z",
+    "scrollPosition": 0,
+    
+  },
+  {
+    "event": "input",
+    "tag": "input",
+    "id": ":rer:",
+    "classList": [
+      "Polaris-TextField__Input"
+    ],
+    "text": "",
+    "value": "Sabu",
+    "placeholder": "",
+    "pageURL": "https://admin.shopify.com/store/j1mtzz-ik/customers/new",
+    "pageTitle": "My Store Â· New customer Â· Shopify",
+    "newURL": "https://admin.shopify.com/store/j1mtzz-ik/customers/new",
+    "timestamp": "2025-03-30T09:21:59.360Z",
+    "scrollPosition": 0,
+    
+  },
+  {
+    "event": "input",
+    "tag": "input",
+    "id": ":rer:",
+    "classList": [
+      "Polaris-TextField__Input"
+    ],
+    "text": "",
+    "value": "Sabu",
+    "placeholder": "",
+    "pageURL": "https://admin.shopify.com/store/j1mtzz-ik/customers/new",
+    "pageTitle": "My Store Â· New customer Â· Shopify",
+    "newURL": "https://admin.shopify.com/store/j1mtzz-ik/customers/new",
+    "timestamp": "2025-03-30T09:21:59.447Z",
+    "scrollPosition": 0,
+    
+  },
+  {
+    "event": "click",
+    "tag": "input",
+    "id": ":ret:",
+    "classList": [
+      "Polaris-TextField__Input"
+    ],
+    "text": "",
+    "value": "",
+    "placeholder": "",
+    "pageURL": "https://admin.shopify.com/store/j1mtzz-ik/customers/new",
+    "pageTitle": "My Store Â· New customer Â· Shopify",
+    "newURL": "https://admin.shopify.com/store/j1mtzz-ik/customers/new",
+    "timestamp": "2025-03-30T09:22:01.719Z",
+    "scrollPosition": 0,
+    
+  },
+  {
+    "event": "input",
+    "tag": "input",
+    "id": ":ret:",
+    "classList": [
+      "Polaris-TextField__Input"
+    ],
+    "text": "",
+    "value": "product.danu@gmail.com",
+    "placeholder": "",
+    "pageURL": "https://admin.shopify.com/store/j1mtzz-ik/customers/new",
+    "pageTitle": "My Store Â· New customer Â· Shopify",
+    "newURL": "https://admin.shopify.com/store/j1mtzz-ik/customers/new",
+    "timestamp": "2025-03-30T09:22:03.826Z",
+    "scrollPosition": 0,
+    
+  },
+  {
+    "event": "click",
+    "tag": "input",
+    "id": ":reu:",
+    "classList": [
+      "Polaris-TextField__Input"
+    ],
+    "text": "",
+    "value": "",
+    "placeholder": "",
+    "pageURL": "https://admin.shopify.com/store/j1mtzz-ik/customers/new",
+    "pageTitle": "My Store Â· New customer Â· Shopify",
+    "newURL": "https://admin.shopify.com/store/j1mtzz-ik/customers/new",
+    "timestamp": "2025-03-30T09:22:05.094Z",
+    "scrollPosition": 0,
+    
+  },
+  {
+    "event": "input",
+    "tag": "input",
+    "id": ":reu:",
+    "classList": [
+      "Polaris-TextField__Input"
+    ],
+    "text": "",
+    "value": "9",
+    "placeholder": "",
+    "pageURL": "https://admin.shopify.com/store/j1mtzz-ik/customers/new",
+    "pageTitle": "My Store Â· New customer Â· Shopify",
+    "newURL": "https://admin.shopify.com/store/j1mtzz-ik/customers/new",
+    "timestamp": "2025-03-30T09:22:05.660Z",
+    "scrollPosition": 0,
+    
+  },
+  {
+    "event": "input",
+    "tag": "input",
+    "id": ":reu:",
+    "classList": [
+      "Polaris-TextField__Input"
+    ],
+    "text": "",
+    "value": "92",
+    "placeholder": "",
+    "pageURL": "https://admin.shopify.com/store/j1mtzz-ik/customers/new",
+    "pageTitle": "My Store Â· New customer Â· Shopify",
+    "newURL": "https://admin.shopify.com/store/j1mtzz-ik/customers/new",
+    "timestamp": "2025-03-30T09:22:06.430Z",
+    "scrollPosition": 0,
+    
+  },
+  {
+    "event": "input",
+    "tag": "input",
+    "id": ":reu:",
+    "classList": [
+      "Polaris-TextField__Input"
+    ],
+    "text": "",
+    "value": "920",
+    "placeholder": "",
+    "pageURL": "https://admin.shopify.com/store/j1mtzz-ik/customers/new",
+    "pageTitle": "My Store Â· New customer Â· Shopify",
+    "newURL": "https://admin.shopify.com/store/j1mtzz-ik/customers/new",
+    "timestamp": "2025-03-30T09:22:06.848Z",
+    "scrollPosition": 0,
+    
+  },
+  {
+    "event": "input",
+    "tag": "input",
+    "id": ":reu:",
+    "classList": [
+      "Polaris-TextField__Input"
+    ],
+    "text": "",
+    "value": "9207",
+    "placeholder": "",
+    "pageURL": "https://admin.shopify.com/store/j1mtzz-ik/customers/new",
+    "pageTitle": "My Store Â· New customer Â· Shopify",
+    "newURL": "https://admin.shopify.com/store/j1mtzz-ik/customers/new",
+    "timestamp": "2025-03-30T09:22:07.115Z",
+    "scrollPosition": 0,
+    
+  },
+  {
+    "event": "input",
+    "tag": "input",
+    "id": ":reu:",
+    "classList": [
+      "Polaris-TextField__Input"
+    ],
+    "text": "",
+    "value": "92079",
+    "placeholder": "",
+    "pageURL": "https://admin.shopify.com/store/j1mtzz-ik/customers/new",
+    "pageTitle": "My Store Â· New customer Â· Shopify",
+    "newURL": "https://admin.shopify.com/store/j1mtzz-ik/customers/new",
+    "timestamp": "2025-03-30T09:22:07.286Z",
+    "scrollPosition": 0,
+    
+  },
+  {
+    "event": "input",
+    "tag": "input",
+    "id": ":reu:",
+    "classList": [
+      "Polaris-TextField__Input"
+    ],
+    "text": "",
+    "value": "92079 1",
+    "placeholder": "",
+    "pageURL": "https://admin.shopify.com/store/j1mtzz-ik/customers/new",
+    "pageTitle": "My Store Â· New customer Â· Shopify",
+    "newURL": "https://admin.shopify.com/store/j1mtzz-ik/customers/new",
+    "timestamp": "2025-03-30T09:22:07.460Z",
+    "scrollPosition": 0,
+    
+  },
+  {
+    "event": "input",
+    "tag": "input",
+    "id": ":reu:",
+    "classList": [
+      "Polaris-TextField__Input"
+    ],
+    "text": "",
+    "value": "92079 17",
+    "placeholder": "",
+    "pageURL": "https://admin.shopify.com/store/j1mtzz-ik/customers/new",
+    "pageTitle": "My Store Â· New customer Â· Shopify",
+    "newURL": "https://admin.shopify.com/store/j1mtzz-ik/customers/new",
+    "timestamp": "2025-03-30T09:22:08.388Z",
+    "scrollPosition": 0,
+    
+  },
+  {
+    "event": "input",
+    "tag": "input",
+    "id": ":reu:",
+    "classList": [
+      "Polaris-TextField__Input"
+    ],
+    "text": "",
+    "value": "92079 177",
+    "placeholder": "",
+    "pageURL": "https://admin.shopify.com/store/j1mtzz-ik/customers/new",
+    "pageTitle": "My Store Â· New customer Â· Shopify",
+    "newURL": "https://admin.shopify.com/store/j1mtzz-ik/customers/new",
+    "timestamp": "2025-03-30T09:22:08.516Z",
+    "scrollPosition": 0,
+    
+  },
+  {
+    "event": "input",
+    "tag": "input",
+    "id": ":reu:",
+    "classList": [
+      "Polaris-TextField__Input"
+    ],
+    "text": "",
+    "value": "92079 1777",
+    "placeholder": "",
+    "pageURL": "https://admin.shopify.com/store/j1mtzz-ik/customers/new",
+    "pageTitle": "My Store Â· New customer Â· Shopify",
+    "newURL": "https://admin.shopify.com/store/j1mtzz-ik/customers/new",
+    "timestamp": "2025-03-30T09:22:08.651Z",
+    "scrollPosition": 0,
+    
+  },
+  {
+    "event": "input",
+    "tag": "input",
+    "id": ":reu:",
+    "classList": [
+      "Polaris-TextField__Input"
+    ],
+    "text": "",
+    "value": "92079 17777",
+    "placeholder": "",
+    "pageURL": "https://admin.shopify.com/store/j1mtzz-ik/customers/new",
+    "pageTitle": "My Store Â· New customer Â· Shopify",
+    "newURL": "https://admin.shopify.com/store/j1mtzz-ik/customers/new",
+    "timestamp": "2025-03-30T09:22:08.770Z",
+    "scrollPosition": 0,
+    
+  },
+  {
+    "event": "click",
+    "tag": "span",
+    "id": "",
+    "classList": [
+      "Polaris-Choice__LabelContent"
+    ],
+    "text": "Customer agreed to receive marketing emails.",
+    "value": "",
+    "placeholder": "",
+    "pageURL": "https://admin.shopify.com/store/j1mtzz-ik/customers/new",
+    "pageTitle": "My Store Â· New customer Â· Shopify",
+    "newURL": "https://admin.shopify.com/store/j1mtzz-ik/customers/new",
+    "timestamp": "2025-03-30T09:22:12.833Z",
+    "scrollPosition": 0,
+    
+  },
+  {
+    "event": "click",
+    "tag": "input",
+    "id": ":rf0:",
+    "classList": [
+      "Polaris-Checkbox__Input"
+    ],
+    "text": "",
+    "value": "",
+    "placeholder": "",
+    "pageURL": "https://admin.shopify.com/store/j1mtzz-ik/customers/new",
+    "pageTitle": "My Store Â· New customer Â· Shopify",
+    "newURL": "https://admin.shopify.com/store/j1mtzz-ik/customers/new",
+    "timestamp": "2025-03-30T09:22:12.838Z",
+    "scrollPosition": 0,
+    
+  },
+  {
+    "event": "input",
+    "tag": "input",
+    "id": ":rf0:",
+    "classList": [
+      "Polaris-Checkbox__Input"
+    ],
+    "text": "",
+    "value": "",
+    "placeholder": "",
+    "pageURL": "https://admin.shopify.com/store/j1mtzz-ik/customers/new",
+    "pageTitle": "My Store Â· New customer Â· Shopify",
+    "newURL": "https://admin.shopify.com/store/j1mtzz-ik/customers/new",
+    "timestamp": "2025-03-30T09:22:12.842Z",
+    "scrollPosition": 0,
+    
+  },
+  {
+    "event": "click",
+    "tag": "button",
+    "id": "",
+    "classList": [
+      "_SettingsItem__clickableAction_1owee_138"
+    ],
+    "text": "Add address",
+    "value": "",
+    "placeholder": "",
+    "pageURL": "https://admin.shopify.com/store/j1mtzz-ik/customers/new",
+    "pageTitle": "My Store Â· New customer Â· Shopify",
+    "newURL": "https://admin.shopify.com/store/j1mtzz-ik/customers/new",
+    "timestamp": "2025-03-30T09:22:14.083Z",
+    "scrollPosition": 0,
+    
+  },
+  {
+    "event": "click",
+    "tag": "input",
+    "id": ":rfu:",
+    "classList": [
+      "Polaris-TextField__Input"
+    ],
+    "text": "",
+    "value": "",
+    "placeholder": "",
+    "pageURL": "https://admin.shopify.com/store/j1mtzz-ik/customers/new",
+    "pageTitle": "My Store Â· New customer Â· Shopify",
+    "newURL": "https://admin.shopify.com/store/j1mtzz-ik/customers/new",
+    "timestamp": "2025-03-30T09:22:16.256Z",
+    "scrollPosition": 0,
+    
+  },
+  {
+    "event": "input",
+    "tag": "input",
+    "id": ":rfu:",
+    "classList": [
+      "Polaris-TextField__Input"
+    ],
+    "text": "",
+    "value": "ne",
+    "placeholder": "",
+    "pageURL": "https://admin.shopify.com/store/j1mtzz-ik/customers/new",
+    "pageTitle": "My Store Â· New customer Â· Shopify",
+    "newURL": "https://admin.shopify.com/store/j1mtzz-ik/customers/new",
+    "timestamp": "2025-03-30T09:22:18.350Z",
+    "scrollPosition": 0,
+    
+  },
+  {
+    "event": "input",
+    "tag": "input",
+    "id": ":rfu:",
+    "classList": [
+      "Polaris-TextField__Input"
+    ],
+    "text": "",
+    "value": "ne",
+    "placeholder": "",
+    "pageURL": "https://admin.shopify.com/store/j1mtzz-ik/customers/new",
+    "pageTitle": "My Store Â· New customer Â· Shopify",
+    "newURL": "https://admin.shopify.com/store/j1mtzz-ik/customers/new",
+    "timestamp": "2025-03-30T09:22:18.438Z",
+    "scrollPosition": 0,
+    
+  },
+  {
+    "event": "input",
+    "tag": "input",
+    "id": ":rfu:",
+    "classList": [
+      "Polaris-TextField__Input"
+    ],
+    "text": "",
+    "value": "nev",
+    "placeholder": "",
+    "pageURL": "https://admin.shopify.com/store/j1mtzz-ik/customers/new",
+    "pageTitle": "My Store Â· New customer Â· Shopify",
+    "newURL": "https://admin.shopify.com/store/j1mtzz-ik/customers/new",
+    "timestamp": "2025-03-30T09:22:18.659Z",
+    "scrollPosition": 0,
+    
+  },
+  {
+    "event": "input",
+    "tag": "input",
+    "id": ":rfu:",
+    "classList": [
+      "Polaris-TextField__Input"
+    ],
+    "text": "",
+    "value": "nevo",
+    "placeholder": "",
+    "pageURL": "https://admin.shopify.com/store/j1mtzz-ik/customers/new",
+    "pageTitle": "My Store Â· New customer Â· Shopify",
+    "newURL": "https://admin.shopify.com/store/j1mtzz-ik/customers/new",
+    "timestamp": "2025-03-30T09:22:18.774Z",
+    "scrollPosition": 0,
+    
+  },
+  {
+    "event": "input",
+    "tag": "input",
+    "id": ":rfu:",
+    "classList": [
+      "Polaris-TextField__Input"
+    ],
+    "text": "",
+    "value": "nevola",
+    "placeholder": "",
+    "pageURL": "https://admin.shopify.com/store/j1mtzz-ik/customers/new",
+    "pageTitle": "My Store Â· New customer Â· Shopify",
+    "newURL": "https://admin.shopify.com/store/j1mtzz-ik/customers/new",
+    "timestamp": "2025-03-30T09:22:18.997Z",
+    "scrollPosition": 0,
+    
+  },
+  {
+    "event": "input",
+    "tag": "input",
+    "id": ":rfu:",
+    "classList": [
+      "Polaris-TextField__Input"
+    ],
+    "text": "",
+    "value": "nevolab",
+    "placeholder": "",
+    "pageURL": "https://admin.shopify.com/store/j1mtzz-ik/customers/new",
+    "pageTitle": "My Store Â· New customer Â· Shopify",
+    "newURL": "https://admin.shopify.com/store/j1mtzz-ik/customers/new",
+    "timestamp": "2025-03-30T09:22:19.109Z",
+    "scrollPosition": 0,
+    
+  },
+  {
+    "event": "input",
+    "tag": "input",
+    "id": ":rfu:",
+    "classList": [
+      "Polaris-TextField__Input"
+    ],
+    "text": "",
+    "value": "nevolab",
+    "placeholder": "",
+    "pageURL": "https://admin.shopify.com/store/j1mtzz-ik/customers/new",
+    "pageTitle": "My Store Â· New customer Â· Shopify",
+    "newURL": "https://admin.shopify.com/store/j1mtzz-ik/customers/new",
+    "timestamp": "2025-03-30T09:22:19.172Z",
+    "scrollPosition": 0,
+    
+  },
+  {
+    "event": "input",
+    "tag": "input",
+    "id": ":rfu:",
+    "classList": [
+      "Polaris-TextField__Input"
+    ],
+    "text": "",
+    "value": "nevolabs",
+    "placeholder": "",
+    "pageURL": "https://admin.shopify.com/store/j1mtzz-ik/customers/new",
+    "pageTitle": "My Store Â· New customer Â· Shopify",
+    "newURL": "https://admin.shopify.com/store/j1mtzz-ik/customers/new",
+    "timestamp": "2025-03-30T09:22:19.292Z",
+    "scrollPosition": 0,
+    
+  },
+  {
+    "event": "click",
+    "tag": "input",
+    "id": ":rg1:",
+    "classList": [
+      "Polaris-TextField__Input"
+    ],
+    "text": "",
+    "value": "",
+    "placeholder": "",
+    "pageURL": "https://admin.shopify.com/store/j1mtzz-ik/customers/new",
+    "pageTitle": "My Store Â· New customer Â· Shopify",
+    "newURL": "https://admin.shopify.com/store/j1mtzz-ik/customers/new",
+    "timestamp": "2025-03-30T09:22:20.285Z",
+    "scrollPosition": 0,
+    
+  },
+  {
+    "event": "input",
+    "tag": "input",
+    "id": ":rg1:",
+    "classList": [
+      "Polaris-TextField__Input"
+    ],
+    "text": "",
+    "value": "K",
+    "placeholder": "",
+    "pageURL": "https://admin.shopify.com/store/j1mtzz-ik/customers/new",
+    "pageTitle": "My Store Â· New customer Â· Shopify",
+    "newURL": "https://admin.shopify.com/store/j1mtzz-ik/customers/new",
+    "timestamp": "2025-03-30T09:22:20.827Z",
+    "scrollPosition": 0,
+    
+  },
+  {
+    "event": "input",
+    "tag": "input",
+    "id": ":rg1:",
+    "classList": [
+      "Polaris-TextField__Input"
+    ],
+    "text": "",
+    "value": "Kr",
+    "placeholder": "",
+    "pageURL": "https://admin.shopify.com/store/j1mtzz-ik/customers/new",
+    "pageTitle": "My Store Â· New customer Â· Shopify",
+    "newURL": "https://admin.shopify.com/store/j1mtzz-ik/customers/new",
+    "timestamp": "2025-03-30T09:22:21.033Z",
+    "scrollPosition": 0,
+    
+  },
+  {
+    "event": "input",
+    "tag": "input",
+    "id": ":rg1:",
+    "classList": [
+      "Polaris-TextField__Input"
+    ],
+    "text": "",
+    "value": "Kri",
+    "placeholder": "",
+    "pageURL": "https://admin.shopify.com/store/j1mtzz-ik/customers/new",
+    "pageTitle": "My Store Â· New customer Â· Shopify",
+    "newURL": "https://admin.shopify.com/store/j1mtzz-ik/customers/new",
+    "timestamp": "2025-03-30T09:22:21.139Z",
+    "scrollPosition": 0,
+    
+  },
+  {
+    "event": "input",
+    "tag": "input",
+    "id": ":rg1:",
+    "classList": [
+      "Polaris-TextField__Input"
+    ],
+    "text": "",
+    "value": "Krip",
+    "placeholder": "",
+    "pageURL": "https://admin.shopify.com/store/j1mtzz-ik/customers/new",
+    "pageTitle": "My Store Â· New customer Â· Shopify",
+    "newURL": "https://admin.shopify.com/store/j1mtzz-ik/customers/new",
+    "timestamp": "2025-03-30T09:22:21.270Z",
+    "scrollPosition": 0,
+    
+  },
+  {
+    "event": "input",
+    "tag": "input",
+    "id": ":rg1:",
+    "classList": [
+      "Polaris-TextField__Input"
+    ],
+    "text": "",
+    "value": "Kripa",
+    "placeholder": "",
+    "pageURL": "https://admin.shopify.com/store/j1mtzz-ik/customers/new",
+    "pageTitle": "My Store Â· New customer Â· Shopify",
+    "newURL": "https://admin.shopify.com/store/j1mtzz-ik/customers/new",
+    "timestamp": "2025-03-30T09:22:21.454Z",
+    "scrollPosition": 0,
+    
+  },
+  {
+    "event": "input",
+    "tag": "input",
+    "id": ":rg1:",
+    "classList": [
+      "Polaris-TextField__Input"
+    ],
+    "text": "",
+    "value": "Kripa,",
+    "placeholder": "",
+    "pageURL": "https://admin.shopify.com/store/j1mtzz-ik/customers/new",
+    "pageTitle": "My Store Â· New customer Â· Shopify",
+    "newURL": "https://admin.shopify.com/store/j1mtzz-ik/customers/new",
+    "timestamp": "2025-03-30T09:22:23.366Z",
+    "scrollPosition": 0,
+    
+  },
+  {
+    "event": "input",
+    "tag": "input",
+    "id": ":rg1:",
+    "classList": [
+      "Polaris-TextField__Input"
+    ],
+    "text": "",
+    "value": "Kripa, ",
+    "placeholder": "",
+    "pageURL": "https://admin.shopify.com/store/j1mtzz-ik/customers/new",
+    "pageTitle": "My Store Â· New customer Â· Shopify",
+    "newURL": "https://admin.shopify.com/store/j1mtzz-ik/customers/new",
+    "timestamp": "2025-03-30T09:22:23.525Z",
+    "scrollPosition": 0,
+    
+  },
+  {
+    "event": "input",
+    "tag": "input",
+    "id": ":rg1:",
+    "classList": [
+      "Polaris-TextField__Input"
+    ],
+    "text": "",
+    "value": "Kripa, P",
+    "placeholder": "",
+    "pageURL": "https://admin.shopify.com/store/j1mtzz-ik/customers/new",
+    "pageTitle": "My Store Â· New customer Â· Shopify",
+    "newURL": "https://admin.shopify.com/store/j1mtzz-ik/customers/new",
+    "timestamp": "2025-03-30T09:22:23.746Z",
+    "scrollPosition": 0,
+    
+  },
+  {
+    "event": "input",
+    "tag": "input",
+    "id": ":rg1:",
+    "classList": [
+      "Polaris-TextField__Input"
+    ],
+    "text": "",
+    "value": "Kripa, Pu",
+    "placeholder": "",
+    "pageURL": "https://admin.shopify.com/store/j1mtzz-ik/customers/new",
+    "pageTitle": "My Store Â· New customer Â· Shopify",
+    "newURL": "https://admin.shopify.com/store/j1mtzz-ik/customers/new",
+    "timestamp": "2025-03-30T09:22:24.009Z",
+    "scrollPosition": 0,
+    
+  },
+  {
+    "event": "input",
+    "tag": "input",
+    "id": ":rg1:",
+    "classList": [
+      "Polaris-TextField__Input"
+    ],
+    "text": "",
+    "value": "Kripa, Put",
+    "placeholder": "",
+    "pageURL": "https://admin.shopify.com/store/j1mtzz-ik/customers/new",
+    "pageTitle": "My Store Â· New customer Â· Shopify",
+    "newURL": "https://admin.shopify.com/store/j1mtzz-ik/customers/new",
+    "timestamp": "2025-03-30T09:22:24.170Z",
+    "scrollPosition": 0,
+    
+  },
+  {
+    "event": "input",
+    "tag": "input",
+    "id": ":rg1:",
+    "classList": [
+      "Polaris-TextField__Input"
+    ],
+    "text": "",
+    "value": "Kripa, Puth",
+    "placeholder": "",
+    "pageURL": "https://admin.shopify.com/store/j1mtzz-ik/customers/new",
+    "pageTitle": "My Store Â· New customer Â· Shopify",
+    "newURL": "https://admin.shopify.com/store/j1mtzz-ik/customers/new",
+    "timestamp": "2025-03-30T09:22:24.293Z",
+    "scrollPosition": 0,
+    
+  },
+  {
+    "event": "input",
+    "tag": "input",
+    "id": ":rg1:",
+    "classList": [
+      "Polaris-TextField__Input"
+    ],
+    "text": "",
+    "value": "Kripa, Putho",
+    "placeholder": "",
+    "pageURL": "https://admin.shopify.com/store/j1mtzz-ik/customers/new",
+    "pageTitle": "My Store Â· New customer Â· Shopify",
+    "newURL": "https://admin.shopify.com/store/j1mtzz-ik/customers/new",
+    "timestamp": "2025-03-30T09:22:24.487Z",
+    "scrollPosition": 0,
+    
+  },
+  {
+    "event": "input",
+    "tag": "input",
+    "id": ":rg1:",
+    "classList": [
+      "Polaris-TextField__Input"
+    ],
+    "text": "",
+    "value": "Kripa, Puthoo",
+    "placeholder": "",
+    "pageURL": "https://admin.shopify.com/store/j1mtzz-ik/customers/new",
+    "pageTitle": "My Store Â· New customer Â· Shopify",
+    "newURL": "https://admin.shopify.com/store/j1mtzz-ik/customers/new",
+    "timestamp": "2025-03-30T09:22:24.644Z",
+    "scrollPosition": 0,
+    
+  },
+  {
+    "event": "input",
+    "tag": "input",
+    "id": ":rg1:",
+    "classList": [
+      "Polaris-TextField__Input"
+    ],
+    "text": "",
+    "value": "Kripa, Puthoor",
+    "placeholder": "",
+    "pageURL": "https://admin.shopify.com/store/j1mtzz-ik/customers/new",
+    "pageTitle": "My Store Â· New customer Â· Shopify",
+    "newURL": "https://admin.shopify.com/store/j1mtzz-ik/customers/new",
+    "timestamp": "2025-03-30T09:22:24.827Z",
+    "scrollPosition": 0,
+    
+  },
+  {
+    "event": "pageChange",
+    "newURL": "https://meet.google.com/met-isdt-cay?pli=1&authuser=6",
+    "previousURL": "https://admin.shopify.com/store/j1mtzz-ik/customers/new",
+    "pageTitle": "Meet - met-isdt-cay",
+    "pageURL": "https://meet.google.com/met-isdt-cay?pli=1&authuser=6",
+    "timestamp": "2025-03-30T09:22:31.608Z",
+    "scrollPosition": 0,
+    "tag": "page",
+    "text": "Meet - met-isdt-cay",
+    "id": "",
+    "classList": [],
+    "placeholder": "",
+    "value": "",
+    
+  },
+  {
+    "event": "click",
+    "tag": "div",
+    "id": "",
+    "classList": [
+      "VYBDae-Bz112c-RLmnJb"
+    ],
+    "text": "",
+    "value": "",
+    "placeholder": "",
+    "pageURL": "https://meet.google.com/met-isdt-cay?pli=1&authuser=6",
+    "pageTitle": "Meet - met-isdt-cay",
+    "newURL": "https://meet.google.com/met-isdt-cay?pli=1&authuser=6",
+    "timestamp": "2025-03-30T09:22:33.059Z",
+    "scrollPosition": 0,
+    
+  },
+  {
+    "event": "click",
+    "tag": "div",
+    "id": "",
+    "classList": [
+      "VYBDae-Bz112c-RLmnJb"
+    ],
+    "text": "",
+    "value": "",
+    "placeholder": "",
+    "pageURL": "https://meet.google.com/met-isdt-cay?pli=1&authuser=6",
+    "pageTitle": "Meet - met-isdt-cay",
+    "newURL": "https://meet.google.com/met-isdt-cay?pli=1&authuser=6",
+    "timestamp": "2025-03-30T09:23:06.013Z",
+    "scrollPosition": 0,
+    
+  },
+  {
+    "event": "pageChange",
+    "newURL": "https://docs.google.com/document/d/1Ry21NZRPugSyKohd6tTmlqKN_FwR2yQMMp_Y37NiNwE/edit?tab=t.vhm6x71hgy0t",
+    "previousURL": "https://meet.google.com/met-isdt-cay?pli=1&authuser=6",
+    "pageTitle": "Todos - Google Docs",
+    "pageURL": "https://docs.google.com/document/d/1Ry21NZRPugSyKohd6tTmlqKN_FwR2yQMMp_Y37NiNwE/edit?tab=t.vhm6x71hgy0t",
+    "timestamp": "2025-03-30T09:23:08.058Z",
+    "scrollPosition": 0,
+    "tag": "page",
+    "text": "Todos - Google Docs",
+    "id": "",
+    "classList": [],
+    "placeholder": "",
+    "value": "",
+    
+  },
+  {
+    "event": "pageChange",
+    "newURL": "https://admin.shopify.com/store/j1mtzz-ik/customers/new",
+    "previousURL": "https://docs.google.com/document/d/1Ry21NZRPugSyKohd6tTmlqKN_FwR2yQMMp_Y37NiNwE/edit?tab=t.vhm6x71hgy0t",
+    "pageTitle": "My Store Â· New customer Â· Shopify",
+    "pageURL": "https://admin.shopify.com/store/j1mtzz-ik/customers/new",
+    "timestamp": "2025-03-30T09:23:12.902Z",
+    "scrollPosition": 0,
+    "tag": "page",
+    "text": "My Store Â· New customer Â· Shopify",
+    "id": "",
+    "classList": [],
+    "placeholder": "",
+    "value": "",
+    
+  },
+  {
+    "event": "click",
+    "tag": "div",
+    "id": "",
+    "classList": [
+      "Polaris-Autocomplete-MappedOption__Content"
+    ],
+    "text": "Kripa, Puthoor, Kerala, India",
+    "value": "",
+    "placeholder": "",
+    "pageURL": "https://admin.shopify.com/store/j1mtzz-ik/customers/new",
+    "pageTitle": "My Store Â· New customer Â· Shopify",
+    "newURL": "https://admin.shopify.com/store/j1mtzz-ik/customers/new",
+    "timestamp": "2025-03-30T09:23:14.474Z",
+    "scrollPosition": 0,
+    
+  },
+  {
+    "event": "click",
+    "tag": "input",
+    "id": ":rg4:",
+    "classList": [
+      "Polaris-TextField__Input"
+    ],
+    "text": "",
+    "value": "",
+    "placeholder": "",
+    "pageURL": "https://admin.shopify.com/store/j1mtzz-ik/customers/new",
+    "pageTitle": "My Store Â· New customer Â· Shopify",
+    "newURL": "https://admin.shopify.com/store/j1mtzz-ik/customers/new",
+    "timestamp": "2025-03-30T09:23:15.793Z",
+    "scrollPosition": 0,
+    
+  },
+  {
+    "event": "input",
+    "tag": "input",
+    "id": ":rg4:",
+    "classList": [
+      "Polaris-TextField__Input"
+    ],
+    "text": "",
+    "value": "N",
+    "placeholder": "",
+    "pageURL": "https://admin.shopify.com/store/j1mtzz-ik/customers/new",
+    "pageTitle": "My Store Â· New customer Â· Shopify",
+    "newURL": "https://admin.shopify.com/store/j1mtzz-ik/customers/new",
+    "timestamp": "2025-03-30T09:23:17.030Z",
+    "scrollPosition": 0,
+    
+  },
+  {
+    "event": "input",
+    "tag": "input",
+    "id": ":rg4:",
+    "classList": [
+      "Polaris-TextField__Input"
+    ],
+    "text": "",
+    "value": "Ne",
+    "placeholder": "",
+    "pageURL": "https://admin.shopify.com/store/j1mtzz-ik/customers/new",
+    "pageTitle": "My Store Â· New customer Â· Shopify",
+    "newURL": "https://admin.shopify.com/store/j1mtzz-ik/customers/new",
+    "timestamp": "2025-03-30T09:23:17.203Z",
+    "scrollPosition": 0,
+    
+  },
+  {
+    "event": "input",
+    "tag": "input",
+    "id": ":rg4:",
+    "classList": [
+      "Polaris-TextField__Input"
+    ],
+    "text": "",
+    "value": "New",
+    "placeholder": "",
+    "pageURL": "https://admin.shopify.com/store/j1mtzz-ik/customers/new",
+    "pageTitle": "My Store Â· New customer Â· Shopify",
+    "newURL": "https://admin.shopify.com/store/j1mtzz-ik/customers/new",
+    "timestamp": "2025-03-30T09:23:17.345Z",
+    "scrollPosition": 0,
+    
+  },
+  {
+    "event": "input",
+    "tag": "input",
+    "id": ":rg4:",
+    "classList": [
+      "Polaris-TextField__Input"
+    ],
+    "text": "",
+    "value": "New ",
+    "placeholder": "",
+    "pageURL": "https://admin.shopify.com/store/j1mtzz-ik/customers/new",
+    "pageTitle": "My Store Â· New customer Â· Shopify",
+    "newURL": "https://admin.shopify.com/store/j1mtzz-ik/customers/new",
+    "timestamp": "2025-03-30T09:23:17.457Z",
+    "scrollPosition": 0,
+    
+  },
+  {
+    "event": "input",
+    "tag": "input",
+    "id": ":rg4:",
+    "classList": [
+      "Polaris-TextField__Input"
+    ],
+    "text": "",
+    "value": "New A",
+    "placeholder": "",
+    "pageURL": "https://admin.shopify.com/store/j1mtzz-ik/customers/new",
+    "pageTitle": "My Store Â· New customer Â· Shopify",
+    "newURL": "https://admin.shopify.com/store/j1mtzz-ik/customers/new",
+    "timestamp": "2025-03-30T09:23:18.067Z",
+    "scrollPosition": 0,
+    
+  },
+  {
+    "event": "input",
+    "tag": "input",
+    "id": ":rg4:",
+    "classList": [
+      "Polaris-TextField__Input"
+    ],
+    "text": "",
+    "value": "New Ap",
+    "placeholder": "",
+    "pageURL": "https://admin.shopify.com/store/j1mtzz-ik/customers/new",
+    "pageTitle": "My Store Â· New customer Â· Shopify",
+    "newURL": "https://admin.shopify.com/store/j1mtzz-ik/customers/new",
+    "timestamp": "2025-03-30T09:23:18.595Z",
+    "scrollPosition": 0,
+    
+  },
+  {
+    "event": "input",
+    "tag": "input",
+    "id": ":rg4:",
+    "classList": [
+      "Polaris-TextField__Input"
+    ],
+    "text": "",
+    "value": "New Apr",
+    "placeholder": "",
+    "pageURL": "https://admin.shopify.com/store/j1mtzz-ik/customers/new",
+    "pageTitle": "My Store Â· New customer Â· Shopify",
+    "newURL": "https://admin.shopify.com/store/j1mtzz-ik/customers/new",
+    "timestamp": "2025-03-30T09:23:18.963Z",
+    "scrollPosition": 0,
+    
+  },
+  {
+    "event": "input",
+    "tag": "input",
+    "id": ":rg4:",
+    "classList": [
+      "Polaris-TextField__Input"
+    ],
+    "text": "",
+    "value": "New Aprt",
+    "placeholder": "",
+    "pageURL": "https://admin.shopify.com/store/j1mtzz-ik/customers/new",
+    "pageTitle": "My Store Â· New customer Â· Shopify",
+    "newURL": "https://admin.shopify.com/store/j1mtzz-ik/customers/new",
+    "timestamp": "2025-03-30T09:23:19.157Z",
+    "scrollPosition": 0,
+    
+  },
+  {
+    "event": "input",
+    "tag": "input",
+    "id": ":rg4:",
+    "classList": [
+      "Polaris-TextField__Input"
+    ],
+    "text": "",
+    "value": "New Aprtme",
+    "placeholder": "",
+    "pageURL": "https://admin.shopify.com/store/j1mtzz-ik/customers/new",
+    "pageTitle": "My Store Â· New customer Â· Shopify",
+    "newURL": "https://admin.shopify.com/store/j1mtzz-ik/customers/new",
+    "timestamp": "2025-03-30T09:23:19.293Z",
+    "scrollPosition": 0,
+    
+  },
+  {
+    "event": "input",
+    "tag": "input",
+    "id": ":rg4:",
+    "classList": [
+      "Polaris-TextField__Input"
+    ],
+    "text": "",
+    "value": "New Aprtmen",
+    "placeholder": "",
+    "pageURL": "https://admin.shopify.com/store/j1mtzz-ik/customers/new",
+    "pageTitle": "My Store Â· New customer Â· Shopify",
+    "newURL": "https://admin.shopify.com/store/j1mtzz-ik/customers/new",
+    "timestamp": "2025-03-30T09:23:19.396Z",
+    "scrollPosition": 0,
+    
+  },
+  {
+    "event": "input",
+    "tag": "input",
+    "id": ":rg4:",
+    "classList": [
+      "Polaris-TextField__Input"
+    ],
+    "text": "",
+    "value": "New Aprtmen",
+    "placeholder": "",
+    "pageURL": "https://admin.shopify.com/store/j1mtzz-ik/customers/new",
+    "pageTitle": "My Store Â· New customer Â· Shopify",
+    "newURL": "https://admin.shopify.com/store/j1mtzz-ik/customers/new",
+    "timestamp": "2025-03-30T09:23:19.465Z",
+    "scrollPosition": 0,
+    
+  },
+  {
+    "event": "input",
+    "tag": "input",
+    "id": ":rg4:",
+    "classList": [
+      "Polaris-TextField__Input"
+    ],
+    "text": "",
+    "value": "New Aprtment",
+    "placeholder": "",
+    "pageURL": "https://admin.shopify.com/store/j1mtzz-ik/customers/new",
+    "pageTitle": "My Store Â· New customer Â· Shopify",
+    "newURL": "https://admin.shopify.com/store/j1mtzz-ik/customers/new",
+    "timestamp": "2025-03-30T09:23:19.573Z",
+    "scrollPosition": 0,
+    
+  },
+  {
+    "event": "click",
+    "tag": "button",
+    "id": "",
+    "classList": [
+      "Polaris-Button",
+      "Polaris-Button--pressable",
+      "Polaris-Button--variantPrimary",
+      "Polaris-Button--sizeMedium",
+      "Polaris-Button--textAlignCenter",
+      "Polaris-Button--disabled",
+      "Polaris-Button--loading"
+    ],
+    "text": "LoadingSave",
+    "value": "",
+    "placeholder": "",
+    "pageURL": "https://admin.shopify.com/store/j1mtzz-ik/customers/new",
+    "pageTitle": "My Store Â· New customer Â· Shopify",
+    "newURL": "https://admin.shopify.com/store/j1mtzz-ik/customers/new",
+    "timestamp": "2025-03-30T09:23:21.806Z",
+    "scrollPosition": 0,
+    
+  },
+  {
+    "event": "click",
+    "tag": "s-internal-icon",
+    "id": "",
+    "classList": [],
+    "text": "",
+    "value": "",
+    "placeholder": "",
+    "pageURL": "https://admin.shopify.com/store/j1mtzz-ik/customers/new",
+    "pageTitle": "My Store Â· New customer Â· Shopify",
+    "newURL": "https://admin.shopify.com/store/j1mtzz-ik/customers/new",
+    "timestamp": "2025-03-30T09:23:24.908Z",
+    "scrollPosition": 0,
+    
+  },
+  {
+    "event": "click",
+    "tag": "button",
+    "id": "",
+    "classList": [
+      "_ContextualButton_1c7zd_1",
+      "_Primary_1c7zd_28",
+      "_Disabled_1c7zd_39",
+      "_Loading_1c7zd_50"
+    ],
+    "text": "LoadingSave",
+    "value": "",
+    "placeholder": "",
+    "pageURL": "https://admin.shopify.com/store/j1mtzz-ik/customers/new",
+    "pageTitle": "My Store Â· New customer Â· Shopify",
+    "newURL": "https://admin.shopify.com/store/j1mtzz-ik/customers/new",
+    "timestamp": "2025-03-30T09:23:29.954Z",
+    "scrollPosition": 0,
+    
+  },
+  {
+    "event": "pageChange",
+    "newURL": "https://admin.shopify.com/store/j1mtzz-ik/customers/22947886858609",
+    "previousURL": "https://admin.shopify.com/store/j1mtzz-ik/customers/new",
+    "pageTitle": "My Store Â· New customer Â· Shopify",
+    "pageURL": "https://admin.shopify.com/store/j1mtzz-ik/customers/22947886858609",
+    "timestamp": "2025-03-30T09:23:32.466Z",
+    "scrollPosition": 0,
+    "tag": "page",
+    "text": "My Store Â· New customer Â· Shopify",
+    "id": "",
+    "classList": [],
+    "placeholder": "",
+    "value": "",
+    
+  }
+]
