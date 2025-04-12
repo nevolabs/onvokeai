@@ -137,7 +137,7 @@ async def generate_sop_api(
         """
 
         # Initialize SOPState with the Knowledge Base
-        initial_state = SOPState(KB=knowledge_base, pdf_text=pdf_text, event_data=event_data , user_query=query)
+        initial_state = SOPState(KB=knowledge_base,file_path=pdf_temp_path, pdf_text=pdf_text, event_data=event_data , user_query=query)
 
         # Run workflow
         result = await workflow.ainvoke(initial_state)

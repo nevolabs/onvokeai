@@ -71,6 +71,7 @@ class TechnicalArticle(BaseModel):
 # State class for LangGraph
 class SOPState(BaseModel):
     KB: str = ""
+    file_path: str = ""
     pdf_text: str = ""
     user_query: str = ""
     event_data:str = ""  # Accept both list and raw string

@@ -6,7 +6,7 @@ from sop_generator import generate_sop_html
 
 async def generate_sop_node(state: SOPState) -> SOPState:
     """Node to generate structured SOP JSON."""
-    sop_json = await generate_sop_html(state.KB , state.pdf_text, state.event_data ,state.user_query)
+    sop_json = await generate_sop_html(state.KB ,state.file_path, state.pdf_text, state.event_data ,state.user_query)
     state.sop_json = sop_json  
     return state  
 
