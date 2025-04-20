@@ -1,10 +1,10 @@
 import os
 from fastapi import FastAPI, HTTPException, Form
-from config import load_config, set_env
-from models import SOPState
-from parsers import parse_pdf, parse_json
+from config.config import load_config, set_env
+from models.tech_article_models import SOPState
+from parsers.json_parser import  parse_json
 from workflow import create_workflow
-from rag_fetch import fetch_relevant_jira_issues
+from rag.jira_rag import fetch_relevant_jira_issues
 from supabase import create_client
 from typing import List
 from reportlab.lib.pagesizes import letter
@@ -50,125 +50,172 @@ def create_pdf_from_screenshots(screenshot_paths: List[str], output_path: str):
 @app.post("/generate_sop/")
 async def generate_sop_api(
     user_id: str = Form(...),
+    job_id: str = Form(...),
     query: str = Form(...),
 ):
-    """API endpoint to generate SOP from stored screenshots and JSON file, then delete them."""
+    """API endpoint to generate SOP from stored screenshots and JSON file"""
     temp_files = []
     storage_files_to_delete = []
     screenshot_temp_paths = []
     
     try:
-        # Step 1: Fetch file list from user's directory in Supabase storage
-        json_directory = f"{user_id}/json"
-        screenshots_directory = f"{user_id}/screenshots"
+        # Initialize Supabase storage client
+        storage = supabase.storage.from_('log_dataa')  # Note: consistent bucket name
         
-        # List files in both directories
-        json_files = supabase.storage.from_('log_data').list(json_directory)
-        screenshot_files = supabase.storage.from_('log_data').list(screenshots_directory)
+        # Step 1: Verify and prepare paths
+        json_directory = f"{user_id}/{job_id}/json"
+        screenshots_directory = f"{user_id}/{job_id}/screenshots"
         
-        if not json_files and not screenshot_files:
-            raise HTTPException(status_code=404, detail="No files found for user")
+        # Step 2: Check if directories exist
+        try:
+            json_files = storage.list(json_directory)
+            screenshot_files = storage.list(screenshots_directory)
+        except Exception as e:
+            raise HTTPException(
+                status_code=404,
+                detail=f"Storage paths not found: {str(e)}"
+            )
 
-        # Step 2: Process screenshots
+        if not json_files and not screenshot_files:
+            raise HTTPException(
+                status_code=404,
+                detail="No files found for this user/job combination"
+            )
+
+        # Step 3: Process screenshots
         if screenshot_files:
             for file in screenshot_files:
-                if file['name'].lower().endswith(('.png', '.jpg', '.jpeg')):
-                    full_path = f"{screenshots_directory}/{file['name']}"
-                    temp_path = f"temp_{user_id}_{file['name']}"
+                if file.name.lower().endswith(('.png', '.jpg', '.jpeg')):
+                    full_path = f"{screenshots_directory}/{file.name}"
+                    temp_path = f"temp_{user_id}_{file.name}"
                     
-                    # Download screenshot
-                    response = supabase.storage.from_('log_data').download(full_path)
-                    with open(temp_path, "wb") as f:
-                        f.write(response)
-                    
-                    screenshot_temp_paths.append(temp_path)
-                    storage_files_to_delete.append(full_path)
+                    try:
+                        # Download screenshot
+                        response = storage.download(full_path)
+                        with open(temp_path, "wb") as f:
+                            f.write(response)
+                        screenshot_temp_paths.append(temp_path)
+                        storage_files_to_delete.append(full_path)
+                    except Exception as e:
+                        print(f"Failed to process {file.name}: {str(e)}")
+                        continue
 
-        # Step 3: Process JSON file
+        # Step 4: Process JSON file
         json_path = None
         if json_files:
             for file in json_files:
-                if file['name'].lower().endswith('.json'):
-                    json_path = f"{json_directory}/{file['name']}"
+                if file.name.lower().endswith('.json'):
+                    json_path = f"{json_directory}/{file.name}"
                     storage_files_to_delete.append(json_path)
-                    break  # Assuming there's only one JSON file
+                    break
 
         if not screenshot_temp_paths:
-            raise HTTPException(status_code=404, detail="No screenshot files found in storage")
-        if not json_path:
-            raise HTTPException(status_code=404, detail="No JSON file found in storage")
-
-        # Step 4: Create PDF from screenshots
-        pdf_temp_path = f"temp_{user_id}_generated.pdf"
-        create_pdf_from_screenshots(screenshot_temp_paths, pdf_temp_path)
-        temp_files.append(pdf_temp_path)
-
-        # Step 5: Download JSON file
-        json_temp_path = f"temp_{user_id}_sop.json"
-        json_response = supabase.storage.from_('log_data').download(json_path)
-        with open(json_temp_path, "wb") as f:
-            f.write(json_response)
-        temp_files.append(json_temp_path)
-
-        # Rest of your processing logic remains the same...
-        pdf_text = await parse_pdf(pdf_temp_path)
-        if "Error" in pdf_text:
-            raise Exception(pdf_text)
-        
-        event_data = await parse_json(json_temp_path)
-        if not event_data:  # Check if list is empty
             raise HTTPException(
-                status_code=400, 
-                detail="No valid event data found in JSON file"
+                status_code=404,
+                detail="No valid screenshot files found"
             )
-        if isinstance(event_data, list) and "error" in event_data[0]:
-            raise Exception(event_data[0]["error"])
+        if not json_path:
+            raise HTTPException(
+                status_code=404,
+                detail="No JSON file found in storage"
+            )
 
-        # Fetch relevant Jira issues
-        relevant_issues = fetch_relevant_jira_issues(user_id, query, top_k=5)
-        jira_context = "\n".join(
-            [f"Issue: {issue['issue_id']}\nDetails: {issue['text_data']}" for issue in relevant_issues]
-        ) if relevant_issues else "No relevant Jira issues found."
+        # Step 5: Create PDF from screenshots
+        pdf_temp_path = f"temp_{user_id}_generated.pdf"
+        try:
+            create_pdf_from_screenshots(screenshot_temp_paths, pdf_temp_path)
+            temp_files.append(pdf_temp_path)
+        except Exception as e:
+            raise HTTPException(
+                status_code=500,
+                detail=f"Failed to create PDF: {str(e)}"
+            )
 
-        # Combine all into a Knowledge Base (KB)
+        # Step 6: Download and parse JSON
+        json_temp_path = f"temp_{user_id}_sop.json"
+        try:
+            json_response = storage.download(json_path)
+            with open(json_temp_path, "wb") as f:
+                f.write(json_response)
+            temp_files.append(json_temp_path)
+            
+            event_data = await parse_json(json_temp_path)
+            if not event_data:
+                raise HTTPException(
+                    status_code=400,
+                    detail="No valid event data in JSON file"
+                )
+            if isinstance(event_data, list) and "error" in event_data[0]:
+                raise Exception(event_data[0]["error"])
+        except Exception as e:
+            raise HTTPException(
+                status_code=500,
+                detail=f"JSON processing failed: {str(e)}"
+            )
+
+        # Step 7: Fetch Jira context
+        try:
+            relevant_issues = fetch_relevant_jira_issues(user_id, query, top_k=5)
+            jira_context = "\n".join(
+                [f"Issue: {issue['issue_id']}\nDetails: {issue['text_data']}" 
+                 for issue in relevant_issues]
+            ) if relevant_issues else "No relevant Jira issues found."
+        except Exception as e:
+            jira_context = f"Error fetching Jira issues: {str(e)}"
+
+        # Step 8: Prepare knowledge base
         knowledge_base = f"""
         ### Jira Issues:
         {jira_context}
         """
 
-        # Initialize SOPState with the Knowledge Base
-        initial_state = SOPState(KB=knowledge_base,file_path=pdf_temp_path, pdf_text=pdf_text, event_data=event_data , user_query=query)
-
-        # Run workflow
-        result = await workflow.ainvoke(initial_state)
-
-        # Convert result if needed
-        if isinstance(result, dict):
-            result = SOPState(**result)
-
-        # Delete files from Supabase storage after successful processing
-        # We'll delete the entire user directory since we want to clean up everything
+        # Step 9: Generate SOP
         try:
-            print(f"Deleting files from storage: {storage_files_to_delete}")
-            # supabase.storage.from_('log_data').remove(storage_files_to_delete)
+            initial_state = SOPState(
+                KB=knowledge_base,
+                file_path=pdf_temp_path,
+                user_id=user_id,
+                job_id=job_id,
+                event_data=event_data,
+                user_query=query
+            )
+            result = await workflow.ainvoke(initial_state)
         except Exception as e:
-            print(f"Warning: Error deleting files from storage: {str(e)}")
+            raise HTTPException(
+                status_code=500,
+                detail=f"SOP generation failed: {str(e)}"
+            )
 
-        return {"sop_json": result.sop_json}
+        # Step 10: Cleanup (only if everything succeeded)
+        try:
+            if storage_files_to_delete:
+                pass
+                # storage.remove(storage_files_to_delete)
+        except Exception as e:
+            print(f"Warning: Storage cleanup failed: {str(e)}")
 
+        return {
+            "status": "success",
+            "result": result,
+            "metadata": {
+                "user_id": user_id,
+                "job_id": job_id,
+                "files_processed": len(screenshot_temp_paths) + 1  # +1 for JSON
+            }
+        }
+
+    except HTTPException as he:
+        raise he
     except Exception as e:
-        raise HTTPException(status_code=500, detail=f"Error processing request: {str(e)}")
-    
+        raise HTTPException(
+            status_code=500,
+            detail=f"Unexpected error: {str(e)}"
+        )
     finally:
-        # Clean up all temporary files
+        # Always clean up temp files
         for temp_file in temp_files + screenshot_temp_paths:
             try:
                 if os.path.exists(temp_file):
                     os.remove(temp_file)
             except Exception as e:
-                print(f"Warning: Error deleting temporary file {temp_file}: {str(e)}")
-                
-                
-if __name__ == "__main__":
-    import uvicorn
-    uvicorn.run("app:app", host="0.0.0.0", port=8000, reload=True)
+                print(f"Warning: Temp file cleanup failed for {temp_file}: {str(e)}")

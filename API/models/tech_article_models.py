@@ -1,29 +1,4 @@
-from pydantic import BaseModel
-from typing import List, Dict, Any
-
-
-
-from pydantic import BaseModel
-from typing import List, Dict, Any, Optional
-
-# Base class for SOP structure
-class SOPSection(BaseModel):
-    title: str
-    content: str
-    subsections: Optional[List['SOPSection']] = None  # Recursive for subsections
-    steps: Optional[List[str]] = None  # Ordered steps
-    additional_info: Optional[List[str]] = None  # Unordered supplementary info
-
-# Update SOPSection to allow recursive references
-SOPSection.model_rebuild()
-
-# Main SOP structure
-class SOP(BaseModel):
-    main_title: str
-    sections: List[SOPSection]
-
-
-        
+# File: models.py  
 from pydantic import BaseModel, Field
 from typing import List, Optional
 
@@ -72,9 +47,10 @@ class TechnicalArticle(BaseModel):
 class SOPState(BaseModel):
     KB: str = ""
     file_path: str = ""
-    pdf_text: str = ""
     user_query: str = ""
     event_data:str = ""  # Accept both list and raw string
+    user_id: str = ""
+    job_id: str = ""
     sop_json: Optional[TechnicalArticle] = None  # Store the generated SOP as a Pydantic model
 
     class Config:
