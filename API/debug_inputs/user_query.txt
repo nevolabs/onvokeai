@@ -1,1 +1,20 @@
-I want to create a documentation on Item creation and customer creation
+[DEBUG] Fetched Jira context:
+No relevant Jira issues found.
+[DEBUG] Prepared knowledge base.
+[DEBUG] Invoking workflow to generate SOP
+C:\Users\yethu.krishnan\Skill_Developement_Projeects\SOP_Testing\test_venv\Lib\site-packages\docx\styles\styles.py:130: UserWarning: style lookup by style_id is deprecated. Use style name as key instead.
+  return self._get_style_id_from_style(self[style_name], style_type)
+[ERROR] SOP generation failed: Error generating or storing SOP: SyncBucketActionsMixin.upload() got an unexpected keyword argument 'content_type'
+[HTTP ERROR] SOP generation failed: Error generating or storing SOP: SyncBucketActionsMixin.upload() got an unexpected keyword argument 'content_type'
+[DEBUG] Cleaning up temp files...
+[DEBUG] Removed temp file: temp_cb943ab3-081f-4d1f-be38-921fb15c528a_generated.pdf
+[DEBUG] Removed temp file: temp_cb943ab3-081f-4d1f-be38-921fb15c528a_sop.json
+[DEBUG] Removed temp file: temp_cb943ab3-081f-4d1f-be38-921fb15c528a_01.png
+[DEBUG] Removed temp file: temp_cb943ab3-081f-4d1f-be38-921fb15c528a_02.png
+[DEBUG] Removed temp file: temp_cb943ab3-081f-4d1f-be38-921fb15c528a_03.png
+[DEBUG] Removed temp file: temp_cb943ab3-081f-4d1f-be38-921fb15c528a_04.png
+[DEBUG] Removed temp file: temp_cb943ab3-081f-4d1f-be38-921fb15c528a_05.png
+[DEBUG] Removed temp file: temp_cb943ab3-081f-4d1f-be38-921fb15c528a_06.png
+[DEBUG] Removed temp file: temp_cb943ab3-081f-4d1f-be38-921fb15c528a_07.png
+[DEBUG] Removed temp file: temp_cb943ab3-081f-4d1f-be38-921fb15c528a_08.png
+INFO:     127.0.0.1:61382 - "POST /generate_sop/ HTTP/1.1" 500 Internal Server Error
