@@ -27,11 +27,14 @@ async def generate_sop_api(
     user_id: str = Form(...),
     job_id: str = Form(...),
     query: str = Form(...),
+    
 ):
     """API endpoint to generate SOP from stored screenshots and JSON file"""
     temp_files = []
     storage_files_to_delete = []
     screenshot_info = []  # List of (temp_path, original_name) tuples
+    component_list = ["title", "introduction","table_of_contents"]
+    
 
     try:
         print(f"[DEBUG] Starting SOP generation for user_id={user_id}, job_id={job_id}, query='{query}'")
@@ -155,7 +158,8 @@ async def generate_sop_api(
                 user_id=user_id,
                 job_id=job_id,
                 event_data=event_data,
-                user_query=query
+                user_query=query,
+                components=component_list
             )
             result = await workflow.ainvoke(initial_state)
             print(f"[DEBUG] SOP generation result: {result}")

@@ -1,6 +1,7 @@
 # File: models.py  
 from pydantic import BaseModel, Field
 from typing import List, Optional
+from models.custom_models import CustomTechnicalArticle
 
 # Basic section with title and content (for Introduction, Conclusion)
 class ContentSection(BaseModel):
@@ -51,7 +52,8 @@ class SOPState(BaseModel):
     event_data:str = ""  # Accept both list and raw string
     user_id: str = ""
     job_id: str = ""
-    sop_json: Optional[TechnicalArticle] = None  # Store the generated SOP as a Pydantic model
+    sop_json: Optional[CustomTechnicalArticle] = None  # Store the generated SOP as a Pydantic model
+    components: List[str] = Field(default_factory=list, description="List of components to include in the SOP")
 
     class Config:
         arbitrary_types_allowed = True

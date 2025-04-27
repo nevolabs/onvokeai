@@ -1,8 +1,7 @@
 import google.generativeai as genai
 from langchain_core.output_parsers import JsonOutputParser
-from langchain.prompts import PromptTemplate
-from models.tech_article_models import TechnicalArticle
 from pydantic import ValidationError
+from models.custom_models import CustomTechnicalArticle as TechnicalArticle
 from prompts.technical_article_prompt import get_prompt
 import os
 import asyncio
@@ -26,7 +25,8 @@ async def generate_sop_docx(
     event_data: str, 
     user_query: str,
     user_id: str,
-    job_id: str
+    job_id: str,
+    components
 ) -> dict:
     """Generate SOP documentation as DOCX and store in Supabase with path logdata/userid/jobid/"""
     try:
@@ -90,7 +90,8 @@ async def generate_sop_docx(
             KB=KB,
             event_text=event_data,
             user_query=user_query,
-            format_instructions=format_instructions
+            format_instructions=format_instructions,
+            components=components
         )
         print(f"[DEBUG] Prompt generated: {prompt[:200]}...")
 
@@ -118,9 +119,8 @@ async def generate_sop_docx(
         # Step 7: Parse and validate the output
         print(f"[DEBUG] Parsing response text")
         json_output = parser.parse(response.text)
-        print(f"[DEBUG] JSON output parsed: {json_output.get('main_title', 'No main_title')}")
         article = TechnicalArticle(**json_output)
-        print(f"[DEBUG] Article validated: {article.main_title}")
+        print(f"[DEBUG] Article validated")
 
         # Step 8: Create DOCX file
         print(f"[DEBUG] Creating DOCX file")
