@@ -1,5 +1,5 @@
 from langgraph.graph import StateGraph, END
-from models.tech_article_models import SOPState
+from models.state_schema import SOPState
 from utils.sop_generator import generate_sop_docx
 
 

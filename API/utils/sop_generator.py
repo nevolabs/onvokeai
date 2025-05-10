@@ -1,228 +1,199 @@
 import google.generativeai as genai
-from langchain_core.output_parsers import JsonOutputParser
-from pydantic import ValidationError
-from models.custom_models import CustomTechnicalArticle as TechnicalArticle
-from prompts.technical_article_prompt import get_prompt
+# Removed Pydantic/Langchain imports
+from prompts.technical_article_prompt import get_prompt # Ensure this doesn't need format_instructions
 import os
 import asyncio
-from utils.docx_converter import create_docx
+import json
+from utils.docx_converter import create_docx # MUST accept a dict
 from supabase import create_client
 from io import BytesIO
 import datetime
-import magic  # For MIME type detection
-from PyPDF2 import PdfReader  # For PDF validation
-import zipfile  # For DOCX validation
-import tempfile  # For temporary file handling
+import magic
+from PyPDF2 import PdfReader
+import zipfile
+import tempfile
+# Import Schema types if components is passed as a dict needing conversion, otherwise not strictly needed here
+# from google.generativeai.types import Schema, Type
+from google.generativeai.types import GenerationConfig # Keep GenerationConfig
 
 # Configure GenAI
 genai.configure(api_key=os.environ["GOOGLE_API_KEY"])
-model = genai.GenerativeModel("gemini-2.0-flash")
+# Using 1.5 Flash as it generally handles structured output well
+model = genai.GenerativeModel("gemini-2.5-flash-preview-04-17")
 print(f"[DEBUG] Initialized GenAI model: {model._model_name}")
 
+# REMOVED: Hardcoded output_schema_genai definition
+
 async def generate_sop_docx(
-    KB: str, 
-    file_path: str, 
-    event_data: str, 
+    KB: str,
+    file_path: str,
+    event_data: str,
     user_query: str,
     user_id: str,
     job_id: str,
-    components
+    components: dict # Expecting a dict representing the google.generativeai.types.Schema structure
 ) -> dict:
-    """Generate SOP documentation as DOCX and store in Supabase with path logdata/userid/jobid/"""
+    """Generate SOP DOCX using a provided component schema for JSON output."""
+    article_dict = None
+    file = None # Initialize for finally block
+
     try:
-        # Step 1: Initialize Supabase client
-        print(f"[DEBUG] Initializing Supabase client with URL: {os.getenv('SUPABASE_URL')}")
+        # Step 1: Validate Input Schema
+        print(f"[DEBUG] Validating provided components schema...")
+        if not components or not isinstance(components, dict):
+             raise ValueError("[ERROR] Invalid or missing 'components' schema provided. Expected a dictionary.")
+        # Optional: Add more specific checks if needed, e.g., presence of 'type', 'properties'
+        print(f"[DEBUG] Components schema appears valid (type: dict).")
+
+        # Step 2: Initialize Supabase client
+        print(f"[DEBUG] Initializing Supabase client...")
         supabase = create_client(os.getenv("SUPABASE_URL"), os.getenv("SUPABASE_SERVICE_ROLE_KEY"))
         print(f"[DEBUG] Supabase client initialized")
 
-        # Step 2: Define the parser
-        print(f"[DEBUG] Setting up JsonOutputParser for TechnicalArticle")
-        parser = JsonOutputParser(pydantic_object=TechnicalArticle)
-        format_instructions = parser.get_format_instructions()
-        print(f"[DEBUG] Format instructions generated: {format_instructions[:100]}...")
+        # Step 3: Define Generation Config using the provided schema
+        print(f"[DEBUG] Defining GenerationConfig with provided response_schema")
+        try:
+            generation_config = GenerationConfig(
+                temperature=0,
+                response_mime_type="application/json",
+                # Directly use the provided dictionary as the schema
+                response_schema=components
+            )
+            print(f"[DEBUG] GenerationConfig created using provided schema.")
+        except Exception as e:
+            # Catch errors if the provided dict isn't compatible with GenerationConfig
+            print(f"[ERROR] Failed to create GenerationConfig with provided components schema: {e}")
+            print(f"[DEBUG] Provided components schema was: {components}")
+            raise ValueError(f"Invalid components schema structure for GenerationConfig: {e}")
 
-        # Step 3: Validate the PDF file
+
+        # Step 4: Validate the PDF file
         print(f"[DEBUG] Validating PDF file: {file_path}")
-        if not os.path.exists(file_path):
-            raise ValueError(f"[ERROR] PDF file not found at: {file_path}")
-        
-        file_size = os.path.getsize(file_path)
-        print(f"[DEBUG] PDF file size: {file_size} bytes")
-        if file_size == 0:
-            raise ValueError(f"[ERROR] PDF file at {file_path} is empty")
+        if not os.path.exists(file_path): raise ValueError(f"PDF not found: {file_path}")
+        if os.path.getsize(file_path) == 0: raise ValueError(f"PDF empty: {file_path}")
+        try: # MIME Check
+            mime = magic.Magic(mime=True); detected_mime = mime.from_file(file_path)
+            if detected_mime != "application/pdf": raise ValueError(f"Invalid MIME: {detected_mime}")
+        except Exception as e: print(f"[WARNING] PDF MIME check failed: {e}")
+        try: # PDF Read Check
+            reader = PdfReader(file_path); print(f"[DEBUG] PDF valid ({len(reader.pages)} pages)")
+        except Exception as e: raise ValueError(f"Invalid PDF: {e}")
 
-        # Check MIME type using python-magic
-        try:
-            mime = magic.Magic(mime=True)
-            detected_mime = mime.from_file(file_path)
-            print(f"[DEBUG] Detected PDF MIME type: {detected_mime}")
-            if detected_mime != "application/pdf":
-                raise ValueError(f"[ERROR] PDF file is not valid. Detected MIME type: {detected_mime}")
-        except Exception as e:
-            print(f"[WARNING] PDF MIME type detection failed: {str(e)}")
-
-        # Verify PDF validity using PyPDF2
-        try:
-            reader = PdfReader(file_path)
-            num_pages = len(reader.pages)
-            print(f"[DEBUG] PDF is valid with {num_pages} page(s)")
-        except Exception as e:
-            raise ValueError(f"[ERROR] Invalid PDF file at {file_path}: {str(e)}")
-
-        # Step 4: Upload the PDF file using GenAI File API
-        print(f"[DEBUG] Attempting to upload PDF: {file_path} with mime_type=application/pdf")
+        # Step 5: Upload the PDF file via GenAI File API
+        print(f"[DEBUG] Uploading PDF: {file_path}")
         try:
             file = await asyncio.to_thread(
-                genai.upload_file, 
-                path=file_path, 
-                display_name="SOP_PDF", 
-                mime_type="application/pdf"
+                genai.upload_file, path=file_path, display_name="SOP_PDF", mime_type="application/pdf"
             )
             file_uri = file.uri
-            print(f"[DEBUG] PDF uploaded successfully. URI: {file_uri}, Name: {file.name}")
+            print(f"[DEBUG] PDF uploaded. URI: {file_uri}, Name: {file.name}")
         except Exception as e:
-            print(f"[ERROR] GenAI PDF upload failed: {str(e)}")
-            raise ValueError(f"[ERROR] GenAI PDF upload failed: {str(e)}")
+            print(f"[ERROR] GenAI PDF upload failed: {e}")
+            raise ValueError(f"GenAI PDF upload failed: {e}")
 
-        # Step 5: Prepare prompt
-        print(f"[DEBUG] Generating prompt")
+        # Step 6: Prepare prompt (ensure get_prompt asks for JSON matching the schema)
+        print(f"[DEBUG] Generating prompt...")
         prompt = get_prompt(
-            KB=KB,
-            event_text=event_data,
-            user_query=user_query,
-            format_instructions=format_instructions,
-            components=components
+            KB=KB, event_text=event_data, user_query=user_query 
         )
-        print(f"[DEBUG] Prompt generated: {prompt[:200]}...")
+        print(f"[DEBUG] Prompt generated.")
 
-        # Step 6: Generate content using GenAI client
-        print(f"[DEBUG] Generating content with file URI: {file_uri}")
+        # Step 7: Generate content using GenAI client with schema config
+        print(f"[DEBUG] Generating content with JSON schema enforcement...")
         try:
             response = await asyncio.to_thread(
                 model.generate_content,
-                contents=[
-                    {
-                        "role": "user", 
-                        "parts": [
-                            {"text": prompt},
-                            {"file_data": {"file_uri": file_uri, "mime_type": "application/pdf"}}
-                        ]
-                    }
-                ],
-                generation_config={"temperature": 0}
+                contents=[{
+                    "role": "user",
+                    "parts": [
+                        {"text": prompt},
+                        {"file_data": {"file_uri": file_uri, "mime_type": "application/pdf"}}
+                    ]
+                }],
+                generation_config=generation_config # Use config with provided schema
             )
-            print(f"[DEBUG] Content generation successful. Response: {response.text[:100]}...")
+          
+            response_text = response.text
+            print(f"[DEBUG] Content generation successful. JSON response expected.")
+
         except Exception as e:
-            print(f"[ERROR] Content generation failed: {str(e)}")
-            raise ValueError(f"[ERROR] Content generation failed: {str(e)}")
+            print(f"[ERROR] Content generation failed: {e}")
+            if file: # Attempt cleanup on error
+                try: await asyncio.to_thread(genai.delete_file, file.name)
+                except Exception as del_e: print(f"[WARNING] Failed to delete file after error: {del_e}")
+            raise ValueError(f"Content generation failed: {e}")
 
-        # Step 7: Parse and validate the output
-        print(f"[DEBUG] Parsing response text")
-        json_output = parser.parse(response.text)
-        article = TechnicalArticle(**json_output)
-        print(f"[DEBUG] Article validated")
-
-        # Step 8: Create DOCX file
-        print(f"[DEBUG] Creating DOCX file")
-        doc_buffer = create_docx(article)
-        doc_bytes = doc_buffer.getvalue()
-        print(f"[DEBUG] DOCX file created in memory. Buffer size: {len(doc_bytes)} bytes")
-
-#sopgenerator (relevant section)
-
-        # Validate DOCX file
-        print(f"[DEBUG] Validating DOCX file")
+        # Step 8: Parse the JSON output
+        print(f"[DEBUG] Parsing JSON response...")
         try:
-            # Generate timestamp early for debug file
-            timestamp = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")  # MOVED THIS LINE UP
-            
-            # Save DOCX to a temporary file for validation
+            article_dict = json.loads(response_text)
+            if not isinstance(article_dict, dict): raise ValueError("Parsed JSON is not a dictionary.")
+            print(f"[DEBUG] Successfully parsed JSON response.")
+        except json.JSONDecodeError as e:
+            print(f"[ERROR] Failed to decode JSON response: {e}. Response text: {response_text}")
+            raise ValueError(f"Model did not return valid JSON: {e}")
+        except Exception as e:
+            print(f"[ERROR] Error processing JSON response: {e}")
+            raise ValueError(f"Error processing JSON response: {e}")
+
+        # Step 9: Create DOCX file (using the dictionary)
+        print(f"[DEBUG] Creating DOCX file from dictionary...")
+        try:
+            doc_buffer = create_docx(article_dict) 
+            doc_bytes = doc_buffer.getvalue()
+            print(f"[DEBUG] DOCX created in memory ({len(doc_bytes)} bytes).")
+        except Exception as e:
+             print(f"[ERROR] Failed to create DOCX from dictionary: {e}")
+             raise ValueError(f"Failed to create DOCX file: {e}")
+
+        # Step 10: Validate DOCX file
+        print(f"[DEBUG] Validating DOCX file...")
+        temp_docx_path = None
+        try:
+            timestamp = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
             with tempfile.NamedTemporaryFile(suffix=".docx", delete=False) as temp_file:
                 temp_docx_path = temp_file.name
                 temp_file.write(doc_bytes)
-            
-            # Check if it's a valid ZIP (DOCX is a ZIP archive)
-            with zipfile.ZipFile(temp_docx_path, 'r') as zf:
-                print(f"[DEBUG] DOCX is a valid ZIP archive")
-            
-            # Check MIME type
-            mime = magic.Magic(mime=True)
-            detected_mime = mime.from_file(temp_docx_path)
-            print(f"[DEBUG] Detected DOCX MIME type: {detected_mime}")
-            
-            # Save debug copy with proper timestamp
-            debug_filename = f"debug_sop_{timestamp}.docx"
-            with open(debug_filename, "wb") as f:
-                f.write(doc_bytes)
-            print(f"[DEBUG] Saved DOCX copy for inspection at: {debug_filename}")
-            
-            os.remove(temp_docx_path)
-            print(f"[DEBUG] Temporary DOCX file removed")
-
-        # Rest of the code remains the same...
+            with zipfile.ZipFile(temp_docx_path, 'r'): pass # Check if valid zip
+            mime = magic.Magic(mime=True); detected_mime = mime.from_file(temp_docx_path)
+            print(f"[DEBUG] DOCX valid (MIME: {detected_mime}).")
         except Exception as e:
-            print(f"[ERROR] DOCX validation failed: {str(e)}")
-            raise ValueError(f"[ERROR] Invalid DOCX file: {str(e)}")
+            print(f"[ERROR] DOCX validation failed: {e}")
+            raise ValueError(f"Invalid DOCX file generated: {e}")
+        finally:
+             if temp_docx_path and os.path.exists(temp_docx_path):
+                 os.remove(temp_docx_path)
 
-        # Step 9: Generate storage path and filename
+        # Step 11: Generate storage path and filename
         filename = f"sop_{timestamp}.docx"
         storage_path = f"logdata/{user_id}/{job_id}/{filename}"
         print(f"[DEBUG] Storage path: {storage_path}")
 
-        # Step 10: Upload to Supabase storage
-        print(f"[DEBUG] Uploading DOCX to Supabase at: {storage_path}")
+        # Step 12: Upload to Supabase storage
+        print(f"[DEBUG] Uploading DOCX to Supabase...")
         upload_success = False
-        upload_response = None
-
-        # Attempt 1: Upload with explicit content-type
-        try:
-            upload_response = supabase.storage.from_("log_dataa").upload(
-                path=storage_path,
-                file=doc_bytes,
-                file_options={
-                    "content-type": "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
-                }
+        content_type = "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+        try: # Attempt 1
+            supabase.storage.from_("log_dataa").upload(
+                path=storage_path, file=doc_bytes, file_options={"content-type": content_type}
             )
-            print(f"[DEBUG] Supabase upload response: {upload_response}")
             upload_success = True
-        except Exception as e:
-            print(f"[ERROR] Supabase upload failed with content-type: {str(e)}")
-
-        # Attempt 2: Fallback without explicit content-type
-        if not upload_success:
-            print(f"[DEBUG] Attempting fallback upload without explicit content-type")
+        except Exception as e: print(f"[WARNING] Supabase upload failed (attempt 1): {e}")
+        if not upload_success: # Attempt 2
+            print(f"[DEBUG] Attempting fallback upload...")
             try:
-                upload_response = supabase.storage.from_("log_dataa").upload(
-                    path=storage_path,
-                    file=doc_bytes
-                )
-                print(f"[DEBUG] Fallback upload response: {upload_response}")
+                supabase.storage.from_("log_dataa").upload(path=storage_path, file=doc_bytes)
                 upload_success = True
-            except Exception as e:
-                print(f"[ERROR] Fallback upload failed: {str(e)}")
+            except Exception as e: print(f"[ERROR] Fallback upload failed (attempt 2): {e}")
 
-        # Attempt 3: Fallback with generic MIME type
-        if not upload_success:
-            print(f"[DEBUG] Attempting fallback upload with generic MIME type")
-            try:
-                upload_response = supabase.storage.from_("log_dataa").upload(
-                    path=storage_path,
-                    file=doc_bytes,
-                    file_options={"content-type": "application/octet-stream"}
-                )
-                print(f"[DEBUG] Generic MIME type upload response: {upload_response}")
-                upload_success = True
-            except Exception as e:
-                print(f"[ERROR] Generic MIME type upload failed: {str(e)}")
+        if not upload_success: raise ValueError(f"Supabase upload failed for {storage_path}")
+        print(f"[DEBUG] Upload successful.")
 
-        if not upload_success:
-            raise ValueError(f"[ERROR] All Supabase upload attempts failed")
-
-        # Step 11: Get public URL
-        print(f"[DEBUG] Generating public URL for: {storage_path}")
+        # Step 13: Get public URL
+        print(f"[DEBUG] Generating public URL...")
         download_url = supabase.storage.from_("log_dataa").get_public_url(storage_path)
         print(f"[DEBUG] Download URL: {download_url}")
-        
+
         return {
             "status": "success",
             "document_path": storage_path,
@@ -232,21 +203,20 @@ async def generate_sop_docx(
             "timestamp": timestamp
         }
 
-    except ValidationError as e:
-        error_details = [f"{'->'.join(str(x) for x in err['loc'])}: {err['msg']}" for err in e.errors()]
-        print(f"[ERROR] Validation error: {error_details}")
-        raise ValueError(f"[ERROR] Validation error: {', '.join(error_details)}")
-    
+    except ValueError as e:
+        print(f"[ERROR] Value error during SOP generation: {e}")
+        raise ValueError(f"SOP Generation Error: {e}") from e
     except Exception as e:
-        print(f"[ERROR] General error in SOP generation: {str(e)}")
-        raise ValueError(f"[ERROR] Error generating or storing SOP: {str(e)}")
-    
+        print(f"[ERROR] General unexpected error in SOP generation: {e}")
+        raise ValueError(f"Unexpected error generating/storing SOP: {e}") from e
     finally:
-        # Clean up: Delete the uploaded file
-        if 'file' in locals():
-            print(f"[DEBUG] Deleting uploaded file: {file.name}")
+        # Final Cleanup: Delete the uploaded GenAI file
+        if file and hasattr(file, 'name'):
+            print(f"[DEBUG] Final cleanup: Deleting GenAI file {file.name}...")
             try:
                 await asyncio.to_thread(genai.delete_file, file.name)
-                print(f"[DEBUG] File deleted successfully")
+                print(f"[DEBUG] GenAI file deleted.")
             except Exception as e:
-                print(f"[WARNING] Failed to delete uploaded file: {str(e)}")
+                print(f"[WARNING] Failed to delete GenAI file during cleanup: {e}")
+        else:
+             print(f"[DEBUG] Final cleanup: No GenAI file found to delete.")
