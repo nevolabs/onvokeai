@@ -1,0 +1,164 @@
+{
+  "type": "object",
+  "properties": {
+    "title": {
+      "type": "string",
+      "description": "A concise, human-readable heading (typically 5-15 words) that accurately summarizes the article's main topic. Directly derived from and relevant to the user query. MUST NOT contain lists of filenames, URLs, internal technical identifiers, or excessive punctuation. Example: 'Adding a New Product to the System'."
+    },
+    "introduction": {
+      "type": "string",
+      "description": "A brief overview of the article's purpose and what the user will learn or be able to do after reading it. Should be general and reusable."
+    },
+    "prerequisites": {
+      "type": "array",
+      "description": "An optional list of conditions or items required before starting the main procedure (e.g., 'User account with appropriate permissions', 'Required software installed'). Use generic terms.",
+      "items": {
+        "type": "string",
+        "description": "A single prerequisite."
+      }
+    },
+    "key_ui_elements_overview": {
+      "type": "array",
+      "description": "A detailed list of ALL relevant UI elements for the task (identified from the PDF), including those not directly interacted with in the event log but visible and pertinent. This section focuses on describing the elements themselves.",
+      "items": {
+        "type": "object",
+        "properties": {
+          "element_name": {
+            "type": "string",
+            "description": "The exact user-visible name or label of the UI element as it appears in the PDF (e.g., 'Product Name', 'Save Button', 'Customer Details Section')."
+          },
+          "element_type": {
+            "type": "string",
+            "description": "The type of UI element (e.g., 'Text Input Field', 'Button', 'Checkbox', 'Dropdown Menu', 'Section Header', 'Link'). From PDF observation."
+          },
+          "location_on_page": {
+            "type": "string",
+            "description": "The specific location of the UI element on the screen, if clearly and unambiguously identifiable in the PDF (e.g., 'in the top navigation bar', 'within the 'Billing Address' section', 'footer of the page'). Omit if not clearly identifiable."
+          },
+          "appearance_details": {
+            "type": "string",
+            "description": "Description of visual characteristics from the PDF, such as placeholder text (e.g., 'Enter product SKU'), associated icons, default state, or brief note on its visual context."
+          },
+          "purpose_or_function": {
+            "type": "string",
+            "description": "A brief explanation of what the UI element is used for or its function within the task. Use generic terms."
+          }
+        },
+        "required": [
+          "element_name",
+          "element_type",
+          "purpose_or_function"
+        ]
+      }
+    },
+    "step_by_step_guide": {
+      "type": "array",
+      "description": "A sequence of detailed steps to accomplish the task described in the user query. The sequence of actions MUST be derived from the Event/User Action Log. UI element names, locations, and appearance details MUST come from the PDF. Data entry examples MUST be generic.",
+      "items": {
+        "type": "object",
+        "properties": {
+          "step_number": {
+            "type": "integer",
+            "description": "Sequential number of the step."
+          },
+          "action_summary": {
+            "type": "string",
+            "description": "A concise summary of the action performed in this step (e.g., 'Navigate to Products Page', 'Enter Customer Information', 'Confirm Order Details')."
+          },
+          "detailed_instructions": {
+            "type": "string",
+            "description": "A detailed description of the action to be performed. Specify the interaction (e.g., 'Click the button', 'Enter text into the field', 'Select an option from the dropdown')."
+          },
+          "ui_element_interacted": {
+            "type": "string",
+            "description": "The exact user-visible name/label of the primary UI element interacted with in this step, as it appears in the PDF."
+          },
+          "ui_element_location": {
+            "type": "string",
+            "description": "The specific location of the interacted UI element, if clearly identifiable in the PDF (e.g., 'located in the left sidebar', 'found in the 'Order Summary' section'). Omit if not clearly identifiable."
+          },
+          "generic_example_data_entry": {
+            "type": "string",
+            "description": "If the step involves data entry, provide a GENERIC, non-identifiable example (e.g., 'For 'Email Address', enter an address like 'user@example.com''). Omit if not applicable or if the schema for 'field_specific_examples' is used."
+          },
+          "field_specific_examples": {
+            "type": "array",
+            "description": "Optional: For steps involving multiple field entries on a form, list each field with a generic example.",
+            "items": {
+              "type": "object",
+              "properties": {
+                "field_name_from_pdf": {"type": "string", "description": "Exact name of the field from PDF."},
+                "generic_example": {"type": "string", "description": "Generic example for this field, e.g., 'John Doe', '123 Example St'."}
+              },
+              "required": ["field_name_from_pdf", "generic_example"]
+            }
+          },
+          "notes_or_tips": {
+            "type": "string",
+            "description": "Optional: Any additional information, tips, or context for this step, based on PDF observations or general best practices (e.g., 'Ensure all required fields marked with an asterisk (*) are completed.')."
+          }
+        },
+        "required": [
+          "step_number",
+          "action_summary",
+          "detailed_instructions",
+          "ui_element_interacted"
+        ]
+      }
+    },
+    "summary_and_next_steps": {
+      "type": "string",
+      "description": "A brief conclusion summarizing what was covered and potentially suggesting next actions or related articles. Keep it general and reusable."
+    },
+    "frequently_asked_questions": {
+      "type": "array",
+      "description": "A list of relevant FAQs based on the detailed, generic process and features derived from the PDF and event log. Questions and answers should be comprehensive and use generic examples.",
+      "items": {
+        "type": "object",
+        "properties": {
+          "question": {
+            "type": "string",
+            "description": "A common question a user might have related to the task or features described."
+          },
+          "answer": {
+            "type": "string",
+            "description": "A clear, comprehensive, and generic answer to the question. Use generic examples if illustrating data (e.g., 'You can enter any valid date like '2024-12-31'.')."
+          }
+        },
+        "required": [
+          "question",
+          "answer"
+        ]
+      }
+    },
+    "troubleshooting_tips": {
+        "type": "array",
+        "description": "Optional: Common issues users might encounter and their solutions, based on the task and UI elements. Solutions should be generic.",
+        "items": {
+            "type": "object",
+            "properties": {
+                "issue": {"type": "string", "description": "A brief description of a potential issue."},
+                "solution": {"type": "string", "description": "A generic solution or troubleshooting step."}
+            },
+            "required": ["issue", "solution"]
+        }
+    },
+    "article_metadata": {
+        "type": "object",
+        "description": "Internal metadata about the article generation.",
+        "properties": {
+            "generated_for_query": {"type": "string", "description": "The original user query this article addresses."},
+            "schema_version_used": {"type": "string", "description": "Version of this JSON schema used for generation (e.g., '1.0.0')."}
+        },
+        "required": ["generated_for_query", "schema_version_used"]
+    }
+  },
+  "required": [
+    "title",
+    "introduction",
+    "key_ui_elements_overview",
+    "step_by_step_guide",
+    "summary_and_next_steps",
+    "article_metadata"
+  ]
+}
