@@ -57,7 +57,7 @@ async def generate_sop_api(
             print(f"[DEBUG] Fetching template components schema for template_id={templates_id}, user_id={user_id}")
 
             response = supabase.table('templates') \
-                             .select('components') \
+                             .select('components','name') \
                              .eq('id', templates_id) \
                              .eq('user_id', user_id) \
                              .maybe_single() \
@@ -67,6 +67,7 @@ async def generate_sop_api(
 
             if response.data and 'components' in response.data:
                 full_component_schema = response.data['components']
+                category_name = response.data.get('name', 'SOP')
             else:
                 print(f"[ERROR] No components found for template_id={templates_id}")
                 raise HTTPException(status_code=404, detail="Template not found or no components available")
@@ -213,6 +214,7 @@ async def generate_sop_api(
                 event_data=event_data,
                 user_query=query,
                 components=full_component_schema,
+                category_name=category_name
             )
             result = await workflow.ainvoke(initial_state)
             print(f"[DEBUG] SOP workflow completed")

@@ -1,0 +1,43 @@
+{
+  "Conclusion": {
+    "nextSteps": [
+      "Explore other document generation options available within the application.",
+      "Review the generated technical document and make any necessary edits or refinements."
+    ],
+    "paragraphs": [
+      "This document has provided a guide on how to initiate the creation of a technical document using the application. By following the steps outlined, you can begin the process of generating documentation. Remember to select the appropriate document type and sources to ensure the generated document meets your specific needs."
+    ]
+  },
+  "FAQ": [
+    {
+      "answer": "The 'Technical Article' option is selected from the dropdown menu in the 'Describe the document you want to generate...' section.",
+      "question": "How do I select the type of document I want to generate?"
+    },
+    {
+      "answer": "Click the 'Select Sources' button to choose the sources for your document. The application will then generate the document based on the selected sources.",
+      "question": "How do I specify the sources for my technical document?"
+    }
+  ],
+  "Features": [
+    "Initiates the process of generating a technical document.",
+    "Allows selection of the document type.",
+    "Provides the option to select sources for the document."
+  ],
+  "Introduction": {
+    "outcomes": [
+      "Understand how to start the process of creating a technical document.",
+      "Learn how to select the document type.",
+      "Learn how to select the sources for the document."
+    ],
+    "paragraphs": [
+      "This document provides a step-by-step guide on how to initiate the creation of a technical document using the application. It is designed for users who want to generate technical documentation. The guide will walk you through the process of selecting the document type and specifying the sources for the document."
+    ],
+    "prerequisites": [
+      "Access to the application.",
+      "Understanding of the basic functionalities of the application."
+    ]
+  },
+  "Title": "Creating a Technical Document",
+  "docTitle": "Technical Document Creation Guide",
+  "shortDescription": "A guide to creating technical documents using the application."
+}
