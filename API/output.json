@@ -1,43 +1,71 @@
 {
   "Conclusion": {
     "nextSteps": [
-      "Explore other document generation options available within the application.",
-      "Review the generated technical document and make any necessary edits or refinements."
+      "Explore other document generation options available within the application."
     ],
     "paragraphs": [
-      "This document has provided a guide on how to initiate the creation of a technical document using the application. By following the steps outlined, you can begin the process of generating documentation. Remember to select the appropriate document type and sources to ensure the generated document meets your specific needs."
-    ]
+      "This document generation tool allows users to create technical documentation based on their needs. By following the steps outlined, users can generate technical articles efficiently.",
+      "The application provides a user-friendly interface for specifying document types and selecting sources. This streamlined process simplifies the creation of technical documents."
+    ],
+    "screenshot": ""
   },
   "FAQ": [
     {
-      "answer": "The 'Technical Article' option is selected from the dropdown menu in the 'Describe the document you want to generate...' section.",
-      "question": "How do I select the type of document I want to generate?"
+      "answer": "The 'Technical Article' option allows users to generate a technical document. Other options like 'SOP' and 'RCA' may be available depending on the application's configuration.",
+      "question": "What document types can I generate?",
+      "screenshot": ""
     },
     {
-      "answer": "Click the 'Select Sources' button to choose the sources for your document. The application will then generate the document based on the selected sources.",
-      "question": "How do I specify the sources for my technical document?"
+      "answer": "The 'Select Sources' feature is currently marked as 'Coming Soon!' in the application. This feature will allow users to select the data sources for the document.",
+      "question": "How do I select the data sources for my document?",
+      "screenshot": ""
     }
   ],
   "Features": [
-    "Initiates the process of generating a technical document.",
-    "Allows selection of the document type.",
-    "Provides the option to select sources for the document."
+    "Allows users to generate technical documents.",
+    "Provides a user-friendly interface for document generation.",
+    "Offers options for selecting document types.",
+    "Includes a 'Select Sources' feature (Coming Soon!)."
   ],
   "Introduction": {
-    "outcomes": [
-      "Understand how to start the process of creating a technical document.",
-      "Learn how to select the document type.",
-      "Learn how to select the sources for the document."
-    ],
     "paragraphs": [
-      "This document provides a step-by-step guide on how to initiate the creation of a technical document using the application. It is designed for users who want to generate technical documentation. The guide will walk you through the process of selecting the document type and specifying the sources for the document."
+      "This document provides a guide on how to create a technical document using the application. It outlines the steps required to initiate the document generation process.",
+      "The application simplifies the creation of technical documentation by providing a streamlined workflow for selecting document types and sources."
     ],
-    "prerequisites": [
-      "Access to the application.",
-      "Understanding of the basic functionalities of the application."
-    ]
+    "outcomes": [
+      "Understand the process of generating a technical document.",
+      "Learn how to select document types.",
+      "Be aware of the 'Select Sources' feature."
+    ],
+    "prerequisites": [],
+    "screenshot": "screenshot_0_1745056901141.png"
   },
+  "Paragraph": [
+    "The application provides a straightforward process for generating technical documents. The user interface guides the user through the necessary steps, from selecting the document type to choosing the data sources."
+  ],
+  "Steps / How‑To": [
+    {
+      "explanation": "Click the 'Technical Article' button to initiate the document generation process.",
+      "step": "Click the 'Technical Article' button.",
+      "screenshotRef": "screenshot_0_1745056901141.png"
+    },
+    {
+      "explanation": "The application will then display the options for document generation.",
+      "step": "Click the 'Technical Article' option.",
+      "screenshotRef": "screenshot_1_1745056901141.png"
+    },
+    {
+      "explanation": "This feature is currently marked as 'Coming Soon!'",
+      "step": "Click the 'Select Sources' button.",
+      "screenshotRef": "screenshot_2_1745056901141.png"
+    },
+    {
+      "explanation": "This feature is currently marked as 'Coming Soon!'",
+      "step": "Click the 'Select Sources' button.",
+      "screenshotRef": "screenshot_3_1745056901141.png"
+    }
+  ],
   "Title": "Creating a Technical Document",
-  "docTitle": "Technical Document Creation Guide",
-  "shortDescription": "A guide to creating technical documents using the application."
+  "docTitle": "Creating a Technical Document",
+  "shortDescription": "This guide explains how to create a technical document using the application."
 }

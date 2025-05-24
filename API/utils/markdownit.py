@@ -1,7 +1,7 @@
 from io import BytesIO
 import datetime
 
-def create_markdown(article_dict: dict):
+def create_markdown(article_dict: dict, user_id: str, job_id: str):
     """
     Convert a dictionary conforming to the SaaS User Documentation schema
     into a Markdown document in memory.
@@ -84,15 +84,15 @@ def create_markdown(article_dict: dict):
         add_empty_line()
 
     # Paragraphs (array of strings)
-    paragraphs = article_dict.get('paragraphs')
+    paragraphs = article_dict.get('Paragraph') or article_dict.get('paragraphs')
     if paragraphs and isinstance(paragraphs, list):
         for para in paragraphs:
             if isinstance(para, str) and para.strip():
                 markdown_lines.append(para.strip())
                 add_empty_line()
 
-    # Steps (array of objects)
-    steps_data = article_dict.get('Steps / How-To')
+    # Steps (array of objects) - FIXED: Using non-breaking hyphen to match schema
+    steps_data = article_dict.get('Steps / How‑To') or article_dict.get('Steps / How-To')
     if steps_data and isinstance(steps_data, list):
         markdown_lines.append("## Procedure / Steps")
         add_empty_line()
@@ -100,7 +100,9 @@ def create_markdown(article_dict: dict):
             if isinstance(step_item, dict):
                 step_text = step_item.get('step', '').strip()
                 explanation = step_item.get('explanation', '').strip()
-                screenshot_ref = step_item.get('screenshotRef', '').strip()
+                # Check both possible screenshot fields
+                image_name = (step_item.get('screenshotRef', '') or 
+                             step_item.get('screenshot', '')).strip()
 
                 if step_text:
                     markdown_lines.append(f"**Step {i}:** {step_text}")
@@ -110,8 +112,18 @@ def create_markdown(article_dict: dict):
                     markdown_lines.append(explanation)
                     add_empty_line()
 
-                if screenshot_ref:
-                    markdown_lines.append(f"*(See: {screenshot_ref})*")
+                if image_name:
+                    # Construct the full image URL
+                    image_path = (f"https://gqvbkzcscjeaghodwxnz.supabase.co/storage/v1/"
+                                f"object/public/log_dataa/{user_id}/{job_id}/screenshots/{image_name}")
+
+                    # Determine Alt Text
+                    alt_text = explanation if explanation else f"Screenshot for Step {i}"
+                    # Sanitize alt_text
+                    alt_text = alt_text.replace(']', '').replace('[', '').replace('(', '').replace(')', '')
+
+                    # Append the Markdown for the image
+                    markdown_lines.append(f"![{alt_text}]({image_path})")
                     add_empty_line()
 
     # FAQ (array of objects)
@@ -151,7 +163,7 @@ def create_markdown(article_dict: dict):
                     add_empty_line()
 
     # Notes (array of strings)
-    notes = article_dict.get('notes')
+    notes = article_dict.get('Note') or article_dict.get('notes')
     if notes and isinstance(notes, list):
         markdown_lines.append("## Notes")
         add_empty_line()
@@ -161,7 +173,7 @@ def create_markdown(article_dict: dict):
                 add_empty_line()
 
     # Tips (array of strings)
-    tips = article_dict.get('tips')
+    tips = article_dict.get('Callout / Tip') or article_dict.get('tips')
     if tips and isinstance(tips, list):
         markdown_lines.append("## Tips")
         add_empty_line()
@@ -171,7 +183,7 @@ def create_markdown(article_dict: dict):
         add_empty_line()
 
     # Quotes (array of objects)
-    quotes = article_dict.get('quotes')
+    quotes = article_dict.get('Quote') or article_dict.get('quotes')
     if quotes and isinstance(quotes, list):
         markdown_lines.append("## Quotes")
         add_empty_line()
@@ -186,7 +198,7 @@ def create_markdown(article_dict: dict):
                     add_empty_line()
 
     # Checklist (array of strings)
-    checklist = article_dict.get('checklist')
+    checklist = article_dict.get('Checklist')
     if checklist and isinstance(checklist, list):
         markdown_lines.append("## Checklist")
         add_empty_line()

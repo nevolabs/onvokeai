@@ -178,7 +178,7 @@ async def generate_sop_docx(
         print(f"[INFO] Generating Markdown document from JSON...")
         try:
             # create_markdown function is expected to take the dictionary and return a BytesIO buffer
-            markdown_buffer = create_markdown(article_dict) 
+            markdown_buffer = create_markdown(article_dict,user_id ,job_id) 
             markdown_content = markdown_buffer.getvalue().decode('utf-8')
             print(f"[INFO] Markdown generation successful.")
             
