@@ -13,3 +13,5 @@ sentence-transformers
 torch
 llama-index-vector-stores-supabase
 reportlab
+pdflatex
+pypandoc

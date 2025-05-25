@@ -14,6 +14,13 @@ from workflow import create_workflow
 from rag.jira_rag import fetch_relevant_jira_issues
 from utils.create_pdf import create_pdf_from_screenshots
 
+from  utils.pdf_converter import convert_to_pdf
+from utils.docx_converter import convert_to_docx
+
+from fastapi import FastAPI, HTTPException
+from fastapi.responses import StreamingResponse
+from io import BytesIO
+
 app = FastAPI()
 
 # Load configuration
@@ -33,6 +40,7 @@ try:
 except Exception as e:
     print(f"[ERROR] Failed to initialize Supabase client: {e}")
     raise RuntimeError(f"Could not initialize Supabase client: {e}")
+
 
 @app.post("/generate_sop/")
 async def generate_sop_api(
@@ -255,7 +263,40 @@ async def generate_sop_api(
             except Exception as e:
                 print(f"[WARNING] Temp file cleanup failed for {temp_file}: {str(e)}")
         print(f"[DEBUG] Cleanup finished. Removed {cleaned_count} files.")
+        
 
+
+
+
+@app.post("/download/")
+def convert_markdown(markdown_text:str=Form(...), 
+                    format: str=Form(...), 
+                    filename: str = None):
+    try:
+        if format == "pdf":
+            content = convert_to_pdf(markdown_text)
+            default_filename = "document.pdf"
+            media_type = "application/pdf"
+        elif format == "docx":
+            content = convert_to_docx(markdown_text)
+            default_filename = "document.docx"
+            media_type = "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+        else:
+            raise HTTPException(status_code=400, detail="Unsupported format. Please use 'pdf' or 'docx'.")
+        
+        filename = filename or default_filename
+        # Wrap content in BytesIO for streaming
+        file_stream = BytesIO(content)
+        
+        return StreamingResponse(
+            file_stream,
+            media_type=media_type,
+            headers={"Content-Disposition": f"attachment; filename={filename}"}
+        )
+    except RuntimeError as e:
+        raise HTTPException(status_code=500, detail=str(e))
+    
+    
 if __name__ == "__main__":
     import uvicorn
-    uvicorn.run("app:app", host="0.0.0.0", port=8000, reload=True)
+    uvicorn.run("app:app", host="0.0.0.0", port=8000,reload=True, workers=4, log_level="info")
