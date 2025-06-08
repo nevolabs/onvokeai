@@ -1,0 +1,73 @@
+    INFO: 2025-06-07 14:17:53,827:               log.py:   20: Logging to C:\Users\yethu.krishnan\Skill_Developement_Projeects\SOP_Testing\API\mdpdf.log
+   DEBUG: 2025-06-07 14:17:53,827:               cli.py:  103: article.md
+    INFO: 2025-06-07 14:17:53,829:         converter.py:   14: article.md
+   DEBUG: 2025-06-07 14:17:53,845:      pdf_renderer.py:  470: printSegment: Generating a Technical Article
+   DEBUG: 2025-06-07 14:17:53,850:      pdf_renderer.py:  470: printSegment: Introduction
+   DEBUG: 2025-06-07 14:17:53,856:      pdf_renderer.py:  470: printSegment: This document provides a comprehensive guide on how to use the 
+   DEBUG: 2025-06-07 14:17:53,860:      pdf_renderer.py:  470: printSegment: '
+   DEBUG: 2025-06-07 14:17:53,863:      pdf_renderer.py:  470: printSegment: Document Generation
+   DEBUG: 2025-06-07 14:17:53,864:      pdf_renderer.py:  470: printSegment: '
+   DEBUG: 2025-06-07 14:17:53,886:      pdf_renderer.py:  470: printSegment:  feature within the Onvoke
+   DEBUG: 2025-06-07 14:17:53,892:      pdf_renderer.py:  470: printSegment: application to create a new Technical Article. The main screen is designed to be intuitive, allowing you to specify
+   DEBUG: 2025-06-07 14:17:53,893:      pdf_renderer.py:  470: printSegment: your documentation needs and provide the necessary context for generation.
+   DEBUG: 2025-06-07 14:17:53,903:      pdf_renderer.py:  470: printSegment: The interface is divided into a main content area for document creation and a navigation sidebar on the left. The
+   DEBUG: 2025-06-07 14:17:53,905:      pdf_renderer.py:  470: printSegment: main area contains fields for describing the document, selecting its type, choosing sources, and initiating the
+   DEBUG: 2025-06-07 14:17:53,906:      pdf_renderer.py:  470: printSegment: generation process.
+   DEBUG: 2025-06-07 14:17:53,906:      pdf_renderer.py:  470: printSegment: Prerequisites
+   DEBUG: 2025-06-07 14:17:53,907:      pdf_renderer.py:  470: printSegment: l
+   DEBUG: 2025-06-07 14:17:53,908:      pdf_renderer.py:  470: printSegment: You must have an active account and be logged into the Onvoke application.
+   DEBUG: 2025-06-07 14:17:53,910:      pdf_renderer.py:  470: printSegment: l
+   DEBUG: 2025-06-07 14:17:53,911:      pdf_renderer.py:  470: printSegment: Navigate to the 
+   DEBUG: 2025-06-07 14:17:53,912:      pdf_renderer.py:  470: printSegment: '
+   DEBUG: 2025-06-07 14:17:53,913:      pdf_renderer.py:  470: printSegment: Document Generation
+   DEBUG: 2025-06-07 14:17:53,913:      pdf_renderer.py:  470: printSegment: '
+   DEBUG: 2025-06-07 14:17:53,914:      pdf_renderer.py:  470: printSegment:  page from the main dashboard or navigation menu.
+   DEBUG: 2025-06-07 14:17:53,915:      pdf_renderer.py:  470: printSegment: Learning Outcomes
+   DEBUG: 2025-06-07 14:17:53,915:      pdf_renderer.py:  470: printSegment: l
+   DEBUG: 2025-06-07 14:17:53,916:      pdf_renderer.py:  470: printSegment: Understand the layout of the Document Generation page.
+   DEBUG: 2025-06-07 14:17:53,917:      pdf_renderer.py:  470: printSegment: l
+   DEBUG: 2025-06-07 14:17:53,918:      pdf_renderer.py:  470: printSegment: Learn how to select the correct document type.
+   DEBUG: 2025-06-07 14:17:53,918:      pdf_renderer.py:  470: printSegment: l
+   DEBUG: 2025-06-07 14:17:53,919:      pdf_renderer.py:  470: printSegment: Identify the available options for providing source material.
+   DEBUG: 2025-06-07 14:17:53,920:      pdf_renderer.py:  470: printSegment: l
+   DEBUG: 2025-06-07 14:17:53,921:      pdf_renderer.py:  470: printSegment: Successfully initiate the generation of a technical article.
+   DEBUG: 2025-06-07 14:17:53,922:      pdf_renderer.py:  470: printSegment: Key Features
+   DEBUG: 2025-06-07 14:17:53,922:      pdf_renderer.py:  470: printSegment: l
+   DEBUG: 2025-06-07 14:17:53,924:      pdf_renderer.py:  470: printSegment: Select from multiple document templates including Technical Article, SOP, and RCA.
+   DEBUG: 2025-06-07 14:17:53,925:      pdf_renderer.py:  470: printSegment: l
+   DEBUG: 2025-06-07 14:17:53,926:      pdf_renderer.py:  470: printSegment: Provide a detailed description of the desired document using natural language.
+   DEBUG: 2025-06-07 14:17:53,927:      pdf_renderer.py:  470: printSegment: l
+   DEBUG: 2025-06-07 14:17:53,928:      pdf_renderer.py:  470: printSegment: Option to add source materials directly by capturing your screen.
+   DEBUG: 2025-06-07 14:17:53,928:      pdf_renderer.py:  470: printSegment: l
+   DEBUG: 2025-06-07 14:17:53,929:      pdf_renderer.py:  470: printSegment: Ability to attach relevant files to serve as context for generation.
+   DEBUG: 2025-06-07 14:17:53,930:      pdf_renderer.py:  470: printSegment: l
+   DEBUG: 2025-06-07 14:17:53,931:      pdf_renderer.py:  470: printSegment: A streamlined user interface for quick document creation.
+   DEBUG: 2025-06-07 14:17:53,932:      pdf_renderer.py:  470: printSegment: l
+   DEBUG: 2025-06-07 14:17:53,933:      pdf_renderer.py:  470: printSegment: Centralized navigation to switch between 
+   DEBUG: 2025-06-07 14:17:53,934:      pdf_renderer.py:  470: printSegment: '
+   DEBUG: 2025-06-07 14:17:53,934:      pdf_renderer.py:  470: printSegment: Chat
+   DEBUG: 2025-06-07 14:17:53,935:      pdf_renderer.py:  470: printSegment: '
+   DEBUG: 2025-06-07 14:17:53,936:      pdf_renderer.py:  470: printSegment:  and 
+   DEBUG: 2025-06-07 14:17:53,936:      pdf_renderer.py:  470: printSegment: '
+   DEBUG: 2025-06-07 14:17:53,937:      pdf_renderer.py:  470: printSegment: Source Configuration
+   DEBUG: 2025-06-07 14:17:53,938:      pdf_renderer.py:  470: printSegment: '
+   DEBUG: 2025-06-07 14:17:53,939:      pdf_renderer.py:  470: printSegment: .
+   DEBUG: 2025-06-07 14:17:53,942:      pdf_renderer.py:  470: printSegment: The Document Generation tool streamlines the creation of standardized technical documents. The process begins by
+   DEBUG: 2025-06-07 14:17:53,943:      pdf_renderer.py:  470: printSegment: clearly defining the document
+   DEBUG: 2025-06-07 14:17:53,944:      pdf_renderer.py:  470: printSegment: '
+   DEBUG: 2025-06-07 14:17:53,959:      pdf_renderer.py:  470: printSegment: s scope in the description field. This input is crucial as it guides the AI in structuring
+   DEBUG: 2025-06-07 14:17:53,965:      pdf_renderer.py:  470: printSegment: the content and tone of the article. After providing a description, you must select the appropriate document type,
+   DEBUG: 2025-06-07 14:17:53,966:      pdf_renderer.py:  470: printSegment: which tailors the output format and available input options.
+   DEBUG: 2025-06-07 14:17:53,967:      pdf_renderer.py:  470: printSegment: Procedure / Steps
+   DEBUG: 2025-06-07 14:17:53,968:      pdf_renderer.py:  470: printSegment: Step 1:
+   DEBUG: 2025-06-07 14:17:53,971:      pdf_renderer.py:  470: printSegment:  In the center of the 
+   DEBUG: 2025-06-07 14:17:53,972:      pdf_renderer.py:  470: printSegment: '
+   DEBUG: 2025-06-07 14:17:53,974:      pdf_renderer.py:  470: printSegment: Document Generation
+   DEBUG: 2025-06-07 14:17:53,975:      pdf_renderer.py:  470: printSegment: '
+   DEBUG: 2025-06-07 14:17:53,976:      pdf_renderer.py:  470: printSegment:  screen, click the dropdown menu that is initially labeled 
+   DEBUG: 2025-06-07 14:17:53,977:      pdf_renderer.py:  470: printSegment: '
+   DEBUG: 2025-06-07 14:17:53,978:      pdf_renderer.py:  470: printSegment: Technical Article
+   DEBUG: 2025-06-07 14:17:53,978:      pdf_renderer.py:  470: printSegment: '
+   DEBUG: 2025-06-07 14:17:53,979:      pdf_renderer.py:  470: printSegment: .
+   DEBUG: 2025-06-07 14:17:53,982:      pdf_renderer.py:  470: printSegment: This is the first step in specifying the kind of document you want to create. Clicking this dropdown reveals a list of
+   DEBUG: 2025-06-07 14:17:53,983:      pdf_renderer.py:  470: printSegment: available document templates.

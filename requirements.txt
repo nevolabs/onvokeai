@@ -14,4 +14,6 @@ torch
 llama-index-vector-stores-supabase
 reportlab
 pdflatex
-pypandoc
+pypandocpyt
+weasyprint
+markdown

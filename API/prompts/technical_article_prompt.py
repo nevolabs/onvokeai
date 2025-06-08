@@ -1,16 +1,7 @@
 import json # Import json library if not already imported
 
 def get_prompt(user_query: str, event_text: str, KB: str, generation_schema_str: str):
-    # CRITICAL: Ensure 'generation_schema_str' CONTAINS THE FULL DETAILED SCHEMA you want the LLM to use.
-    # For example:
-    # detailed_schema = """
-    # {
-    #   "Title": { ... your full detailed schema ... },
-    #   ...
-    #   "References": { ... }
-    # }
-    # """
-    # generation_schema_str = detailed_schema # This is what should be passed
+   
 
     prompt_start = f"""
             You are an expert technical writer creating an **extremely detailed and comprehensive**, customer-facing technical article in response to a specific user query. Your absolute priority is accuracy and including **all relevant details** from the provided application data and the PDF document, while ensuring the output is **general and reusable**, NOT specific to the demo session data.

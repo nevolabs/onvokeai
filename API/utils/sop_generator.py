@@ -13,7 +13,7 @@ from utils.markdownit import create_markdown # Assuming this is a custom module
 import random
 # Configure GenAI
 genai.configure(api_key=os.environ["GOOGLE_API_KEY"])
-model = genai.GenerativeModel("gemini-2.0-flash-lite")
+model = genai.GenerativeModel("gemini-2.5-pro-preview-06-05")
 print(f"[INFO] Initialized GenAI model: {model._model_name}")
 
 async def generate_sop_docx(
