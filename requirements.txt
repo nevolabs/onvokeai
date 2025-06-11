@@ -17,3 +17,4 @@ pdflatex
 pypandocpyt
 weasyprint
 markdown
+docx2pdf
