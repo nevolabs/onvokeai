@@ -6,6 +6,10 @@ from pathlib import Path
 from typing import Any, Optional
 from fastapi import FastAPI, File, UploadFile, Form
 from supabase import create_client, Client
+import pandas as pd
+import PyPDF2
+from docx import Document
+from io import BytesIO
 
 from config.config import load_config, set_env
 from models.state_schema import SOPState 
@@ -13,13 +17,11 @@ from parsers.json_parser import parse_json
 from workflow import create_workflow
 from rag.jira_rag import fetch_relevant_jira_issues
 from utils.create_pdf import create_pdf_from_screenshots
-
-from  utils.pdf_converter import convert_to_pdf
+from utils.pdf_converter import convert_to_pdf
 from utils.docx_converter import convert_to_docx
 
 from fastapi import FastAPI, HTTPException
 from fastapi.responses import StreamingResponse
-from io import BytesIO
 
 app = FastAPI()
 
@@ -41,6 +43,40 @@ except Exception as e:
     print(f"[ERROR] Failed to initialize Supabase client: {e}")
     raise RuntimeError(f"Could not initialize Supabase client: {e}")
 
+def read_excel_file(file_content: bytes) -> str:
+    """Read content from an Excel file."""
+    try:
+        excel_file = BytesIO(file_content)
+        df = pd.read_excel(excel_file, engine='openpyxl')
+        # Convert all sheets to text (simplified representation)
+        return df.to_string()
+    except Exception as e:
+        print(f"[ERROR] Failed to read Excel file: {str(e)}")
+        return ""
+
+def read_pdf_file(file_content: bytes) -> str:
+    """Read content from a PDF file."""
+    try:
+        pdf_file = BytesIO(file_content)
+        reader = PyPDF2.PdfReader(pdf_file)
+        text = ""
+        for page in reader.pages:
+            text += page.extract_text() or ""
+        return text
+    except Exception as e:
+        print(f"[ERROR] Failed to read PDF file: {str(e)}")
+        return ""
+
+def read_docx_file(file_content: bytes) -> str:
+    """Read content from a DOCX file."""
+    try:
+        docx_file = BytesIO(file_content)
+        doc = Document(docx_file)
+        text = "\n".join([para.text for para in doc.paragraphs if para.text])
+        return text
+    except Exception as e:
+        print(f"[ERROR] Failed to read DOCX file: {str(e)}")
+        return ""
 
 @app.post("/generate_sop/")
 async def generate_sop_api(
@@ -49,7 +85,6 @@ async def generate_sop_api(
     job_id: str = Form(...),
     query: str = Form(...),
     templates_id: str = Form(...),
-    
 ):
     """
     API endpoint to generate SOP using a component schema defined
@@ -59,6 +94,7 @@ async def generate_sop_api(
     screenshot_info = []
     full_component_schema: Optional[dict] = None
     contents = await file.read()
+    file_extension = Path(file.filename).suffix.lower()
 
     try:
         print(f"[DEBUG] Starting SOP generation for user_id={user_id}, job_id={job_id}, template_id='{templates_id}'")
@@ -107,6 +143,17 @@ async def generate_sop_api(
 
         if not json_files and not screenshot_files:
             raise HTTPException(status_code=404, detail="No JSON or screenshot files found")
+
+        # Process uploaded file content based on file type
+        uploaded_file_content = ""
+        if file_extension in ['.xlsx', '.xls']:
+            uploaded_file_content = read_excel_file(contents)
+        elif file_extension == '.pdf':
+            uploaded_file_content = read_pdf_file(contents)
+        elif file_extension == '.docx':
+            uploaded_file_content = read_docx_file(contents)
+        else:
+            uploaded_file_content = contents.decode('utf-8', errors='ignore')
 
         # Process screenshots
         if screenshot_files:
@@ -211,7 +258,7 @@ async def generate_sop_api(
             jira_context = f"Error fetching Jira issues: {str(e)}"
 
         # --- Prepare and Invoke Workflow ---
-        knowledge_base = f"### Jira Issues:\n{jira_context}"
+        knowledge_base = f"### Jira Issues:\n{jira_context}\n"
         print(f"[DEBUG] Prepared knowledge base")
 
         result = None
@@ -226,7 +273,7 @@ async def generate_sop_api(
                 user_query=query,
                 components=full_component_schema,
                 category_name=category_name,
-                contents=contents.decode('utf-8', errors='ignore')
+                contents=uploaded_file_content
             )
             result = await workflow.ainvoke(initial_state)
             print(f"[DEBUG] SOP workflow completed")
@@ -267,14 +314,10 @@ async def generate_sop_api(
             except Exception as e:
                 print(f"[WARNING] Temp file cleanup failed for {temp_file}: {str(e)}")
         print(f"[DEBUG] Cleanup finished. Removed {cleaned_count} files.")
-        
-
-
-
 
 @app.post("/download/")
-def convert_markdown(markdown_text:str=Form(...), 
-                    format: str=Form(...), 
+def convert_markdown(markdown_text: str = Form(...), 
+                    format: str = Form(...), 
                     filename: str = None):
     try:
         if format == "pdf":
@@ -300,7 +343,6 @@ def convert_markdown(markdown_text:str=Form(...),
     except RuntimeError as e:
         raise HTTPException(status_code=500, detail=str(e))
     
-    
 if __name__ == "__main__":
     import uvicorn
-    uvicorn.run("app:app", host="0.0.0.0", port=8080,reload=True, workers=4, log_level="info")
+    uvicorn.run("app:app", host="0.0.0.0", port=8080, reload=True, workers=4, log_level="info")

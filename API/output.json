@@ -2,96 +2,94 @@
   "Conclusion": {
     "nextSteps": [
       "Review the generated document for accuracy and completeness.",
-      "Experiment with generating other document types such as SOP or RCA.",
-      "Explore the 'Source Configuration' section to manage data sources for future use."
+      "Experiment with generating other document types, such as SOP or RCA.",
+      "Explore the 'Source Configuration' section to manage data sources when the feature becomes available."
     ],
     "paragraphs": [
-      "You have now learned the fundamental steps to initiate the creation of a technical article using the Onvoke Document Generation tool. By following the process of selecting the document type, providing a detailed description, and attaching relevant source materials, you can efficiently generate comprehensive technical documentation."
+      "You have now learned the complete process for generating a technical article using the Document Generation tool. By following the steps of selecting a document type, providing a detailed description, adding optional context through screen captures or attachments, and initiating the process, you can efficiently create comprehensive technical documentation."
     ],
     "screenshot": ""
   },
   "FAQ": [
     {
-      "answer": "The platform supports several document types. As seen in the dropdown menu, you can select 'Technical Article', 'SOP' (Standard Operating Procedure), or 'RCA' (Root Cause Analysis).",
+      "answer": "You can generate several types of documents. Based on the dropdown menu, the available options are 'Technical Article', 'SOP' (Standard Operating Procedure), and 'RCA' (Root Cause Analysis).",
       "question": "What types of documents can I generate?",
       "screenshot": "screenshot_0_1745056901141.png"
     },
     {
-      "answer": "After you select a document type like 'Technical Article', the 'Capture Screen' and 'Attach' buttons appear. 'Capture Screen' allows you to take a new screenshot to include as a source, while 'Attach' allows you to upload existing files (e.g., logs, images, documents) from your computer.",
-      "question": "What is the purpose of the 'Capture Screen' and 'Attach' buttons?",
+      "answer": "After selecting a document type like 'Technical Article', you can add more context by using the 'Capture Screen' button to add screenshots or the 'Attach' button to upload relevant files.",
+      "question": "How can I add files or screenshots as context for my document?",
       "screenshot": "screenshot_1_1745056901141.png"
     },
     {
-      "answer": "Currently, the 'Select Sources' feature is under development. When you click on it, a 'Coming Soon!' message appears. In the future, this will allow you to connect to various pre-configured data sources.",
+      "answer": "When you click on the 'Select Sources' dropdown, a 'Coming Soon!' message appears. This indicates that the feature is currently in development and will be available in a future update.",
       "question": "What happens when I click 'Select Sources'?",
       "screenshot": "screenshot_2_1745056901141.png"
     },
     {
-      "answer": "In the 'Describe the document you want to generate...' text area, you should provide a clear and detailed natural language prompt explaining the topic, purpose, intended audience, and key points you want the technical article to cover.",
-      "question": "What should I write in the description box?"
+      "answer": "Yes, providing a thorough and detailed prompt in the 'Describe the document you want to generate...' text area is crucial. The quality and relevance of the final document heavily depend on the clarity and detail of your input.",
+      "question": "Is it important to provide a detailed description for the document?"
     }
   ],
   "Features": [
-    "Select from multiple document templates including Technical Article, SOP, and RCA.",
-    "Provide a detailed description of the desired document using natural language.",
-    "Option to add source materials directly by capturing your screen.",
-    "Ability to attach relevant files to serve as context for generation.",
-    "A streamlined user interface for quick document creation.",
-    "Centralized navigation to switch between 'Chat' and 'Source Configuration'."
+    "Generate multiple types of technical documents, including Technical Articles, SOPs, and RCAs.",
+    "Provide detailed text-based descriptions to guide the AI document generation.",
+    "Enhance document context by capturing and adding screen images directly.",
+    "Attach relevant files to provide comprehensive source material.",
+    "Initiate the document creation process with a single click."
   ],
   "Introduction": {
     "paragraphs": [
-      "This document provides a comprehensive guide on how to use the 'Document Generation' feature within the Onvoke application to create a new Technical Article. The main screen is designed to be intuitive, allowing you to specify your documentation needs and provide the necessary context for generation.",
-      "The interface is divided into a main content area for document creation and a navigation sidebar on the left. The main area contains fields for describing the document, selecting its type, choosing sources, and initiating the generation process."
+      "This guide provides a comprehensive overview of how to use the Document Generation feature to create a new technical article. The tool is designed to streamline the creation of technical documentation by using AI to process your descriptions and provided source materials. This document will walk you through each step of the process, from selecting the document type to generating the final output."
     ],
     "outcomes": [
-      "Understand the layout of the Document Generation page.",
-      "Learn how to select the correct document type.",
-      "Identify the available options for providing source material.",
-      "Successfully initiate the generation of a technical article."
+      "Understand the different types of documents you can create.",
+      "Learn how to provide a detailed description for the document.",
+      "Identify the options for adding context, such as screen captures and attachments.",
+      "Successfully initiate the document generation process."
     ],
     "prerequisites": [
-      "You must have an active account and be logged into the Onvoke application.",
-      "Navigate to the 'Document Generation' page from the main dashboard or navigation menu."
+      "You must be logged into the Onvoke application.",
+      "You must have navigated to the 'Document Generation' page, accessible from the main menu."
     ],
     "screenshot": "screenshot_0_1745056901141.png"
   },
   "Paragraph": [
-    "The Document Generation tool streamlines the creation of standardized technical documents. The process begins by clearly defining the document's scope in the description field. This input is crucial as it guides the AI in structuring the content and tone of the article. After providing a description, you must select the appropriate document type, which tailors the output format and available input options."
+    "The Document Generation page serves as a centralized hub for creating various forms of technical documentation. The interface is structured to guide you through the process logically. You begin by describing your needs in a central text area, then specify the document format, and finally provide supplementary materials like screenshots or files to enrich the context before generation."
   ],
   "Steps / How‑To": [
     {
-      "explanation": "This is the first step in specifying the kind of document you want to create. Clicking this dropdown reveals a list of available document templates.",
-      "step": "In the center of the 'Document Generation' screen, click the dropdown menu that is initially labeled 'Technical Article'.",
+      "explanation": "This step defines the template and structure for your document. The system offers several predefined types. Selecting 'Technical Article' ensures the output is formatted appropriately for that purpose.",
+      "step": "In the center of the screen, click the dropdown menu that initially shows 'Technical Article'. From the list that appears, select 'Technical Article'.",
       "screenshot": "",
       "screenshotRef": "screenshot_0_1745056901141.png"
     },
     {
-      "explanation": "From the list of options ('Technical Article', 'SOP', 'RCA'), selecting 'Technical Article' confirms your choice. This action may update the UI to show additional input options relevant to this document type, such as 'Capture Screen' and 'Attach'.",
-      "step": "Select 'Technical Article' from the list of options that appears.",
+      "explanation": "The quality of the generated article is directly influenced by the detail and clarity of your description. Provide as much information as possible, including the topic, intended audience, and key points to cover.",
+      "step": "Click inside the large text area with the placeholder 'Describe the document you want to generate...' and type a detailed description of the article you need.",
       "screenshot": "",
       "screenshotRef": "screenshot_1_1745056901141.png"
     },
     {
-      "explanation": "This step is for selecting pre-configured data sources to inform the document. Note that this feature is not yet active. A 'Coming Soon!' tooltip will appear, indicating it will be available in a future release.",
-      "step": "Click the 'Select Sources' dropdown menu to the right of the document type selector.",
+      "explanation": "Adding visual aids or source files provides the generation engine with crucial context, leading to a more accurate and detailed document. These options appear after you select a document type.",
+      "step": "Optionally, add further context by clicking the 'Capture Screen' button to add a screenshot or the 'Attach' button to upload a file.",
+      "screenshot": "",
+      "screenshotRef": "screenshot_1_1745056901141.png"
+    },
+    {
+      "explanation": "This feature is intended to allow you to pull information from integrated data sources. Currently, it is under development as indicated by the 'Coming Soon!' tooltip.",
+      "step": "Click the 'Select Sources' dropdown menu to choose from available data sources.",
       "screenshot": "",
       "screenshotRef": "screenshot_2_1745056901141.png"
     },
     {
-      "explanation": "Before generating, you must provide a prompt in the large text area. This description guides the AI on the subject matter, key sections, and overall goal of the article.",
-      "step": "Enter a detailed description in the text area with the placeholder 'Describe the document you want to generate...'.",
+      "explanation": "This final action initiates the AI-powered generation process. The system will use your description and any provided context to build the technical article.",
+      "step": "Once you have provided all the necessary information, click the 'Generate' button on the right.",
       "screenshot": "",
-      "screenshotRef": ""
-    },
-    {
-      "explanation": "Once you have entered a description, selected the document type, and added any attachments or screen captures, click this button to start the document creation process.",
-      "step": "Click the 'Generate' button, located at the bottom right of the input area.",
-      "screenshot": "",
-      "screenshotRef": "screenshot_1_1745056901141.png"
+      "screenshotRef": "screenshot_0_1745056901141.png"
     }
   ],
-  "Title": "Generating a Technical Article",
-  "docTitle": "Generating a Technical Article",
-  "shortDescription": "A step-by-step guide on how to use the Onvoke application to generate a new technical article from the Document Generation interface."
+  "Title": "How to Generate a Technical Article",
+  "docTitle": "How to Generate a Technical Article",
+  "shortDescription": "A step-by-step guide on using the Document Generation feature to create a technical article by providing a description, selecting a document type, and adding context."
 }
