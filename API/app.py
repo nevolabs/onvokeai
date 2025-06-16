@@ -4,7 +4,7 @@ import uuid
 import json
 from pathlib import Path
 from typing import Any, Optional
-from fastapi import FastAPI, HTTPException, Form
+from fastapi import FastAPI, File, UploadFile, Form
 from supabase import create_client, Client
 
 from config.config import load_config, set_env
@@ -44,10 +44,12 @@ except Exception as e:
 
 @app.post("/generate_sop/")
 async def generate_sop_api(
+    file: UploadFile = File(...),
     user_id: str = Form(...),
     job_id: str = Form(...),
     query: str = Form(...),
     templates_id: str = Form(...),
+    
 ):
     """
     API endpoint to generate SOP using a component schema defined
@@ -56,6 +58,7 @@ async def generate_sop_api(
     temp_files = []
     screenshot_info = []
     full_component_schema: Optional[dict] = None
+    contents = await file.read()
 
     try:
         print(f"[DEBUG] Starting SOP generation for user_id={user_id}, job_id={job_id}, template_id='{templates_id}'")
@@ -222,7 +225,8 @@ async def generate_sop_api(
                 event_data=event_data,
                 user_query=query,
                 components=full_component_schema,
-                category_name=category_name
+                category_name=category_name,
+                contents=contents.decode('utf-8', errors='ignore')
             )
             result = await workflow.ainvoke(initial_state)
             print(f"[DEBUG] SOP workflow completed")

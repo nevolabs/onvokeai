@@ -6,7 +6,7 @@ from utils.sop_generator import generate_sop_docx
 
 async def generate_sop_node(state: SOPState) -> SOPState:
     """Node to generate structured SOP JSON."""
-    result = await generate_sop_docx(state.KB ,state.file_path, state.event_data ,state.user_query ,state.user_id ,state.job_id,state.components , state.category_name)
+    result = await generate_sop_docx(state.KB ,state.file_path, state.event_data ,state.user_query ,state.user_id ,state.job_id,state.components , state.category_name , state.contents)
     return result
 
 

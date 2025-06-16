@@ -1,6 +1,6 @@
 import json # Import json library if not already imported
 
-def get_prompt(user_query: str, event_text: str, KB: str, generation_schema_str: str):
+def get_prompt(user_query: str, event_text: str, KB: str,contents:str, generation_schema_str: str):
    
 
     prompt_start = f"""
@@ -64,6 +64,7 @@ def get_prompt(user_query: str, event_text: str, KB: str, generation_schema_str:
             *   Event/User Action Log (Primary Source 2 - **Sequence ONLY for "Steps / How-To"**, STRICTLY NO DATA VALUES OR FILENAMES USED IN OUTPUT FIELDS): `{event_text}`
             *   PDF Document (Primary Source 1 - **UI Elements, Names, Locations, Appearance, Image Filenames ONLY. NO OTHER FILENAMES OR RAW FILE METADATA IN OUTPUT FIELDS**): Uploaded PDF Document
             *   Knowledge Base (Supplementary Source - Very Low Priority): `{KB}`
+            *   Contents (Raw Text Content): `{contents}` ** (This is the raw text content of the PDF, which can be used to derive additional context or information, but should not be used to populate specific fields in the JSON output unless it directly relates to the user query or is relevant to the article's content.)
             ---
             **JSON Output (MUST be a single, syntactically correct, and complete JSON object adhering strictly to the comprehensive schema above. Ensure all string values are properly quoted and escaped.):**
             """

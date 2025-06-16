@@ -12,6 +12,7 @@ class SOPState(BaseModel):
     job_id: str = ""
     components: Optional[Dict] = None 
     category_name: str = ""
+    contents:str = ""
 
     class Config:
         arbitrary_types_allowed = True

@@ -24,7 +24,8 @@ async def generate_sop_docx(
     user_id: str,
     job_id: str,
     components: dict, # This is now loaded from generation.json
-    category_name: str = ""
+    category_name: str = "",
+    contents: str = ""
 ) -> dict:
     """
     Generates an SOP, stores the Markdown output in a Supabase table.
@@ -108,7 +109,8 @@ async def generate_sop_docx(
             KB=KB,
             event_text=event_data,
             user_query=user_query,
-            generation_schema_str=schema_json_str # Pass the schema string to the prompt function
+            contents=contents,
+            generation_schema_str=schema_json_str 
         )
         
         # prompt = "created a technical article based on the following PDF file. The article should be structured according to the provided JSON schema. The PDF file is attached as a file input. Please ensure that the generated content adheres to the schema and is relevant to the content of the PDF."
