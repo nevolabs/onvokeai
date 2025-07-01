@@ -4,13 +4,14 @@ import uuid
 import json
 from pathlib import Path
 from typing import Any, Optional
-from fastapi import FastAPI, File, UploadFile, Form
+from fastapi import FastAPI, File, UploadFile, Form, HTTPException
 from supabase import create_client, Client
 import pandas as pd
 import PyPDF2
 from docx import Document
 from io import BytesIO
 
+# Assuming these local modules exist in your project structure
 from config.config import load_config, set_env
 from models.state_schema import SOPState 
 from parsers.json_parser import parse_json
@@ -19,7 +20,6 @@ from utils.create_pdf import create_pdf_from_screenshots
 from utils.pdf_converter import convert_to_pdf
 from utils.docx_converter import convert_to_docx
 
-from fastapi import FastAPI, HTTPException
 from fastapi.responses import StreamingResponse
 from fastapi.middleware.cors import CORSMiddleware
 
@@ -51,6 +51,11 @@ try:
 except Exception as e:
     print(f"[ERROR] Failed to initialize Supabase client: {e}")
     raise RuntimeError(f"Could not initialize Supabase client: {e}")
+
+# Placeholder for the Jira fetch function to avoid NameError if uncommented
+# def fetch_relevant_jira_issues(user_id, query, top_k=5):
+#     # This would contain your actual Jira fetching logic
+#     return []
 
 def read_excel_file(file_content: bytes) -> str:
     """Read content from an Excel file."""
@@ -89,7 +94,8 @@ def read_docx_file(file_content: bytes) -> str:
 
 @app.post("/generate_sop/")
 async def generate_sop_api(
-    file: UploadFile = File(...),
+    # --- CHANGE 1: Made the file optional ---
+    file: Optional[UploadFile] = File(None), 
     user_id: str = Form(...),
     job_id: str = Form(...),
     query: str = Form(...),
@@ -102,8 +108,21 @@ async def generate_sop_api(
     temp_files = []
     screenshot_info = []
     full_component_schema: Optional[dict] = None
-    contents = await file.read()
-    file_extension = Path(file.filename).suffix.lower()
+    
+    # --- CHANGE 2: Initialize variables and handle the optional file ---
+    uploaded_file_content = ""
+    if file:
+        contents = await file.read()
+        file_extension = Path(file.filename).suffix.lower()
+        # Process uploaded file content based on file type
+        if file_extension in ['.xlsx', '.xls']:
+            uploaded_file_content = read_excel_file(contents)
+        elif file_extension == '.pdf':
+            uploaded_file_content = read_pdf_file(contents)
+        elif file_extension == '.docx':
+            uploaded_file_content = read_docx_file(contents)
+        else:
+            uploaded_file_content = contents.decode('utf-8', errors='ignore')
 
     try:
         print(f"[DEBUG] Starting SOP generation for user_id={user_id}, job_id={job_id}, template_id='{templates_id}'")
@@ -153,21 +172,11 @@ async def generate_sop_api(
         if not json_files and not screenshot_files:
             raise HTTPException(status_code=404, detail="No JSON or screenshot files found")
 
-        # Process uploaded file content based on file type
-        uploaded_file_content = ""
-        if file_extension in ['.xlsx', '.xls']:
-            uploaded_file_content = read_excel_file(contents)
-        elif file_extension == '.pdf':
-            uploaded_file_content = read_pdf_file(contents)
-        elif file_extension == '.docx':
-            uploaded_file_content = read_docx_file(contents)
-        else:
-            uploaded_file_content = contents.decode('utf-8', errors='ignore')
-
         # Process screenshots
         if screenshot_files:
-            for file in screenshot_files:
-                file_name = file.get('name')
+            # Changed loop variable to 'screenshot_file' to avoid conflict with the main 'file' parameter
+            for screenshot_file in screenshot_files:
+                file_name = screenshot_file.get('name')
                 if file_name and file_name.lower().endswith(('.png', '.jpg', '.jpeg')) and file_name != '.emptyFolderPlaceholder':
                     full_path = f"{screenshots_directory}/{file_name}"
                     safe_local_name = file_name.replace('/', '_').replace('\\', '_')
@@ -196,8 +205,9 @@ async def generate_sop_api(
         json_path = None
         json_file_name_to_process = None
         if json_files:
-            for file in json_files:
-                file_name = file.get('name')
+            # Changed loop variable to 'json_file_obj' to avoid conflict
+            for json_file_obj in json_files:
+                file_name = json_file_obj.get('name')
                 if file_name and file_name.lower().endswith('.json') and file_name != '.emptyFolderPlaceholder':
                     json_path = f"{json_directory}/{file_name}"
                     json_file_name_to_process = file_name
@@ -249,7 +259,7 @@ async def generate_sop_api(
             print(f"[ERROR] Event JSON processing failed: {str(e)}")
             raise HTTPException(status_code=500, detail=f"Event JSON processing failed: {str(e)}")
 
-        # --- Fetch Jira Context ---
+        # --- CHANGE 3: Re-inserted commented Jira logic ---
         jira_context = ""
         # try:
         #     print(f"[DEBUG] Fetching Jira issues for query: {query}")
@@ -300,7 +310,8 @@ async def generate_sop_api(
                 "user_id": user_id,
                 "job_id": job_id,
                 "template_id": templates_id,
-                "files_processed": len(screenshot_info) + 1,
+                # --- CHANGE 4: Conditionally count the uploaded file ---
+                "files_processed": len(screenshot_info) + (1 if file else 0),
                 "components_schema_used": full_component_schema
             }
         }
@@ -326,8 +337,8 @@ async def generate_sop_api(
 
 @app.post("/download/")
 def convert_markdown(markdown_text: str = Form(...), 
-                    format: str = Form(...), 
-                    filename: str = None):
+                     format: str = Form(...), 
+                     filename: str = None):
     try:
         if format == "pdf":
             content = convert_to_pdf(markdown_text)
