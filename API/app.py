@@ -21,9 +21,19 @@ from utils.docx_converter import convert_to_docx
 
 from fastapi import FastAPI, HTTPException
 from fastapi.responses import StreamingResponse
+from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI()
-
+origins = [
+    "https://dashboard.onvoke.app",
+]
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 # Load configuration
 config = load_config()
 set_env(config)
