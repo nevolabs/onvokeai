@@ -1,16 +1,11 @@
 fastapi
 uvicorn
 dotenv
-llama-cloud-services
 llama-index
-langchain-google-genai
 langgraph
 PyPDF2
 python-multipart
 supabase
-llama_index
-sentence-transformers
-torch
 llama-index-vector-stores-supabase
 reportlab
 pdflatex
@@ -26,8 +21,6 @@ python-magic
 docx2pdf
 dotenv
 fastapi
-
-huggingface-hub
 langchain
 langchain-core
 langchain-google-genai
@@ -36,7 +29,6 @@ langgraph
 langgraph-prebuilt
 langgraph-sdk
 langsmith
-llama-parse
 Markdown
 markdown-it-py
 markdown_pdf
@@ -56,13 +48,7 @@ python-multipart
 
 realtime
 regex
-reportlab
 requests
-
-
-scikit-learn
-
-sentence-transformers
 
 
 
