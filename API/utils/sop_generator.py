@@ -214,7 +214,7 @@ async def generate_sop_docx(
             print(f"markdown_content[:100]...") # Log first 100 chars of content for debugging
             print(markdown_content[:100])
             db_record = {
-                "id":random.randint(1, 10000000), # Random ID for testing, replace with None for auto-increment
+                "id":job_id, # Random ID for testing, replace with None for auto-increment
                 "category": category_name,
                 "user_id": user_id,
                 "title": sop_title,
