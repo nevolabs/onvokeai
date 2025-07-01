@@ -15,7 +15,6 @@ from config.config import load_config, set_env
 from models.state_schema import SOPState 
 from parsers.json_parser import parse_json
 from workflow import create_workflow
-from rag.jira_rag import fetch_relevant_jira_issues
 from utils.create_pdf import create_pdf_from_screenshots
 from utils.pdf_converter import convert_to_pdf
 from utils.docx_converter import convert_to_docx
