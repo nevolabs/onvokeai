@@ -241,21 +241,21 @@ async def generate_sop_api(
             raise HTTPException(status_code=500, detail=f"Event JSON processing failed: {str(e)}")
 
         # --- Fetch Jira Context ---
-        jira_context = "Jira context unavailable."
-        try:
-            print(f"[DEBUG] Fetching Jira issues for query: {query}")
-            relevant_issues = fetch_relevant_jira_issues(user_id, query, top_k=5)
-            if relevant_issues:
-                jira_context = "\n".join([
-                    f"Issue: {issue.get('issue_id', 'N/A')}\nDetails: {issue.get('text_data', 'N/A')}" 
-                    for issue in relevant_issues
-                ])
-            else: 
-                jira_context = "No relevant Jira issues found."
-            print(f"[DEBUG] Fetched Jira context")
-        except Exception as e:
-            print(f"[WARNING] Error fetching Jira issues: {str(e)}")
-            jira_context = f"Error fetching Jira issues: {str(e)}"
+        jira_context = ""
+        # try:
+        #     print(f"[DEBUG] Fetching Jira issues for query: {query}")
+        #     relevant_issues = fetch_relevant_jira_issues(user_id, query, top_k=5)
+        #     if relevant_issues:
+        #         jira_context = "\n".join([
+        #             f"Issue: {issue.get('issue_id', 'N/A')}\nDetails: {issue.get('text_data', 'N/A')}" 
+        #             for issue in relevant_issues
+        #         ])
+        #     else: 
+        #         jira_context = "No relevant Jira issues found."
+        #     print(f"[DEBUG] Fetched Jira context")
+        # except Exception as e:
+        #     print(f"[WARNING] Error fetching Jira issues: {str(e)}")
+        #     jira_context = f"Error fetching Jira issues: {str(e)}"
 
         # --- Prepare and Invoke Workflow ---
         knowledge_base = f"### Jira Issues:\n{jira_context}\n"
