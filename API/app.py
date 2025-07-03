@@ -62,7 +62,6 @@ def read_excel_file(file_content: bytes) -> str:
     try:
         excel_file = BytesIO(file_content)
         df = pd.read_excel(excel_file, engine='openpyxl')
-        # Convert all sheets to text (simplified representation)
         return df.to_string()
     except Exception as e:
         print(f"[ERROR] Failed to read Excel file: {str(e)}")
@@ -125,7 +124,6 @@ async def generate_sop_api(
     try:
         print(f"[DEBUG] Starting SOP generation for user_id={user_id}, job_id={job_id}, template_id='{templates_id}'")
 
-        # --- EXTENDED LOGIC: Fetch Template from private or public table ---
         try:
             print(f"[DEBUG] 1. Attempting to fetch from user's private 'templates' table for template_id={templates_id}")
             response = supabase.table('templates') \
@@ -135,12 +133,12 @@ async def generate_sop_api(
                                .maybe_single() \
                                .execute()
 
-            if response.data and 'components' in response.data:
+            # --- FIX ---: Check if the response object itself exists before trying to access its 'data' attribute.
+            if response and response.data and 'components' in response.data:
                 print("[INFO] Found template in user's private table.")
                 full_component_schema = response.data['components']
                 category_name = response.data.get('name', 'SOP')
             else:
-                # --- If not found, check the public templates table ---
                 print(f"[INFO] Template not found in private table. Checking 'publictemplates' table.")
                 public_response = supabase.table('publictemplates') \
                                           .select('components, name') \
@@ -148,12 +146,12 @@ async def generate_sop_api(
                                           .maybe_single() \
                                           .execute()
                 
-                if public_response.data and 'components' in public_response.data:
+                # --- FIX ---: Also check the public_response object before accessing its 'data' attribute.
+                if public_response and public_response.data and 'components' in public_response.data:
                     print("[INFO] Found template in public table.")
                     full_component_schema = public_response.data['components']
                     category_name = public_response.data.get('name', 'SOP')
                 else:
-                    # --- If not found in either table, raise an error ---
                     print(f"[ERROR] No components found for template_id={templates_id} in private or public tables.")
                     raise HTTPException(status_code=404, detail="Template not found or no components available")
 
@@ -191,7 +189,6 @@ async def generate_sop_api(
                     safe_local_name = file_name.replace('/', '_').replace('\\', '_')
                     temp_path = f"temp_{user_id}_{job_id}_{safe_local_name}"
                     try:
-                        print(f"[DEBUG] Downloading screenshot: {full_path}")
                         response_content = storage.download(full_path)
                         if not isinstance(response_content, bytes):
                             print(f"[ERROR] Failed download: {file_name}")
@@ -199,7 +196,6 @@ async def generate_sop_api(
                         with open(temp_path, "wb") as f: 
                             f.write(response_content)
                         screenshot_info.append((temp_path, file_name))
-                        print(f"[DEBUG] Saved temp screenshot: {temp_path}")
                         temp_files.append(temp_path)
                     except Exception as e:
                         print(f"[ERROR] Failed processing screenshot {file_name}: {str(e)}")
@@ -219,7 +215,6 @@ async def generate_sop_api(
                 if file_name and file_name.lower().endswith('.json') and file_name != '.emptyFolderPlaceholder':
                     json_path = f"{json_directory}/{file_name}"
                     json_file_name_to_process = file_name
-                    print(f"[DEBUG] JSON file selected: {json_path}")
                     break
 
         if not screenshot_info: 
@@ -230,12 +225,10 @@ async def generate_sop_api(
         # Create PDF
         pdf_temp_path = f"temp_{user_id}_{job_id}_generated.pdf"
         try:
-            print(f"[DEBUG] Creating PDF: {pdf_temp_path}")
             if not screenshot_info: 
                 raise ValueError("No screenshots for PDF")
             create_pdf_from_screenshots(screenshot_info, pdf_temp_path)
             temp_files.append(pdf_temp_path)
-            print(f"[DEBUG] PDF created")
         except Exception as e:
             print(f"[ERROR] Failed to create PDF: {str(e)}")
             raise HTTPException(status_code=500, detail=f"Failed to create PDF: {str(e)}")
@@ -246,17 +239,13 @@ async def generate_sop_api(
             short_json_filename = safe_json_filename[:50] + Path(safe_json_filename).suffix
             json_temp_path = f"temp_{user_id}_{job_id}_{short_json_filename}"
             
-            print(f"[DEBUG] Downloading event JSON: {json_path}")
             json_response = storage.download(json_path)
             if not isinstance(json_response, bytes):
-                print(f"[ERROR] Failed download event JSON: {json_file_name_to_process}")
                 raise HTTPException(status_code=500, detail="Failed to download event JSON data")
             with open(json_temp_path, "wb") as f: 
                 f.write(json_response)
             temp_files.append(json_temp_path)
-            print(f"[DEBUG] Saved temp event JSON: {json_temp_path}")
             event_data = await parse_json(json_temp_path)
-            print(f"[DEBUG] Parsed event data type: {type(event_data)}")
             if not event_data: 
                 raise HTTPException(status_code=400, detail="No valid event data parsed")
             if isinstance(event_data, list) and event_data and isinstance(event_data[0], dict) and "error" in event_data[0]:
@@ -268,28 +257,11 @@ async def generate_sop_api(
             raise HTTPException(status_code=500, detail=f"Event JSON processing failed: {str(e)}")
 
         jira_context = ""
-        # try:
-        #     print(f"[DEBUG] Fetching Jira issues for query: {query}")
-        #     relevant_issues = fetch_relevant_jira_issues(user_id, query, top_k=5)
-        #     if relevant_issues:
-        #         jira_context = "\n".join([
-        #             f"Issue: {issue.get('issue_id', 'N/A')}\nDetails: {issue.get('text_data', 'N/A')}" 
-        #             for issue in relevant_issues
-        #         ])
-        #     else: 
-        #         jira_context = "No relevant Jira issues found."
-        #     print(f"[DEBUG] Fetched Jira context")
-        # except Exception as e:
-        #     print(f"[WARNING] Error fetching Jira issues: {str(e)}")
-        #     jira_context = f"Error fetching Jira issues: {str(e)}"
 
         # --- Prepare and Invoke Workflow ---
         knowledge_base = f"### Jira Issues:\n{jira_context}\n"
-        print(f"[DEBUG] Prepared knowledge base")
-
         result = None
         try:
-            print(f"[DEBUG] Invoking workflow with component schema...")
             initial_state = SOPState(
                 KB=knowledge_base,
                 file_path=pdf_temp_path,
@@ -302,8 +274,6 @@ async def generate_sop_api(
                 contents=uploaded_file_content
             )
             result = await workflow.ainvoke(initial_state)
-            print(f"[DEBUG] SOP workflow completed")
-            print(f"[DEBUG] SOP result type: {type(result)}")
 
         except Exception as e:
             print(f"[ERROR] SOP workflow failed: {str(e)}")
@@ -330,7 +300,6 @@ async def generate_sop_api(
         raise HTTPException(status_code=500, detail=f"An unexpected error occurred: {str(e)}")
     finally:
         # --- Cleanup Temporary Files ---
-        print(f"[DEBUG] Cleaning up {len(temp_files)} temporary files...")
         cleaned_count = 0
         for temp_file in temp_files:
             try:
@@ -358,7 +327,6 @@ def convert_markdown(markdown_text: str = Form(...),
             raise HTTPException(status_code=400, detail="Unsupported format. Please use 'pdf' or 'docx'.")
         
         filename = filename or default_filename
-        # Wrap content in BytesIO for streaming
         file_stream = BytesIO(content)
         
         return StreamingResponse(
