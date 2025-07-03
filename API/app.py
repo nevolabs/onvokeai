@@ -13,7 +13,7 @@ from io import BytesIO
 
 # Assuming these local modules exist in your project structure
 from config.config import load_config, set_env
-from models.state_schema import SOPState 
+from models.state_schema import SOPState
 from parsers.json_parser import parse_json
 from workflow import create_workflow
 from utils.create_pdf import create_pdf_from_screenshots
@@ -94,7 +94,6 @@ def read_docx_file(file_content: bytes) -> str:
 
 @app.post("/generate_sop/")
 async def generate_sop_api(
-    # --- CHANGE 1: Made the file optional ---
     file: Optional[UploadFile] = File(None), 
     user_id: str = Form(...),
     job_id: str = Form(...),
@@ -103,18 +102,17 @@ async def generate_sop_api(
 ):
     """
     API endpoint to generate SOP using a component schema defined
-    in a user-specific template (from JSONB).
+    in a user-specific or public template.
     """
     temp_files = []
     screenshot_info = []
     full_component_schema: Optional[dict] = None
+    category_name: str = 'SOP'
     
-    # --- CHANGE 2: Initialize variables and handle the optional file ---
     uploaded_file_content = ""
     if file:
         contents = await file.read()
         file_extension = Path(file.filename).suffix.lower()
-        # Process uploaded file content based on file type
         if file_extension in ['.xlsx', '.xls']:
             uploaded_file_content = read_excel_file(contents)
         elif file_extension == '.pdf':
@@ -127,25 +125,37 @@ async def generate_sop_api(
     try:
         print(f"[DEBUG] Starting SOP generation for user_id={user_id}, job_id={job_id}, template_id='{templates_id}'")
 
-        # --- Fetch Template Components Schema from Supabase ---
+        # --- EXTENDED LOGIC: Fetch Template from private or public table ---
         try:
-            print(f"[DEBUG] Fetching template components schema for template_id={templates_id}, user_id={user_id}")
-
+            print(f"[DEBUG] 1. Attempting to fetch from user's private 'templates' table for template_id={templates_id}")
             response = supabase.table('templates') \
-                             .select('components','name') \
-                             .eq('id', templates_id) \
-                             .eq('user_id', user_id) \
-                             .maybe_single() \
-                             .execute()
-
-            print(f"[DEBUG] Supabase template query response data: {response.data}")
+                               .select('components, name') \
+                               .eq('id', templates_id) \
+                               .eq('user_id', user_id) \
+                               .maybe_single() \
+                               .execute()
 
             if response.data and 'components' in response.data:
+                print("[INFO] Found template in user's private table.")
                 full_component_schema = response.data['components']
                 category_name = response.data.get('name', 'SOP')
             else:
-                print(f"[ERROR] No components found for template_id={templates_id}")
-                raise HTTPException(status_code=404, detail="Template not found or no components available")
+                # --- If not found, check the public templates table ---
+                print(f"[INFO] Template not found in private table. Checking 'publictemplates' table.")
+                public_response = supabase.table('publictemplates') \
+                                          .select('components, name') \
+                                          .eq('id', templates_id) \
+                                          .maybe_single() \
+                                          .execute()
+                
+                if public_response.data and 'components' in public_response.data:
+                    print("[INFO] Found template in public table.")
+                    full_component_schema = public_response.data['components']
+                    category_name = public_response.data.get('name', 'SOP')
+                else:
+                    # --- If not found in either table, raise an error ---
+                    print(f"[ERROR] No components found for template_id={templates_id} in private or public tables.")
+                    raise HTTPException(status_code=404, detail="Template not found or no components available")
 
         except HTTPException as he:
             raise he
@@ -174,7 +184,6 @@ async def generate_sop_api(
 
         # Process screenshots
         if screenshot_files:
-            # Changed loop variable to 'screenshot_file' to avoid conflict with the main 'file' parameter
             for screenshot_file in screenshot_files:
                 file_name = screenshot_file.get('name')
                 if file_name and file_name.lower().endswith(('.png', '.jpg', '.jpeg')) and file_name != '.emptyFolderPlaceholder':
@@ -205,7 +214,6 @@ async def generate_sop_api(
         json_path = None
         json_file_name_to_process = None
         if json_files:
-            # Changed loop variable to 'json_file_obj' to avoid conflict
             for json_file_obj in json_files:
                 file_name = json_file_obj.get('name')
                 if file_name and file_name.lower().endswith('.json') and file_name != '.emptyFolderPlaceholder':
@@ -259,7 +267,6 @@ async def generate_sop_api(
             print(f"[ERROR] Event JSON processing failed: {str(e)}")
             raise HTTPException(status_code=500, detail=f"Event JSON processing failed: {str(e)}")
 
-        # --- CHANGE 3: Re-inserted commented Jira logic ---
         jira_context = ""
         # try:
         #     print(f"[DEBUG] Fetching Jira issues for query: {query}")
@@ -310,7 +317,6 @@ async def generate_sop_api(
                 "user_id": user_id,
                 "job_id": job_id,
                 "template_id": templates_id,
-                # --- CHANGE 4: Conditionally count the uploaded file ---
                 "files_processed": len(screenshot_info) + (1 if file else 0),
                 "components_schema_used": full_component_schema
             }
