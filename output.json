@@ -1,127 +1,203 @@
 {
   "Conclusion": {
     "paragraphs": [
-      "This document explained how to create a purchase order, approve it, and receive merchandise against it. Following these steps ensures accurate inventory management and streamlined procurement processes."
+      "This document explained the process of creating a technical document."
     ]
   },
   "Introduction": {
     "paragraphs": [
-      "This document outlines the process of creating, approving, and receiving merchandise against a Purchase Order (PO) within the retailcloud console. It is intended for inventory managers, purchasing agents, and other personnel responsible for procurement and inventory control.",
-      "By following the steps outlined in this document, users will be able to efficiently manage their purchase orders and ensure accurate inventory levels."
+      "This document outlines the steps to create a technical document within the retailcloud console. It is intended for users who need to generate documentation for various processes within the system.",
+      "This guide will walk you through the process of creating a technical document, from initial setup to final approval and sending to the vendor."
     ],
     "outcomes": [
-      "Create a new Purchase Order.",
-      "Approve a Purchase Order.",
-      "Receive merchandise against a Purchase Order."
+      "Understand the steps involved in creating a technical document.",
+      "Learn how to navigate the retailcloud console to create a technical document.",
+      "Familiarize yourself with the different options and settings available during the creation process."
     ]
   },
   "Steps / How-To": [
     {
-      "explanation": "Navigate to the Purchase Orders section.",
-      "step": "In the left navigation sidebar, click on 'Inventory', then click on 'Purchase Orders'."
+      "explanation": "Navigate to the Inventory section.",
+      "step": "Click on \"Inventory\" in the left navigation sidebar."
+    },
+    {
+      "explanation": "Access the Purchase Orders section.",
+      "step": "Click on \"Purchase Orders\" under the Inventory section in the left navigation sidebar."
     },
     {
       "explanation": "Initiate the creation of a new purchase order.",
-      "step": "Click the 'Create PO' button."
+      "step": "Click the \"Create PO\" button."
     },
     {
-      "explanation": "Select a vendor for the purchase order.",
-      "step": "Click the 'Vendor Code' input field and select a vendor from the dropdown list."
+      "explanation": "Click on the Vendor Code input field to select a vendor.",
+      "step": "Click the Vendor Code input field."
+    },
+    {
+      "explanation": "Select a vendor from the dropdown list.",
+      "step": "Choose a vendor from the dropdown list, for example, \"Cosmetics\"."
+    },
+    {
+      "explanation": "Click on the Phone input field to enter the vendor's phone number.",
+      "step": "Click the \"Phone\" input field."
     },
     {
       "explanation": "Enter the vendor's phone number.",
-      "step": "Click the 'Phone' input field and enter the vendor's phone number."
+      "step": "Enter the vendor's phone number in the \"Phone\" input field, for example, \"09207917777\"."
     },
     {
       "explanation": "Enter the vendor's address.",
-      "step": "Click the 'Vendor Address' textarea and enter the vendor's address."
+      "step": "Enter the vendor's address in the \"vendorAddress\" textarea."
     },
     {
-      "explanation": "Select the date for vendor ship.",
-      "step": "Click the 'Select a date' button next to the 'Vendor Ship By Date' field, then select a date from the calendar and click 'Ok'."
+      "explanation": "Click on the calendar icon to select a date.",
+      "step": "Click the calendar icon next to the PO Due Date field."
     },
     {
-      "explanation": "Select the date for PO expiration.",
-      "step": "Click the 'Select a date' button next to the 'PO Expiration Date' field, then select a date from the calendar and click 'Ok'."
+      "explanation": "Select a date from the calendar.",
+      "step": "Choose a date from the calendar interface, for example, the 3rd of the month."
     },
     {
-      "explanation": "Select the location.",
-      "step": "Click the 'Location' input field and select a location from the dropdown list."
+      "explanation": "Confirm the selected date.",
+      "step": "Click the \"Ok\" button to confirm the selected date."
+    },
+    {
+      "explanation": "Click on the Vendor Terms textarea to enter the vendor's terms.",
+      "step": "Click the \"vendorTerms\" textarea."
+    },
+    {
+      "explanation": "Enter the vendor's terms.",
+      "step": "Enter the vendor's terms in the \"vendorTerms\" textarea, for example, \"Ship within 2 weeks\"."
+    },
+    {
+      "explanation": "Click on the calendar icon to select a date.",
+      "step": "Click the calendar icon next to the Vendor Ship By Date field."
+    },
+    {
+      "explanation": "Select a date from the calendar.",
+      "step": "Choose a date from the calendar interface, for example, the 3rd of the month."
+    },
+    {
+      "explanation": "Confirm the selected date.",
+      "step": "Click the \"Ok\" button to confirm the selected date."
+    },
+    {
+      "explanation": "Click on the calendar icon to select a date.",
+      "step": "Click the calendar icon next to the PO Expiration Date field."
+    },
+    {
+      "explanation": "Select a date from the calendar.",
+      "step": "Choose a date from the calendar interface, for example, the 17th of the month."
+    },
+    {
+      "explanation": "Confirm the selected date.",
+      "step": "Click the \"Ok\" button to confirm the selected date."
+    },
+    {
+      "explanation": "Click on the Location input field to select a location.",
+      "step": "Click the Location input field."
+    },
+    {
+      "explanation": "Select a location from the dropdown list.",
+      "step": "Choose a location from the dropdown list, for example, \"Kerala\"."
+    },
+    {
+      "explanation": "Click on the Location input field to select a store.",
+      "step": "Click the Location input field."
+    },
+    {
+      "explanation": "Select a store from the dropdown list.",
+      "step": "Choose a store from the dropdown list, for example, \"Kollam Store\"."
+    },
+    {
+      "explanation": "Click on the PO Terms input field to select PO Terms.",
+      "step": "Click the PO Terms input field."
     },
     {
       "explanation": "Enter the shipping address.",
-      "step": "Click the 'Shipping Address' textarea and enter the shipping address."
+      "step": "Enter the shipping address in the \"shippingAddress\" textarea."
     },
     {
-      "explanation": "Select the shipping terms.",
-      "step": "Click the 'Ship all the Items to the...' input field and select the shipping terms from the dropdown list."
+      "explanation": "Click on the Shipping Comments input field to select shipping comments.",
+      "step": "Click the Shipping Comments input field."
     },
     {
-      "explanation": "Select the freight terms.",
-      "step": "Click the 'Freight only' input field and select the freight terms from the dropdown list."
+      "explanation": "Select shipping comments from the dropdown list.",
+      "step": "Choose shipping comments from the dropdown list, for example, \"Ship all the Items to the Kerala Warehouse\"."
     },
     {
-      "explanation": "Open the item lookup to add items to the PO.",
-      "step": "Click the 'Item Lookup' button."
+      "explanation": "Click on the Freight input field to select freight charges.",
+      "step": "Click the Freight input field."
     },
     {
-      "explanation": "Select the items to add to the PO.",
-      "step": "In the item lookup grid, select the checkboxes next to the items you want to add."
+      "explanation": "Select freight charges from the dropdown list.",
+      "step": "Choose freight charges from the dropdown list, for example, \"Freight only\"."
     },
     {
-      "explanation": "Confirm the item selection.",
-      "step": "Click the 'Select Items' button."
+      "explanation": "Click the \"Item Lookup\" button to add items to the purchase order.",
+      "step": "Click the \"Item Lookup\" button."
+    },
+    {
+      "explanation": "Select items from the item lookup grid.",
+      "step": "Select the checkboxes next to the items you want to add to the purchase order."
+    },
+    {
+      "explanation": "Click the \"Select Items\" button to add the selected items to the purchase order.",
+      "step": "Click the \"Select Items\" button."
     },
     {
       "explanation": "Enter the quantity of the item.",
-      "step": "Click the quantity input field and enter the quantity of the item."
+      "step": "Enter the quantity of the item in the QTY field, for example, \"100\"."
     },
     {
-      "explanation": "Click the save button.",
-      "step": "Click the save button."
+      "explanation": "Click the \"Save\" button to save the purchase order.",
+      "step": "Click the \"Save\" button."
     },
     {
-      "explanation": "Approve the purchase order.",
-      "step": "Click the 'Approve' button."
+      "explanation": "Click the \"Approve\" button to approve the purchase order.",
+      "step": "Click the \"Approve\" button."
     },
     {
-      "explanation": "Enter the PO approval notes.",
-      "step": "Click the 'PO approval notes' textarea and enter the approval notes."
+      "explanation": "Enter approval notes.",
+      "step": "Enter approval notes in the \"PO approval notes\" textarea, for example, \"Approving Purchase Order\"."
     },
     {
-      "explanation": "Click the approve button.",
-      "step": "Click the 'APPROVE' button."
+      "explanation": "Click the \"APPROVE\" button to confirm the approval.",
+      "step": "Click the \"APPROVE\" button."
     },
     {
-      "explanation": "Send the purchase order to the vendor.",
-      "step": "Click the 'Send To Vendor' button."
+      "explanation": "Click the \"Send To Vendor\" button to send the purchase order to the vendor.",
+      "step": "Click the \"Send To Vendor\" button."
     },
     {
       "explanation": "Navigate to the Merchandise Receiving section.",
-      "step": "In the left navigation sidebar, click on 'Inventory', then click on 'Merchandise Receiving'."
+      "step": "Click on \"Merchandise Receiving\" under the Inventory section in the left navigation sidebar."
     },
     {
       "explanation": "Initiate the receiving of merchandise.",
-      "step": "Click the 'Receive Merchandise' button."
+      "step": "Click the \"Receive Merchandise\" button."
     },
     {
-      "explanation": "Select the vendor.",
-      "step": "Click the 'Vendor' input field and select the vendor from the dropdown list."
+      "explanation": "Select a vendor.",
+      "step": "Select a vendor from the dropdown list, for example, \"Cosmetics Vendor\"."
     },
     {
-      "explanation": "Select the PO.",
-      "step": "Click the 'PO #' input field and select the PO from the dropdown list."
+      "explanation": "Check the \"purchase order\" checkbox.",
+      "step": "Check the \"purchase order\" checkbox."
     },
     {
-      "explanation": "Enter the quantity received.",
-      "step": "Click the quantity input field and enter the quantity received."
+      "explanation": "Select a PO.",
+      "step": "Select a PO from the dropdown list, for example, \"2025/6/2/38\"."
     },
     {
-      "explanation": "Click the receive button.",
-      "step": "Click the 'RECEIVE' button."
+      "explanation": "Enter the quantity of the item received.",
+      "step": "Enter the quantity of the item received in the QTY Received field, for example, \"95\"."
+    },
+    {
+      "explanation": "Click the \"RECEIVE\" button to receive the merchandise.",
+      "step": "Click the \"RECEIVE\" button."
     }
   ],
-  "Title": "Creating, Approving, and Receiving Purchase Orders",
-  "docTitle": "Purchase Order Management",
-  "shortDescription": "A guide to creating, approving, and receiving merchandise against Purchase Orders."
+  "Title": "Creating a Technical Document",
+  "docTitle": "Technical Document Creation Guide",
+  "shortDescription": "Step-by-step instructions for creating a technical document."
 }
