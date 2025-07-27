@@ -69,7 +69,10 @@ class ServiceManager:
                 raise ValueError("GOOGLE_API_KEY not found in environment variables")
             
             genai.configure(api_key=api_key)
-            self._genai_model = genai.GenerativeModel("gemini-2.0-flash")
+            model = os.getenv("GENAI_MODEL", "gemini-2.0-flash")
+            logger.info(f"Using GenAI model: {model}")
+            # Initialize the GenAI model with the specified model name
+            self._genai_model = genai.GenerativeModel(model)
             logger.info(f"Initialized GenAI model: {self._genai_model._model_name}")
         except Exception as e:
             logger.error(f"Failed to initialize GenAI: {e}")

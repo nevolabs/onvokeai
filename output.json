@@ -1,183 +1,246 @@
 {
   "Conclusion": {
     "paragraphs": [
-      "This document explained the process of creating a technical document."
+      "This document provided a detailed walkthrough on creating a purchase order, approving it, and receiving merchandise against it.",
+      "By following these steps, you can efficiently manage your inventory and ensure accurate stock levels."
     ]
   },
+  "FAQ": [
+    {
+      "answer": "To modify a Purchase Order, navigate to the 'Purchase Orders' section under 'Inventory' in the left navigation sidebar, select the desired PO, and click the 'Edit' button.",
+      "question": "How do I modify a Purchase Order?"
+    },
+    {
+      "answer": "You can view a list of all Purchase Orders by navigating to the 'Purchase Orders' section under 'Inventory' in the left navigation sidebar.",
+      "question": "How do I view a list of all Purchase Orders?"
+    },
+    {
+      "answer": "To receive merchandise, navigate to the 'Merchandise Receiving' section under 'Inventory' in the left navigation sidebar and create a new receiving document.",
+      "question": "How do I receive merchandise against a Purchase Order?"
+    }
+  ],
   "Introduction": {
     "paragraphs": [
-      "This document outlines the steps to create a technical document within the system. It is intended for users who need to generate documentation for various purposes.",
-      "This guide provides a step-by-step approach to creating a technical document, ensuring clarity and accuracy in your documentation process."
+      "This document outlines the process of creating a Purchase Order (PO), approving the PO, and receiving merchandise against the created PO within the system. Purchase Orders are used to manage and track inventory procurement.",
+      "This guide is intended for users responsible for inventory management, procurement, and receiving within the organization."
     ],
     "outcomes": [
-      "Understand the process of creating a technical document.",
-      "Learn how to navigate the interface to create a technical document.",
-      "Familiarize yourself with the different options and settings available for creating a technical document."
+      "Create a new Purchase Order.",
+      "Approve a Purchase Order.",
+      "Receive merchandise against a Purchase Order."
+    ],
+    "prerequisites": [
+      "User must have appropriate roles and permissions to access the Inventory and Purchase Order modules."
     ]
   },
   "Steps / How-To": [
     {
-      "explanation": "Navigate to the Inventory section.",
-      "step": "Click on the \"Inventory\" option in the left navigation sidebar."
+      "explanation": "Navigate to the Purchase Orders section to begin the PO creation process.",
+      "step": "In the left navigation sidebar, click on 'Inventory'.",
+      "screenshotRef": "screenshot_0_1751385883148.png"
     },
     {
-      "explanation": "Access the Purchase Orders section.",
-      "step": "Click on the \"Purchase Orders\" option under the Inventory section in the left navigation sidebar."
+      "explanation": "Access the Purchase Orders list.",
+      "step": "Click on 'Purchase Orders' under the 'Inventory' section.",
+      "screenshotRef": "screenshot_1_1751385883148.png"
     },
     {
       "explanation": "Initiate the creation of a new Purchase Order.",
-      "step": "Click the \"Create PO\" button."
+      "step": "Click the 'Create PO' button.",
+      "screenshotRef": "screenshot_2_1751385883148.png"
     },
     {
-      "explanation": "Click on the Vendor Code input field to select a vendor.",
-      "step": "Click on the \"Vendor Code\" input field."
+      "explanation": "Select a vendor for the Purchase Order.",
+      "step": "Click on the 'Vendor Code' input field.",
+      "screenshotRef": "screenshot_3_1751385883148.png"
     },
     {
-      "explanation": "Select a vendor from the dropdown list.",
-      "step": "Choose a vendor from the dropdown list, for example, \"Cosmetics\"."
-    },
-    {
-      "explanation": "Click on the Phone input field to enter the vendor's phone number.",
-      "step": "Click on the \"Phone\" input field."
+      "explanation": "Choose the appropriate vendor from the dropdown list.",
+      "step": "Select a vendor from the dropdown list, for example, 'Cosmetics'.",
+      "screenshotRef": "screenshot_5_1751385883148.png"
     },
     {
       "explanation": "Enter the vendor's phone number.",
-      "step": "Enter the vendor's phone number, for example, \"09207917777\"."
+      "step": "Enter a phone number in the 'Phone' input field.",
+      "screenshotRef": "screenshot_6_1751385883148.png"
     },
     {
-      "explanation": "Enter the vendor's address in the Vendor Address field.",
-      "step": "Enter the vendor's address in the \"Vendor Address\" textarea."
+      "explanation": "Enter the vendor's address.",
+      "step": "Enter the vendor's address in the 'Vendor Address' textarea.",
+      "screenshotRef": "screenshot_8_1751385883148.png"
     },
     {
-      "explanation": "Click on the calendar icon to select a PO Due Date.",
-      "step": "Click the calendar icon next to the \"PO Due Date\" field."
+      "explanation": "Select the date for the PO.",
+      "step": "Click the calendar icon next to the 'PO Due Date' field.",
+      "screenshotRef": "screenshot_11_1751385883148.png"
     },
     {
-      "explanation": "Select a date from the calendar.",
-      "step": "Choose a date from the calendar interface, for example, the \"3rd\"."
+      "explanation": "Choose a date from the calendar.",
+      "step": "Select a date from the calendar and click 'Ok'.",
+      "screenshotRef": "screenshot_12_1751385883148.png"
     },
     {
-      "explanation": "Confirm the date selection.",
-      "step": "Click the \"Ok\" button to confirm the selected date."
+      "explanation": "Enter any specific terms for the vendor.",
+      "step": "Enter the vendor terms in the 'Vendor Terms' textarea, for example, 'Ship within 2 weeks'.",
+      "screenshotRef": "screenshot_14_1751385883148.png"
     },
     {
-      "explanation": "Enter the vendor's terms in the Vendor Terms field.",
-      "step": "Enter the vendor's terms in the \"Vendor Terms\" textarea, for example, \"Ship within 2 weeks\"."
+      "explanation": "Select the date for vendor ship.",
+      "step": "Click the calendar icon next to the 'Vendor Ship By Date' field.",
+      "screenshotRef": "screenshot_35_1751385883148.png"
     },
     {
-      "explanation": "Click on the calendar icon to select a Vendor Ship By Date.",
-      "step": "Click the calendar icon next to the \"Vendor Ship By Date\" field."
+      "explanation": "Choose a date from the calendar.",
+      "step": "Select a date from the calendar and click 'Ok'.",
+      "screenshotRef": "screenshot_36_1751385883148.png"
     },
     {
-      "explanation": "Select a date from the calendar.",
-      "step": "Choose a date from the calendar interface, for example, the \"3rd\"."
+      "explanation": "Select the date for PO expiration.",
+      "step": "Click the calendar icon next to the 'PO Expiration Date' field.",
+      "screenshotRef": "screenshot_38_1751385883148.png"
     },
     {
-      "explanation": "Confirm the date selection.",
-      "step": "Click the \"Ok\" button to confirm the selected date."
+      "explanation": "Choose a date from the calendar.",
+      "step": "Select a date from the calendar and click 'Ok'.",
+      "screenshotRef": "screenshot_39_1751385883148.png"
     },
     {
-      "explanation": "Click on the Location input field to select a location.",
-      "step": "Click the \"Location\" input field."
+      "explanation": "Select the location for the PO.",
+      "step": "Click on the 'Location' input field.",
+      "screenshotRef": "screenshot_41_1751385883148.png"
     },
     {
-      "explanation": "Select a location from the dropdown list.",
-      "step": "Choose a location from the dropdown list, for example, \"Kerala\"."
+      "explanation": "Choose the appropriate location from the dropdown list.",
+      "step": "Select a location from the dropdown list, for example, 'Kerala'.",
+      "screenshotRef": "screenshot_42_1751385883148.png"
     },
     {
-      "explanation": "Click on the Venue input field to select a venue.",
-      "step": "Click the \"Venue\" input field."
+      "explanation": "Select the store for the PO.",
+      "step": "Click on the 'Location' input field.",
+      "screenshotRef": "screenshot_43_1751385883148.png"
     },
     {
-      "explanation": "Select a venue from the dropdown list.",
-      "step": "Choose a venue from the dropdown list, for example, \"Kollam Store\"."
+      "explanation": "Choose the appropriate store from the dropdown list.",
+      "step": "Select a store from the dropdown list, for example, 'Kollam Store'.",
+      "screenshotRef": "screenshot_44_1751385883148.png"
     },
     {
-      "explanation": "Click on the PO Terms input field to select PO Terms.",
-      "step": "Click the \"PO Terms\" input field."
+      "explanation": "Select the PO terms.",
+      "step": "Click on the 'PO Terms' input field.",
+      "screenshotRef": "screenshot_45_1751385883148.png"
     },
     {
-      "explanation": "Enter the shipping address in the Shipping Address field.",
-      "step": "Enter the shipping address in the \"Shipping Address\" textarea."
+      "explanation": "Enter the shipping address.",
+      "step": "Enter the shipping address in the 'Shipping Address' textarea.",
+      "screenshotRef": "screenshot_47_1751385883148.png"
     },
     {
-      "explanation": "Click on the dropdown to select shipping options.",
-      "step": "Click the dropdown to select shipping options, for example, \"Ship all the Items to the Kerala Warehouse\"."
+      "explanation": "Select the shipping comments.",
+      "step": "Click on the 'Shipping Comments' input field.",
+      "screenshotRef": "screenshot_50_1751385883148.png"
     },
     {
-      "explanation": "Click on the Freight only input field to select freight options.",
-      "step": "Click the \"Freight only\" input field."
+      "explanation": "Choose the appropriate shipping comments from the dropdown list.",
+      "step": "Select shipping comments from the dropdown list, for example, 'Ship all the Items to the Kerala Warehouse'.",
+      "screenshotRef": "screenshot_51_1751385883148.png"
     },
     {
-      "explanation": "Select a freight option from the dropdown list.",
-      "step": "Choose a freight option from the dropdown list, for example, \"Freight only\"."
+      "explanation": "Select the freight terms.",
+      "step": "Click on the 'Freight Terms' input field.",
+      "screenshotRef": "screenshot_52_1751385883148.png"
     },
     {
-      "explanation": "Click the \"Item Lookup\" button to add items to the purchase order.",
-      "step": "Click the \"Item Lookup\" button."
+      "explanation": "Choose the appropriate freight terms from the dropdown list.",
+      "step": "Select freight terms from the dropdown list, for example, 'Freight only'.",
+      "screenshotRef": "screenshot_53_1751385883148.png"
     },
     {
-      "explanation": "Select the items to be added to the purchase order.",
-      "step": "Select the checkbox next to the desired items."
+      "explanation": "Open the item lookup to add items to the PO.",
+      "step": "Click the 'Item Lookup' button.",
+      "screenshotRef": "screenshot_54_1751385883148.png"
     },
     {
-      "explanation": "Click the \"Select Items\" button to add the selected items.",
-      "step": "Click the \"Select Items\" button."
+      "explanation": "Select items from the item lookup.",
+      "step": "Select the checkbox next to the desired items.",
+      "screenshotRef": "screenshot_55_1751385883148.png"
     },
     {
-      "explanation": "Enter the quantity of the item to be ordered.",
-      "step": "Enter the quantity in the \"QTY\" field."
+      "explanation": "Select the items.",
+      "step": "Click the 'Select Items' button.",
+      "screenshotRef": "screenshot_61_1751385883148.png"
     },
     {
-      "explanation": "Click the \"Save\" button to save the purchase order.",
-      "step": "Click the \"Save\" button."
+      "explanation": "Enter the quantity of the item.",
+      "step": "Enter the quantity in the 'QTY Received' input field.",
+      "screenshotRef": "screenshot_62_1751385883148.png"
     },
     {
-      "explanation": "Click the \"Approve\" button to approve the purchase order.",
-      "step": "Click the \"Approve\" button."
+      "explanation": "Approve the Purchase Order.",
+      "step": "Click the 'Approve' button.",
+      "screenshotRef": "screenshot_74_1751385883148.png"
     },
     {
-      "explanation": "Enter approval notes in the PO approval notes field.",
-      "step": "Enter approval notes in the \"PO approval notes\" textarea, for example, \"Approving Purchase Order\"."
+      "explanation": "Enter PO approval notes.",
+      "step": "Enter notes in the 'PO approval notes' textarea.",
+      "screenshotRef": "screenshot_75_1751385883148.png"
     },
     {
-      "explanation": "Click the \"APPROVE\" button to finalize the approval.",
-      "step": "Click the \"APPROVE\" button."
+      "explanation": "Confirm the approval.",
+      "step": "Click the 'APPROVE' button.",
+      "screenshotRef": "screenshot_101_1751385883148.png"
     },
     {
-      "explanation": "Click the \"Send To Vendor\" button to send the purchase order to the vendor.",
-      "step": "Click the \"Send To Vendor\" button."
+      "explanation": "Send the Purchase Order to the vendor.",
+      "step": "Click the 'Send To Vendor' button.",
+      "screenshotRef": "screenshot_102_1751385883148.png"
     },
     {
       "explanation": "Navigate to the Merchandise Receiving section.",
-      "step": "Click on the \"Merchandise Receiving\" option under the Inventory section in the left navigation sidebar."
+      "step": "Click on 'Merchandise Receiving' under the 'Inventory' section.",
+      "screenshotRef": "screenshot_104_1751385883148.png"
     },
     {
-      "explanation": "Initiate the receiving of merchandise.",
-      "step": "Click the \"Receive Merchandise\" button."
+      "explanation": "Initiate the receiving process.",
+      "step": "Click the 'Receive Merchandise' button.",
+      "screenshotRef": "screenshot_105_1751385883148.png"
     },
     {
-      "explanation": "Select a vendor from the dropdown list.",
-      "step": "Choose a vendor from the dropdown list, for example, \"Cosmetics Vendor\"."
+      "explanation": "Select the vendor.",
+      "step": "Click on the 'Vendor' input field.",
+      "screenshotRef": "screenshot_106_1751385883148.png"
     },
     {
-      "explanation": "Check the \"purchase order\" checkbox.",
-      "step": "Check the \"purchase order\" checkbox."
+      "explanation": "Choose the appropriate vendor from the dropdown list.",
+      "step": "Select a vendor from the dropdown list, for example, 'Cosmetics Vendor'.",
+      "screenshotRef": "screenshot_107_1751385883148.png"
     },
     {
-      "explanation": "Select a PO from the dropdown list.",
-      "step": "Choose a PO from the dropdown list, for example, \"2025/6/2/38\"."
+      "explanation": "Select the PO.",
+      "step": "Click on the 'PO #' input field.",
+      "screenshotRef": "screenshot_111_1751385883148.png"
     },
     {
-      "explanation": "Enter the quantity of the item to be received.",
-      "step": "Enter the quantity in the \"QTY Received\" field."
+      "explanation": "Choose the appropriate PO from the dropdown list.",
+      "step": "Select a PO from the dropdown list, for example, '2025/6/2/38'.",
+      "screenshotRef": "screenshot_112_1751385883148.png"
     },
     {
-      "explanation": "Click the \"RECEIVE\" button to finalize the receiving of merchandise.",
-      "step": "Click the \"RECEIVE\" button."
+      "explanation": "Enter the quantity received.",
+      "step": "Enter the quantity in the quantity input field.",
+      "screenshotRef": "screenshot_113_1751385883148.png"
+    },
+    {
+      "explanation": "Save the merchandise receiving document.",
+      "step": "Click the 'Save' button.",
+      "screenshotRef": "screenshot_126_1751385883148.png"
+    },
+    {
+      "explanation": "Confirm the receiving.",
+      "step": "Click the 'RECEIVE' button.",
+      "screenshotRef": "screenshot_127_1751385883148.png"
     }
   ],
-  "Title": "Creating a Technical Document",
-  "docTitle": "How to Create a Technical Document",
-  "shortDescription": "Step-by-step guide on creating a technical document."
+  "Title": "Creating, Approving, and Receiving Purchase Orders",
+  "docTitle": "How to Create, Approve, and Receive Purchase Orders",
+  "shortDescription": "Step-by-step guide on creating, approving, and receiving purchase orders within the system."
 }

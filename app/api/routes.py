@@ -70,9 +70,10 @@ async def generate_sop_api(
                              .maybe_single() \
                              .execute()
 
-            logger.debug(f"Supabase template query response data: {response.data}")
+            logger.debug(f"Supabase template query response: {response}")
+            logger.debug(f"Supabase template query response data: {getattr(response, 'data', None)}")
 
-            if response.data and 'components' in response.data:
+            if response and hasattr(response, 'data') and response.data and 'components' in response.data:
                 full_component_schema = response.data['components']
                 category_name = response.data.get('name', 'SOP')
             else:
@@ -84,9 +85,10 @@ async def generate_sop_api(
                                           .maybe_single() \
                                           .execute()
                 
-                logger.debug(f"Supabase public template query response data: {public_response.data}")
+                logger.debug(f"Supabase public template query response: {public_response}")
+                logger.debug(f"Supabase public template query response data: {getattr(public_response, 'data', None)}")
                 
-                if public_response.data and 'components' in public_response.data:
+                if public_response and hasattr(public_response, 'data') and public_response.data and 'components' in public_response.data:
                     full_component_schema = public_response.data['components']
                     category_name = public_response.data.get('name', 'SOP')
                     logger.info(f"Template found in publictemplates table for template_id={templates_id}")
