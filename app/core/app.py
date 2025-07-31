@@ -17,10 +17,16 @@ def create_app() -> FastAPI:
         version="1.0.0"
     )
     
-    # Add CORS middleware to allow all origins
+    # Define the list of allowed origins
+    origins = [
+        "https://dashboard.onvoke.app",
+        "http://localhost:5173",
+    ]
+
+    # Add CORS middleware with specific origins
     app.add_middleware(
         CORSMiddleware,
-        allow_origins=["*"],  # Allows all origins
+        allow_origins=origins,  # Use the specific list of origins
         allow_credentials=True,
         allow_methods=["*"],  # Allows all methods
         allow_headers=["*"],  # Allows all headers
