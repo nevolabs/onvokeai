@@ -24,6 +24,9 @@ from app.services.file_services.file_readers import read_excel_file, read_pdf_fi
 from app.core.database import get_supabase_client
 from app.config.logging import get_logger
 from app.utils.download_screenshot import download_screenshot
+
+
+from langchain_google_genai import ChatGoogleGenerativeAI
 # Initialize logger
 logger = get_logger(__name__)
 
@@ -306,6 +309,72 @@ async def generate_sop_api(
             except Exception as e:
                 logger.warning(f"Temp file cleanup failed for {temp_file}: {str(e)}")
         logger.debug(f"Cleanup finished. Removed {cleaned_count} files.")
+        
+@router.post("/rephrase")
+async def rephrase_markdown(
+    query: str = Form(...),
+    markdown_text: str = Form(...),
+    text_to_update: str = Form(...),
+    job_id: Optional[str] = Form(None)
+):
+    """
+    API endpoint to rephrase a specific section of a markdown string using Google Gemini via LangChain,
+    based on the user query, returning only the updated section and job_id.
+    """
+    try:
+        logger.debug(f"Rephrasing markdown section for job_id={job_id if job_id else 'None'}")
+
+        # Validate inputs
+        if not markdown_text or not text_to_update or not query:
+            raise HTTPException(status_code=400, detail="Query, markdown text, and section to update are required")
+        
+        # Check if text_to_update exists in markdown_text
+        if text_to_update not in markdown_text:
+            raise HTTPException(status_code=400, detail="Specified section not found in the markdown text")
+
+        # Initialize Google Gemini model
+        try:
+            gemini_model = ChatGoogleGenerativeAI(
+                model="gemini-2.0-flash",  # Updated to a valid model name
+                google_api_key=os.getenv("GOOGLE_API_KEY"),
+                temperature=0,
+            )
+        except Exception as e:
+            logger.error(f"Failed to initialize Google Gemini model: {str(e)}")
+            raise HTTPException(status_code=500, detail=f"Model initialization failed: {str(e)}")
+
+        # Create LangChain prompt
+        prompt = rephrase_prompt_template.format(
+            query=query,
+            markdown_text=markdown_text,
+            text_to_update=text_to_update
+        )
+
+        # Invoke Google Gemini model
+        try:
+            response = gemini_model.invoke(prompt)
+            rephrased_section = response.content if hasattr(response, 'content') else str(response)
+            logger.debug(f"Rephrasing successful for job_id={job_id if job_id else 'None'}")
+        except Exception as e:
+            logger.error(f"Failed to rephrase with Gemini: {str(e)}")
+            raise HTTPException(status_code=500, detail=f"Rephrasing failed: {str(e)}")
+
+        # Log the rephrase action if job_id is provided
+        if job_id:
+            logger.info(f"Section rephrased for job_id={job_id}, original section: {text_to_update[:50]}...")
+
+        return {
+            "rephrased_section": rephrased_section,
+            "job_id": job_id
+        }
+
+    except HTTPException as he:
+        logger.error(f"HTTP Error - Status: {he.status_code}, Detail: {he.detail}")
+        raise he
+    except Exception as e:
+        logger.error(f"Unexpected error in rephrase: {str(e)}")
+        raise HTTPException(status_code=500, detail=f"An unexpected error occurred: {str(e)}")
+
 
 
 @router.post("/download")
