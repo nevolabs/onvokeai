@@ -27,6 +27,18 @@ def create_markdown(article_dict: dict, user_id: str, job_id: str):
         markdown_lines.append(f"## {subtitle}")
         add_empty_line()
 
+    # Table of Contents (array of objects)
+    toc_items = article_dict.get('table_of_contents')
+    if toc_items and isinstance(toc_items, list):
+        markdown_lines.append("## Table of Contents")
+        add_empty_line()
+        for item in toc_items:
+            if isinstance(item, dict):
+                text = item.get('text', '').strip()
+                if text:
+                    markdown_lines.append(f"- {text}")
+        add_empty_line()
+
     # Introduction (object)
     introduction = article_dict.get('introduction')
     if introduction and isinstance(introduction, dict):
@@ -71,17 +83,20 @@ def create_markdown(article_dict: dict, user_id: str, job_id: str):
                 markdown_lines.append(f"- {feature.strip()}")
         add_empty_line()
 
-    # Table of Contents (array of objects)
-    toc_items = article_dict.get('table_of_contents')
-    if toc_items and isinstance(toc_items, list):
-        markdown_lines.append("## Table of Contents")
+    # Process Maps (array of objects)
+    process_maps = article_dict.get('process_maps')
+    if process_maps and isinstance(process_maps, list):
+        markdown_lines.append("## Process Map")
         add_empty_line()
-        for item in toc_items:
-            if isinstance(item, dict):
-                text = item.get('text', '').strip()
-                if text:
-                    markdown_lines.append(f"- {text}")
-        add_empty_line()
+        for stage in process_maps:
+            if isinstance(stage, dict):
+                stage_text = stage.get('stage', '').strip()
+                details = stage.get('details', '').strip()
+                if stage_text:
+                    markdown_lines.append(f"**Stage:** {stage_text}")
+                    if details:
+                        markdown_lines.append(details)
+                    add_empty_line()
 
     # Paragraphs (array of strings)
     paragraphs = article_dict.get('paragraphs')
@@ -90,77 +105,6 @@ def create_markdown(article_dict: dict, user_id: str, job_id: str):
             if isinstance(para, str) and para.strip():
                 markdown_lines.append(para.strip())
                 add_empty_line()
-
-    # Notes (array of strings)
-    notes = article_dict.get('notes')
-    if notes and isinstance(notes, list):
-        markdown_lines.append("## Notes")
-        add_empty_line()
-        for note in notes:
-            if isinstance(note, str) and note.strip():
-                markdown_lines.append(f"> {note.strip()}")
-            add_empty_line()
-
-    # Code Snippets (array of objects)
-    code_snippets = article_dict.get('code_snippets')
-    if code_snippets and isinstance(code_snippets, list):
-        markdown_lines.append("## Code Snippets")
-        add_empty_line()
-        for snippet in code_snippets:
-            if isinstance(snippet, dict):
-                content = snippet.get('content', '').strip()
-                language = snippet.get('language', 'plaintext').strip()
-                caption = snippet.get('caption', '').strip()
-
-                if content:
-                    if caption:
-                        markdown_lines.append(f"### {caption}")
-                        add_empty_line()
-                    markdown_lines.append(f"*Language: {language}*")
-                    add_empty_line()
-                    markdown_lines.append(f"```{language}")
-                    markdown_lines.append(content)
-                    markdown_lines.append("```")
-                    add_empty_line()
-
-    # Quotes (array of objects)
-    quotes = article_dict.get('quotes')
-    if quotes and isinstance(quotes, list):
-        markdown_lines.append("## Quotes")
-        add_empty_line()
-        for quote in quotes:
-            if isinstance(quote, dict):
-                text = quote.get('text', '').strip()
-                attribution = quote.get('attribution', '').strip()
-                if text:
-                    markdown_lines.append(f"> {text}")
-                    if attribution:
-                        markdown_lines.append(f"> — {attribution}")
-                    add_empty_line()
-
-    # Checklists (array of strings)
-    checklists = article_dict.get('checklists')
-    if checklists and isinstance(checklists, list):
-        markdown_lines.append("## Checklist")
-        add_empty_line()
-        for item in checklists:
-            if isinstance(item, str) and item.strip():
-                markdown_lines.append(f"- [ ] {item.strip()}")
-        add_empty_line()
-
-    # FAQ (array of objects)
-    faq_data = article_dict.get('faq')
-    if faq_data and isinstance(faq_data, list):
-        markdown_lines.append("## Frequently Asked Questions (FAQ)")
-        add_empty_line()
-        for faq_item in faq_data:
-            if isinstance(faq_item, dict):
-                question = faq_item.get('question', '').strip()
-                answer = faq_item.get('answer', '').strip()
-                if question and answer:
-                    markdown_lines.append(f"**Q:** {question}")
-                    markdown_lines.append(f"**A:** {answer}")
-                    add_empty_line()
 
     # Steps (array of objects)
     steps_data = article_dict.get('steps')
@@ -184,7 +128,7 @@ def create_markdown(article_dict: dict, user_id: str, job_id: str):
                 if image_name:
                     # Construct the full image URL
                     image_path = (f"https://gqvbkzcscjeaghodwxnz.supabase.co/storage/v1/"
-                                f"object/public/log_dataa/{user_id}/{job_id}/screenshots/{image_name}")
+                                  f"object/public/log_dataa/{user_id}/{job_id}/screenshots/{image_name}")
 
                     # Determine Alt Text
                     alt_text = explanation if explanation else f"Screenshot for Step {i}"
@@ -194,44 +138,6 @@ def create_markdown(article_dict: dict, user_id: str, job_id: str):
                     # Append the Markdown for the image
                     markdown_lines.append(f"![{alt_text}]({image_path})")
                     add_empty_line()
-
-    # Callouts (array of strings)
-    callouts = article_dict.get('callouts')
-    if callouts and isinstance(callouts, list):
-        markdown_lines.append("## Tips")
-        add_empty_line()
-        for callout in callouts:
-            if isinstance(callout, str) and callout.strip():
-                markdown_lines.append(f"- {callout.strip()}")
-        add_empty_line()
-
-    # Alert Boxes (array of objects)
-    alert_boxes = article_dict.get('alert_boxes')
-    if alert_boxes and isinstance(alert_boxes, list):
-        markdown_lines.append("## Alerts")
-        add_empty_line()
-        for alert in alert_boxes:
-            if isinstance(alert, dict):
-                style = alert.get('style', 'Info').strip()
-                content = alert.get('content', '').strip()
-                if content:
-                    markdown_lines.append(f"> **{style}:** {content}")
-                    add_empty_line()
-
-    # CTAs (array of objects)
-    ctas = article_dict.get('ctas')
-    if ctas and isinstance(ctas, list):
-        markdown_lines.append("## Call to Action")
-        add_empty_line()
-        for cta in ctas:
-            if isinstance(cta, dict):
-                text = cta.get('text', '').strip()
-                href = cta.get('href', '').strip()
-                if text and href:
-                    markdown_lines.append(f"[{text}]({href})")
-                elif text:
-                    markdown_lines.append(f"- {text}")
-                add_empty_line()
 
     # Decision Points (array of objects)
     decision_points = article_dict.get('decision_points')
@@ -259,23 +165,6 @@ def create_markdown(article_dict: dict, user_id: str, job_id: str):
                                 markdown_lines.append(f"- {step.strip()}")
                         add_empty_line()
 
-    # Expandable Sections (array of objects)
-    expandable_sections = article_dict.get('expandable_sections')
-    if expandable_sections and isinstance(expandable_sections, list):
-        markdown_lines.append("## Expandable Sections")
-        add_empty_line()
-        for section in expandable_sections:
-            if isinstance(section, dict):
-                title = section.get('title', '').strip()
-                content = section.get('content', [])
-                if title and content and isinstance(content, list):
-                    markdown_lines.append(f"### {title}")
-                    add_empty_line()
-                    for line in content:
-                        if isinstance(line, str) and line.strip():
-                            markdown_lines.append(line.strip())
-                        add_empty_line()
-
     # Expected Results (array of objects)
     expected_results = article_dict.get('expected_results')
     if expected_results and isinstance(expected_results, list):
@@ -288,32 +177,26 @@ def create_markdown(article_dict: dict, user_id: str, job_id: str):
                     markdown_lines.append(f"- {text}")
                     add_empty_line()
 
-    # Glossary (array of objects)
-    glossary = article_dict.get('glossary')
-    if glossary and isinstance(glossary, list):
-        markdown_lines.append("## Glossary")
+    # Code Snippets (array of objects)
+    code_snippets = article_dict.get('code_snippets')
+    if code_snippets and isinstance(code_snippets, list):
+        markdown_lines.append("## Code Snippets")
         add_empty_line()
-        for term in glossary:
-            if isinstance(term, dict):
-                term_text = term.get('term', '').strip()
-                definition = term.get('definition', '').strip()
-                if term_text and definition:
-                    markdown_lines.append(f"**{term_text}:** {definition}")
-                    add_empty_line()
+        for snippet in code_snippets:
+            if isinstance(snippet, dict):
+                content = snippet.get('content', '').strip()
+                language = snippet.get('language', 'plaintext').strip()
+                caption = snippet.get('caption', '').strip()
 
-    # Process Maps (array of objects)
-    process_maps = article_dict.get('process_maps')
-    if process_maps and isinstance(process_maps, list):
-        markdown_lines.append("## Process Map")
-        add_empty_line()
-        for stage in process_maps:
-            if isinstance(stage, dict):
-                stage_text = stage.get('stage', '').strip()
-                details = stage.get('details', '').strip()
-                if stage_text:
-                    markdown_lines.append(f"**Stage:** {stage_text}")
-                    if details:
-                        markdown_lines.append(details)
+                if content:
+                    if caption:
+                        markdown_lines.append(f"### {caption}")
+                        add_empty_line()
+                    markdown_lines.append(f"*Language: {language}*")
+                    add_empty_line()
+                    markdown_lines.append(f"```{language}")
+                    markdown_lines.append(content)
+                    markdown_lines.append("```")
                     add_empty_line()
 
     # Tables (array of objects)
@@ -339,6 +222,81 @@ def create_markdown(article_dict: dict, user_id: str, job_id: str):
                             markdown_lines.append(row_text)
                     add_empty_line()
 
+    # Expandable Sections (array of objects)
+    expandable_sections = article_dict.get('expandable_sections')
+    if expandable_sections and isinstance(expandable_sections, list):
+        markdown_lines.append("## Expandable Sections")
+        add_empty_line()
+        for section in expandable_sections:
+            if isinstance(section, dict):
+                title = section.get('title', '').strip()
+                content = section.get('content', [])
+                if title and content and isinstance(content, list):
+                    markdown_lines.append(f"### {title}")
+                    add_empty_line()
+                    for line in content:
+                        if isinstance(line, str) and line.strip():
+                            markdown_lines.append(line.strip())
+                            add_empty_line()
+
+    # Callouts (array of strings)
+    callouts = article_dict.get('callouts')
+    if callouts and isinstance(callouts, list):
+        markdown_lines.append("## Tips")
+        add_empty_line()
+        for callout in callouts:
+            if isinstance(callout, str) and callout.strip():
+                markdown_lines.append(f"- {callout.strip()}")
+        add_empty_line()
+
+    # Alert Boxes (array of objects)
+    alert_boxes = article_dict.get('alert_boxes')
+    if alert_boxes and isinstance(alert_boxes, list):
+        markdown_lines.append("## Alerts")
+        add_empty_line()
+        for alert in alert_boxes:
+            if isinstance(alert, dict):
+                style = alert.get('style', 'Info').strip()
+                content = alert.get('content', '').strip()
+                if content:
+                    markdown_lines.append(f"> **{style}:** {content}")
+                    add_empty_line()
+
+    # Notes (array of strings)
+    notes = article_dict.get('notes')
+    if notes and isinstance(notes, list):
+        markdown_lines.append("## Notes")
+        add_empty_line()
+        for note in notes:
+            if isinstance(note, str) and note.strip():
+                markdown_lines.append(f"> {note.strip()}")
+        add_empty_line()
+
+    # Quotes (array of objects)
+    quotes = article_dict.get('quotes')
+    if quotes and isinstance(quotes, list):
+        markdown_lines.append("## Quotes")
+        add_empty_line()
+        for quote in quotes:
+            if isinstance(quote, dict):
+                text = quote.get('text', '').strip()
+                attribution = quote.get('attribution', '').strip()
+                if text:
+                    markdown_lines.append(f"> {text}")
+                    if attribution:
+                        markdown_lines.append(f"> — {attribution}")
+                    add_empty_line()
+
+    # Checklists (array of strings)
+    checklists = article_dict.get('checklists')
+    if checklists and isinstance(checklists, list):
+        markdown_lines.append("## Checklist")
+        add_empty_line()
+        for item in checklists:
+            if isinstance(item, str) and item.strip():
+                markdown_lines.append(f"- [ ] {item.strip()}")
+        add_empty_line()
+
     # Conclusion (object)
     conclusion = article_dict.get('conclusion')
     if conclusion and isinstance(conclusion, dict):
@@ -360,6 +318,48 @@ def create_markdown(article_dict: dict, user_id: str, job_id: str):
                 if isinstance(step, str) and step.strip():
                     markdown_lines.append(f"- {step.strip()}")
             add_empty_line()
+
+    # CTAs (array of objects)
+    ctas = article_dict.get('ctas')
+    if ctas and isinstance(ctas, list):
+        markdown_lines.append("## Call to Action")
+        add_empty_line()
+        for cta in ctas:
+            if isinstance(cta, dict):
+                text = cta.get('text', '').strip()
+                href = cta.get('href', '').strip()
+                if text and href:
+                    markdown_lines.append(f"[{text}]({href})")
+                elif text:
+                    markdown_lines.append(f"- {text}")
+                add_empty_line()
+
+    # FAQ (array of objects)
+    faq_data = article_dict.get('faq')
+    if faq_data and isinstance(faq_data, list):
+        markdown_lines.append("## Frequently Asked Questions (FAQ)")
+        add_empty_line()
+        for faq_item in faq_data:
+            if isinstance(faq_item, dict):
+                question = faq_item.get('question', '').strip()
+                answer = faq_item.get('answer', '').strip()
+                if question and answer:
+                    markdown_lines.append(f"**Q:** {question}")
+                    markdown_lines.append(f"**A:** {answer}")
+                    add_empty_line()
+
+    # Glossary (array of objects)
+    glossary = article_dict.get('glossary')
+    if glossary and isinstance(glossary, list):
+        markdown_lines.append("## Glossary")
+        add_empty_line()
+        for term in glossary:
+            if isinstance(term, dict):
+                term_text = term.get('term', '').strip()
+                definition = term.get('definition', '').strip()
+                if term_text and definition:
+                    markdown_lines.append(f"**{term_text}:** {definition}")
+                    add_empty_line()
 
     # References (array of objects)
     references = article_dict.get('references')
