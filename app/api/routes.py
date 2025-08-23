@@ -16,7 +16,7 @@ from io import BytesIO
 from app.models.state_schema import SOPState
 from app.utils.json_parser import parse_json
 from app.workflow import create_workflow
-from app.services.rag_services.jira_rag import fetch_relevant_jira_issues
+from app.services.rag_services.rag import fetch_relevant_issues
 from app.services.file_services.create_pdf import create_pdf_from_screenshots
 from app.services.file_services.pdf_converter import convert_to_pdf
 from app.services.file_services.docx_converter import convert_to_docx
@@ -45,6 +45,7 @@ async def generate_sop_api(
     job_id: str = Form(...),
     query: str = Form(...),
     templates_id: str = Form(...),
+    integration_type: str = Form(...),
 ):
     """
     API endpoint to generate SOP using a component schema defined
@@ -60,7 +61,7 @@ async def generate_sop_api(
     supabase = get_supabase_client()
 
     try:
-        logger.debug(f"Starting SOP generation for user_id={user_id}, job_id={job_id}, template_id='{templates_id}'")
+        logger.debug(f"Starting SOP generation for user_id={user_id}, job_id={job_id}, template_id='{templates_id}', integration_type='{integration_type}'")
 
         # --- Fetch Template Components Schema from Supabase ---
         try:
@@ -235,25 +236,26 @@ async def generate_sop_api(
             logger.error(f"Event JSON processing failed: {str(e)}")
             raise HTTPException(status_code=500, detail=f"Event JSON processing failed: {str(e)}")
 
-        # --- Fetch Jira Context ---
-        jira_context = "Jira context unavailable."
+        # --- Fetch RAG Context ---
+        rag_context = f"{integration_type.capitalize()} context unavailable."
         try:
-            logger.debug(f"Fetching Jira issues for query: {query}")
-            relevant_issues = fetch_relevant_jira_issues(user_id, query, top_k=5)
-            if relevant_issues:
-                jira_context = "\n".join([
-                    f"Issue: {issue.get('issue_id', 'N/A')}\nDetails: {issue.get('text_data', 'N/A')}" 
-                    for issue in relevant_issues
-                ])
-            else: 
-                jira_context = "No relevant Jira issues found."
-            logger.debug("Fetched Jira context")
+            logger.debug(f"Fetching relevant issues for query: {query}, integration_type: {integration_type}")
+            if  integration_type:
+                relevant_issues = fetch_relevant_issues(user_id, query, integration_type, top_k=5)
+                if relevant_issues:
+                    rag_context = "\n".join([
+                        f"{integration_type.capitalize()} Item: {issue.get('issue_id', 'N/A')}\nDetails: {issue.get('text_data', 'N/A')}" 
+                        for issue in relevant_issues
+                    ])
+                else: 
+                    rag_context = f"No relevant {integration_type} items found."
+            logger.debug("Fetched RAG context")
         except Exception as e:
-            logger.warning(f"Error fetching Jira issues: {str(e)}")
-            jira_context = f"Error fetching Jira issues: {str(e)}"
+            logger.warning(f"Error fetching {integration_type} issues: {str(e)}")
+            rag_context = f"Error fetching {integration_type} issues: {str(e)}"
 
         # --- Prepare and Invoke Workflow ---
-        knowledge_base = f"### Jira Issues:\n{jira_context}\n"
+        knowledge_base = f"### Relevant {integration_type.capitalize()} Content:\n{rag_context}\n"
         logger.debug("Prepared knowledge base")
 
         result = None
@@ -286,6 +288,7 @@ async def generate_sop_api(
                 "user_id": user_id,
                 "job_id": job_id,
                 "template_id": templates_id,
+                "integration_type": integration_type,
                 "files_processed": len(screenshot_info) + 1,
                 "components_schema_used": full_component_schema
             }
@@ -404,3 +407,5 @@ def convert_markdown(markdown_text: str = Form(...),
         )
     except RuntimeError as e:
         raise HTTPException(status_code=500, detail=str(e))
+
+
