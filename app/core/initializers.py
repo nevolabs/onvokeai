@@ -102,7 +102,7 @@ class ServiceManager:
                 raise ValueError("GOOGLE_API_KEY not found in environment variables")
             
             self._embedding_model = GoogleGenerativeAIEmbeddings(
-                model="models/gemini-embedding-exp-03-07",
+                model="models/embedding-001",
                 google_api_key=api_key
             )
             logger.info("Gemini embedding model initialized: models/gemini-embedding-exp-03-07")

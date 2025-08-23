@@ -1,246 +1,91 @@
 {
-  "Conclusion": {
+  "callouts": [
+    "Utilize the 'Main Screen Preview' panel on the right side of the screen to see a real-time preview of your branding changes before saving.",
+    "Ensure your Hero Image file does not exceed the maximum file size of 5 MB as indicated on the screen.",
+    "For the best results, use a PNG file format for your Logo Image."
+  ],
+  "conclusion": {
+    "nextSteps": [
+      "Verify the new branding on a physical kiosk device to ensure it appears as expected.",
+      "Explore other options within the Settings menu to further customize your system.",
+      "Create different branding profiles for other venues if applicable."
+    ],
     "paragraphs": [
-      "This document provided a detailed walkthrough on creating a purchase order, approving it, and receiving merchandise against it.",
-      "By following these steps, you can efficiently manage your inventory and ensure accurate stock levels."
+      "You have successfully customized the branding for your 6IX Kiosk. By following the steps in this guide, you can align the kiosk's appearance with your brand identity by updating the logo, color scheme, tagline, and hero image for any selected venue."
     ]
   },
-  "FAQ": [
-    {
-      "answer": "To modify a Purchase Order, navigate to the 'Purchase Orders' section under 'Inventory' in the left navigation sidebar, select the desired PO, and click the 'Edit' button.",
-      "question": "How do I modify a Purchase Order?"
-    },
-    {
-      "answer": "You can view a list of all Purchase Orders by navigating to the 'Purchase Orders' section under 'Inventory' in the left navigation sidebar.",
-      "question": "How do I view a list of all Purchase Orders?"
-    },
-    {
-      "answer": "To receive merchandise, navigate to the 'Merchandise Receiving' section under 'Inventory' in the left navigation sidebar and create a new receiving document.",
-      "question": "How do I receive merchandise against a Purchase Order?"
-    }
-  ],
-  "Introduction": {
-    "paragraphs": [
-      "This document outlines the process of creating a Purchase Order (PO), approving the PO, and receiving merchandise against the created PO within the system. Purchase Orders are used to manage and track inventory procurement.",
-      "This guide is intended for users responsible for inventory management, procurement, and receiving within the organization."
-    ],
+  "docTitle": "How to Customize 6IX Kiosk Branding",
+  "introduction": {
+    "audience": "System administrators and managers responsible for brand management.",
+    "purpose": "This document provides a step-by-step guide on how to customize the visual branding of the 6IX Kiosk application through the settings console.",
+    "scope": "This guide covers all the branding customization options available on the '6IX Kiosk Branding' screen. This includes selecting a venue, uploading a logo and hero image, setting primary and secondary colors, and defining a custom tagline. It does not cover the 'Kiosk Branding' or 'FanVista Branding' tabs.",
     "outcomes": [
-      "Create a new Purchase Order.",
-      "Approve a Purchase Order.",
-      "Receive merchandise against a Purchase Order."
+      "Navigate to the 6IX Kiosk branding settings.",
+      "Select a specific venue to apply branding.",
+      "Upload and crop a custom logo.",
+      "Define a primary and secondary color scheme.",
+      "Set a custom tagline.",
+      "Upload and crop a hero image.",
+      "Save and apply the branding changes."
     ],
     "prerequisites": [
-      "User must have appropriate roles and permissions to access the Inventory and Purchase Order modules."
+      "Valid user credentials with access to the settings console.",
+      "Permissions to modify branding settings.",
+      "Logo and hero image files prepared for upload (e.g., PNG for the logo)."
     ]
   },
-  "Steps / How-To": [
+  "shortDescription": "A comprehensive guide on how to configure and apply custom branding, including logos, colors, and images, to the 6IX Kiosk for specific venues.",
+  "steps": [
     {
-      "explanation": "Navigate to the Purchase Orders section to begin the PO creation process.",
-      "step": "In the left navigation sidebar, click on 'Inventory'.",
-      "screenshotRef": "screenshot_0_1751385883148.png"
+      "explanation": "Begin by accessing the main configuration area of the application.",
+      "step": "From the main dashboard, navigate to the left sidebar and click on 'Settings'.",
+      "screenshotRef": "screenshot_0_1755959172221.jpg"
     },
     {
-      "explanation": "Access the Purchase Orders list.",
-      "step": "Click on 'Purchase Orders' under the 'Inventory' section.",
-      "screenshotRef": "screenshot_1_1751385883148.png"
+      "explanation": "This will take you to the branding configuration section for various applications.",
+      "step": "On the Settings page, under the 'General' section, click on the 'Branding' icon.",
+      "screenshotRef": "screenshot_1_1755959172221.jpg"
     },
     {
-      "explanation": "Initiate the creation of a new Purchase Order.",
-      "step": "Click the 'Create PO' button.",
-      "screenshotRef": "screenshot_2_1751385883148.png"
+      "explanation": "This section contains the specific branding options for the self-service kiosk.",
+      "step": "At the top of the Branding page, click on the '6IX Kiosk Branding' tab.",
+      "screenshotRef": "screenshot_4_1755959172221.jpg"
     },
     {
-      "explanation": "Select a vendor for the Purchase Order.",
-      "step": "Click on the 'Vendor Code' input field.",
-      "screenshotRef": "screenshot_3_1751385883148.png"
+      "explanation": "Branding settings are applied on a per-venue basis, allowing for unique branding at different locations.",
+      "step": "Click the 'Select Venue' dropdown menu and choose the venue you wish to customize.",
+      "screenshotRef": "screenshot_5_1755959172221.jpg"
     },
     {
-      "explanation": "Choose the appropriate vendor from the dropdown list.",
-      "step": "Select a vendor from the dropdown list, for example, 'Cosmetics'.",
-      "screenshotRef": "screenshot_5_1751385883148.png"
+      "explanation": "This will be the main logo displayed on the kiosk's home screen.",
+      "step": "In the 'Logo Image (PNG)' section, click the area labeled 'Click or drop your file here to upload' and select your logo file from your computer.",
+      "screenshotRef": "screenshot_7_1755959172221.jpg"
     },
     {
-      "explanation": "Enter the vendor's phone number.",
-      "step": "Enter a phone number in the 'Phone' input field.",
-      "screenshotRef": "screenshot_6_1751385883148.png"
+      "explanation": "The cropping tool ensures your logo fits correctly within the designated space on the kiosk screen.",
+      "step": "In the 'Crop Logo Image' window that appears, adjust the selection to fit your logo as desired, then click the 'CROP AND UPLOAD' button.",
+      "screenshotRef": "screenshot_11_1755959172221.jpg"
     },
     {
-      "explanation": "Enter the vendor's address.",
-      "step": "Enter the vendor's address in the 'Vendor Address' textarea.",
-      "screenshotRef": "screenshot_8_1751385883148.png"
+      "explanation": "This text appears below the logo and can be used for a slogan or welcome message.",
+      "step": "Click inside the 'Tag Line' text field and enter your desired tagline.",
+      "screenshotRef": "screenshot_12_1755959172221.jpg"
     },
     {
-      "explanation": "Select the date for the PO.",
-      "step": "Click the calendar icon next to the 'PO Due Date' field.",
-      "screenshotRef": "screenshot_11_1751385883148.png"
+      "explanation": "The hero image is a large background or banner image that enhances the visual appeal of the kiosk.",
+      "step": "Under the 'Hero Image' section, click the 'Upload Image' button and select your hero image file.",
+      "screenshotRef": "screenshot_20_1755959172221.jpg"
     },
     {
-      "explanation": "Choose a date from the calendar.",
-      "step": "Select a date from the calendar and click 'Ok'.",
-      "screenshotRef": "screenshot_12_1751385883148.png"
+      "explanation": "Similar to the logo, cropping the hero image ensures it displays correctly on the kiosk.",
+      "step": "In the 'Crop Logo Image' window, adjust the image as needed and click 'CROP AND UPLOAD'.",
+      "screenshotRef": "screenshot_25_1755959172221.jpg"
     },
     {
-      "explanation": "Enter any specific terms for the vendor.",
-      "step": "Enter the vendor terms in the 'Vendor Terms' textarea, for example, 'Ship within 2 weeks'.",
-      "screenshotRef": "screenshot_14_1751385883148.png"
-    },
-    {
-      "explanation": "Select the date for vendor ship.",
-      "step": "Click the calendar icon next to the 'Vendor Ship By Date' field.",
-      "screenshotRef": "screenshot_35_1751385883148.png"
-    },
-    {
-      "explanation": "Choose a date from the calendar.",
-      "step": "Select a date from the calendar and click 'Ok'.",
-      "screenshotRef": "screenshot_36_1751385883148.png"
-    },
-    {
-      "explanation": "Select the date for PO expiration.",
-      "step": "Click the calendar icon next to the 'PO Expiration Date' field.",
-      "screenshotRef": "screenshot_38_1751385883148.png"
-    },
-    {
-      "explanation": "Choose a date from the calendar.",
-      "step": "Select a date from the calendar and click 'Ok'.",
-      "screenshotRef": "screenshot_39_1751385883148.png"
-    },
-    {
-      "explanation": "Select the location for the PO.",
-      "step": "Click on the 'Location' input field.",
-      "screenshotRef": "screenshot_41_1751385883148.png"
-    },
-    {
-      "explanation": "Choose the appropriate location from the dropdown list.",
-      "step": "Select a location from the dropdown list, for example, 'Kerala'.",
-      "screenshotRef": "screenshot_42_1751385883148.png"
-    },
-    {
-      "explanation": "Select the store for the PO.",
-      "step": "Click on the 'Location' input field.",
-      "screenshotRef": "screenshot_43_1751385883148.png"
-    },
-    {
-      "explanation": "Choose the appropriate store from the dropdown list.",
-      "step": "Select a store from the dropdown list, for example, 'Kollam Store'.",
-      "screenshotRef": "screenshot_44_1751385883148.png"
-    },
-    {
-      "explanation": "Select the PO terms.",
-      "step": "Click on the 'PO Terms' input field.",
-      "screenshotRef": "screenshot_45_1751385883148.png"
-    },
-    {
-      "explanation": "Enter the shipping address.",
-      "step": "Enter the shipping address in the 'Shipping Address' textarea.",
-      "screenshotRef": "screenshot_47_1751385883148.png"
-    },
-    {
-      "explanation": "Select the shipping comments.",
-      "step": "Click on the 'Shipping Comments' input field.",
-      "screenshotRef": "screenshot_50_1751385883148.png"
-    },
-    {
-      "explanation": "Choose the appropriate shipping comments from the dropdown list.",
-      "step": "Select shipping comments from the dropdown list, for example, 'Ship all the Items to the Kerala Warehouse'.",
-      "screenshotRef": "screenshot_51_1751385883148.png"
-    },
-    {
-      "explanation": "Select the freight terms.",
-      "step": "Click on the 'Freight Terms' input field.",
-      "screenshotRef": "screenshot_52_1751385883148.png"
-    },
-    {
-      "explanation": "Choose the appropriate freight terms from the dropdown list.",
-      "step": "Select freight terms from the dropdown list, for example, 'Freight only'.",
-      "screenshotRef": "screenshot_53_1751385883148.png"
-    },
-    {
-      "explanation": "Open the item lookup to add items to the PO.",
-      "step": "Click the 'Item Lookup' button.",
-      "screenshotRef": "screenshot_54_1751385883148.png"
-    },
-    {
-      "explanation": "Select items from the item lookup.",
-      "step": "Select the checkbox next to the desired items.",
-      "screenshotRef": "screenshot_55_1751385883148.png"
-    },
-    {
-      "explanation": "Select the items.",
-      "step": "Click the 'Select Items' button.",
-      "screenshotRef": "screenshot_61_1751385883148.png"
-    },
-    {
-      "explanation": "Enter the quantity of the item.",
-      "step": "Enter the quantity in the 'QTY Received' input field.",
-      "screenshotRef": "screenshot_62_1751385883148.png"
-    },
-    {
-      "explanation": "Approve the Purchase Order.",
-      "step": "Click the 'Approve' button.",
-      "screenshotRef": "screenshot_74_1751385883148.png"
-    },
-    {
-      "explanation": "Enter PO approval notes.",
-      "step": "Enter notes in the 'PO approval notes' textarea.",
-      "screenshotRef": "screenshot_75_1751385883148.png"
-    },
-    {
-      "explanation": "Confirm the approval.",
-      "step": "Click the 'APPROVE' button.",
-      "screenshotRef": "screenshot_101_1751385883148.png"
-    },
-    {
-      "explanation": "Send the Purchase Order to the vendor.",
-      "step": "Click the 'Send To Vendor' button.",
-      "screenshotRef": "screenshot_102_1751385883148.png"
-    },
-    {
-      "explanation": "Navigate to the Merchandise Receiving section.",
-      "step": "Click on 'Merchandise Receiving' under the 'Inventory' section.",
-      "screenshotRef": "screenshot_104_1751385883148.png"
-    },
-    {
-      "explanation": "Initiate the receiving process.",
-      "step": "Click the 'Receive Merchandise' button.",
-      "screenshotRef": "screenshot_105_1751385883148.png"
-    },
-    {
-      "explanation": "Select the vendor.",
-      "step": "Click on the 'Vendor' input field.",
-      "screenshotRef": "screenshot_106_1751385883148.png"
-    },
-    {
-      "explanation": "Choose the appropriate vendor from the dropdown list.",
-      "step": "Select a vendor from the dropdown list, for example, 'Cosmetics Vendor'.",
-      "screenshotRef": "screenshot_107_1751385883148.png"
-    },
-    {
-      "explanation": "Select the PO.",
-      "step": "Click on the 'PO #' input field.",
-      "screenshotRef": "screenshot_111_1751385883148.png"
-    },
-    {
-      "explanation": "Choose the appropriate PO from the dropdown list.",
-      "step": "Select a PO from the dropdown list, for example, '2025/6/2/38'.",
-      "screenshotRef": "screenshot_112_1751385883148.png"
-    },
-    {
-      "explanation": "Enter the quantity received.",
-      "step": "Enter the quantity in the quantity input field.",
-      "screenshotRef": "screenshot_113_1751385883148.png"
-    },
-    {
-      "explanation": "Save the merchandise receiving document.",
-      "step": "Click the 'Save' button.",
-      "screenshotRef": "screenshot_126_1751385883148.png"
-    },
-    {
-      "explanation": "Confirm the receiving.",
-      "step": "Click the 'RECEIVE' button.",
-      "screenshotRef": "screenshot_127_1751385883148.png"
+      "explanation": "This action applies all the configured branding changes to the selected venue's kiosk.",
+      "step": "After reviewing your changes in the preview panel, click the 'Save' button located at the top right of the page to apply your new branding.",
+      "screenshotRef": "screenshot_26_1755959172221.jpg"
     }
   ],
-  "Title": "Creating, Approving, and Receiving Purchase Orders",
-  "docTitle": "How to Create, Approve, and Receive Purchase Orders",
-  "shortDescription": "Step-by-step guide on creating, approving, and receiving purchase orders within the system."
+  "title": "Configuring 6IX Kiosk Branding"
 }
