@@ -1,95 +1,96 @@
 {
   "callouts": [
-    "Branding settings are applied on a per-venue basis. This allows you to maintain a unique brand identity for different locations or to tailor the kiosk appearance for specific events."
+    "For best results, use high-resolution images for your brand assets to ensure they appear crisp and professional on the kiosk display.",
+    "Always preview your branding changes on a test kiosk before deploying to a live environment to check for layout and formatting issues."
   ],
   "conclusion": {
     "nextSteps": [
-      "Verify the new branding on a live kiosk device to ensure it appears as expected.",
-      "Explore other customization options available in the Settings section.",
-      "Create different branding profiles for other venues if required."
+      "Review the available options in the 'Select Template' dropdown to find the best fit for your brand.",
+      "Prepare your brand assets (logo, images) in the supported formats.",
+      "Deploy your new branding to a test device for review."
     ],
     "paragraphs": [
-      "By following the steps outlined in this guide, you can effectively customize the branding of your 6ix Kiosk. This feature allows you to align the kiosk's appearance with your brand identity, enhancing the user experience with a consistent and professional look. Centralized management of these settings ensures that you can easily update your brand's look and feel across different venues as needed."
+      "You have now learned how to use the kiosk branding tool to customize your device's interface. By defining a content brief, uploading assets, selecting a template, and adjusting generation parameters, you can create a unique and engaging user experience that reflects your brand identity."
     ]
   },
-  "docTitle": "How to Customize 6ix Kiosk Branding",
+  "docTitle": "How to Customize Kiosk Branding",
   "faq": [
     {
-      "answer": "Yes, branding is configured at the venue level. You must select a specific venue to apply branding settings to, which allows for unique customization for each of your locations.",
-      "question": "Can I have different branding for different kiosk venues?"
+      "answer": "The 'Content Brief' section is where you define the primary text-based messaging for your kiosk. This could be a welcome message, brand tagline, or instructions. It has a 1000-character limit.",
+      "question": "What is the purpose of the 'Content Brief' section?"
     },
     {
-      "answer": "The 'Primary Color' sets the main theme and background colors for the kiosk interface. The 'Secondary Color' is specifically for the text, and it should be chosen to contrast well with the primary color for optimal readability.",
-      "question": "What is the difference between the 'Primary Color' and 'Secondary Color' options?"
+      "answer": "Yes, you can upload brand assets like logos using the 'Attach File' section. You can either drag and drop the file or use the 'Browse Files' button. Ensure your file is in PDF or DOCX format and under 10MB.",
+      "question": "Can I upload my company logo?"
     },
     {
-      "answer": "Yes, the changes are applied to the kiosk interface for the selected venue immediately after you click the 'Save' button.",
-      "question": "Do branding changes go live instantly?"
+      "answer": "These are 'Premium' generation parameters that control the application of your brand. 'Detail Level' (Low, Medium, High) likely adjusts the complexity of the visual theme, while 'Formality Level' (None, Formal, Neutral) sets the tone of voice for any system-generated text on the kiosk.",
+      "question": "What do the 'Detail Level' and 'Formality Level' parameters do?"
     },
     {
-      "answer": "The system provides a real-time preview panel, typically on the right side of the screen. As you adjust colors, upload images, or change the tagline, this preview will update instantly to show you how the changes will look on the kiosk.",
-      "question": "How can I see my changes before applying them?"
+      "answer": "You can choose from a list of pre-defined layouts using the 'Select Template' dropdown. For fully custom layouts, please consult our advanced documentation or contact support.",
+      "question": "Is it possible to use a custom layout for my kiosk?"
     }
   ],
   "features": [
-    "Upload a custom logo to be displayed on the kiosk interface.",
-    "Set a primary color to define the kiosk's main theme.",
-    "Choose a secondary color for text to ensure readability.",
-    "Enter a custom tagline to be displayed on the screen.",
-    "Upload a prominent hero image to enhance the visual experience.",
-    "Apply branding settings on a per-venue basis for tailored experiences.",
-    "View branding updates in a real-time preview panel before saving."
+    "Define a core brand message or identity in the 'Content Brief' section.",
+    "Upload brand assets such as logos and background images using the 'Attach File' feature.",
+    "Choose from various pre-designed kiosk layouts with the 'Select Template' option.",
+    "Link dynamic content that aligns with your brand using 'Select Sources'.",
+    "Fine-tune the application of your brand with 'Generation Parameters' like Detail and Formality Level.",
+    "Use the 'Capture Screen' tool to select brand colors or inspiration."
   ],
   "introduction": {
-    "audience": "Administrators or venue managers with permissions to access and modify application settings in the console.",
-    "purpose": "This document provides a comprehensive guide on how to customize the branding of the 6ix Kiosk application. It covers accessing the branding settings, modifying the available options, and applying them to a specific venue.",
-    "scope": "This guide details the process of changing the logo, theme colors, tagline, and hero image for the 6ix Kiosk. It does not cover branding for other applications or advanced CSS customization.",
+    "audience": "Administrators or marketing personnel responsible for managing the kiosk's brand identity.",
+    "purpose": "This guide explains how to use the branding configuration tool to customize the visual appearance and messaging of your kiosk.",
+    "scope": "This document covers all available settings for kiosk branding, including uploading assets, selecting templates, and defining generation parameters. It does not cover the creation of brand assets themselves.",
     "outcomes": [
-      "Locate the Branding section within the console settings.",
-      "Select the 6ix Kiosk application and the desired venue.",
-      "Upload a custom logo and hero image.",
-      "Set the primary and secondary colors for the kiosk theme.",
-      "Add or update the kiosk's tagline.",
-      "Save and apply the branding changes."
+      "Understand the different branding customization options.",
+      "Be able to upload brand assets like logos and images.",
+      "Configure the kiosk's visual theme and layout.",
+      "Apply a specific tone and style to the kiosk's messaging."
     ],
     "prerequisites": [
-      "An active account with access to the administration console.",
-      "Appropriate user permissions to manage Branding settings."
+      "Administrative access to the kiosk management portal.",
+      "Prepared brand assets (e.g., logo, images, color palette information)."
     ]
   },
   "notes": [
-    "The preview panel is a critical tool for verifying your changes. Always check the preview to ensure color combinations are accessible and text is easy to read before saving."
+    "The 'Generation Parameters' are marked as a 'Premium' feature and may require an upgraded subscription to access.",
+    "Supported file types for the 'Attach File' function are currently PDF and DOCX, with a size limit of 10MB per file."
   ],
-  "shortDescription": "A step-by-step guide to customizing the visual appearance of your 6ix Kiosk, including the logo, colors, tagline, and hero image, to align with your brand identity.",
+  "shortDescription": "Learn how to configure and apply your unique brand identity to your kiosk interface using our comprehensive branding tool.",
   "steps": [
     {
-      "explanation": "You must first be logged into the main administration portal to access any settings.",
-      "step": "Log in to the console."
+      "explanation": "This is the primary input for the text that will be displayed on your kiosk.",
+      "step": "Locate the 'Content Brief' section at the top of the configuration page.",
+      "screenshotRef": "screenshot_0_1755967773503.jpg"
     },
     {
-      "explanation": "The branding options are located within the main settings area of the console.",
-      "step": "Navigate to the 'Settings' section and then select 'Branding'."
+      "explanation": "Replace the placeholder text 'Describe your document requirements...' with your own content. This could be a welcome message, a tagline, or instructions for the user.",
+      "step": "Click inside the text box and enter your brand's core message.",
+      "screenshotRef": "screenshot_0_1755967773503.jpg"
     },
     {
-      "explanation": "From the list of available applications, you need to specify that you are customizing the kiosk.",
-      "step": "Select '6ix Kiosk' from the applications list."
+      "explanation": "The counter, which appears as '0/1000', updates as you type. This ensures your message stays within the 1000-character limit for optimal display on the kiosk screen.",
+      "step": "Monitor the character counter below the text box.",
+      "screenshotRef": "screenshot_0_1755967773503.jpg"
     },
     {
-      "explanation": "Branding is applied to individual venues, so you must choose which location's kiosk you want to customize.",
-      "step": "Choose the venue where you want to apply the new branding settings from the dropdown menu."
+      "explanation": "Drag and drop your logo or background image file into the designated area, or click 'Browse Files' to select a file from your computer.",
+      "step": "Upload your primary brand assets using the 'Attach File' section.",
+      "screenshotRef": "screenshot_0_1755967773503.jpg"
     },
     {
-      "explanation": "This is the main customization step where you will define the look and feel of the kiosk.",
-      "step": "Configure the available branding options: upload a 'Logo', set the 'Primary Color', choose a 'Secondary Color' for text, enter a 'Tagline', and upload a 'Hero Image'."
+      "explanation": "Select a pre-configured template that best fits your brand's aesthetic and functional needs.",
+      "step": "Choose a layout for your kiosk interface from the 'Select Template' dropdown.",
+      "screenshotRef": "screenshot_0_1755967773503.jpg"
     },
     {
-      "explanation": "Before finalizing your changes, use the preview panel, typically located on the right side of the screen, to see a live mock-up of your branding choices.",
-      "step": "Review your customizations in the real-time preview panel."
-    },
-    {
-      "explanation": "This action will save your configuration and apply the new branding to all kiosks operating at the selected venue.",
-      "step": "Click the 'Save' button to apply the branding updates."
+      "explanation": "Adjust the 'Detail Level' (Low, Medium, High) and 'Formality Level' (None, Formal, Neutral) to control how the branding elements and text are rendered on the kiosk.",
+      "step": "Configure the branding style using 'Generation Parameters'.",
+      "screenshotRef": "screenshot_0_1755967773503.jpg"
     }
   ],
-  "title": "Customizing 6ix Kiosk Branding"
+  "title": "Configuring Kiosk Branding"
 }
