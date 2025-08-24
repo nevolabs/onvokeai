@@ -1,91 +1,97 @@
 {
-  "callouts": [
-    "Utilize the 'Main Screen Preview' panel on the right side of the screen to see a real-time preview of your branding changes before saving.",
-    "Ensure your Hero Image file does not exceed the maximum file size of 5 MB as indicated on the screen.",
-    "For the best results, use a PNG file format for your Logo Image."
-  ],
-  "conclusion": {
+  "Conclusion": {
     "nextSteps": [
-      "Verify the new branding on a physical kiosk device to ensure it appears as expected.",
-      "Explore other options within the Settings menu to further customize your system.",
-      "Create different branding profiles for other venues if applicable."
+      "Explore advanced kiosk settings.",
+      "Learn how to manage different venues.",
+      "Review reports related to kiosk usage."
     ],
     "paragraphs": [
-      "You have successfully customized the branding for your 6IX Kiosk. By following the steps in this guide, you can align the kiosk's appearance with your brand identity by updating the logo, color scheme, tagline, and hero image for any selected venue."
+      "Customizing the branding of your kiosk application is a straightforward process that significantly enhances the customer experience by ensuring brand consistency across different venues. By following the steps outlined, you can easily update logos, colors, and images from a centralized location, with changes reflected instantly within the kiosk interface."
     ]
   },
-  "docTitle": "How to Customize 6IX Kiosk Branding",
-  "introduction": {
-    "audience": "System administrators and managers responsible for brand management.",
-    "purpose": "This document provides a step-by-step guide on how to customize the visual branding of the 6IX Kiosk application through the settings console.",
-    "scope": "This guide covers all the branding customization options available on the '6IX Kiosk Branding' screen. This includes selecting a venue, uploading a logo and hero image, setting primary and secondary colors, and defining a custom tagline. It does not cover the 'Kiosk Branding' or 'FanVista Branding' tabs.",
-    "outcomes": [
-      "Navigate to the 6IX Kiosk branding settings.",
-      "Select a specific venue to apply branding.",
-      "Upload and crop a custom logo.",
-      "Define a primary and secondary color scheme.",
-      "Set a custom tagline.",
-      "Upload and crop a hero image.",
-      "Save and apply the branding changes."
-    ],
-    "prerequisites": [
-      "Valid user credentials with access to the settings console.",
-      "Permissions to modify branding settings.",
-      "Logo and hero image files prepared for upload (e.g., PNG for the logo)."
-    ]
-  },
-  "shortDescription": "A comprehensive guide on how to configure and apply custom branding, including logos, colors, and images, to the 6IX Kiosk for specific venues.",
-  "steps": [
+  "FAQ": [
     {
-      "explanation": "Begin by accessing the main configuration area of the application.",
-      "step": "From the main dashboard, navigate to the left sidebar and click on 'Settings'.",
-      "screenshotRef": "screenshot_0_1755959172221.jpg"
+      "answer": "You can customize the Logo, Primary Color, Secondary Color (for text), a Tagline, and a Hero Image to be displayed in the kiosk interface.",
+      "question": "What specific branding elements can I customize for the kiosk?"
     },
     {
-      "explanation": "This will take you to the branding configuration section for various applications.",
-      "step": "On the Settings page, under the 'General' section, click on the 'Branding' icon.",
-      "screenshotRef": "screenshot_1_1755959172221.jpg"
+      "answer": "Yes, the branding settings are applied on a per-venue basis. You must select a specific venue to which the branding customizations will apply, allowing for unique branding at different locations.",
+      "question": "Can I apply different branding settings for different store locations or venues?"
     },
     {
-      "explanation": "This section contains the specific branding options for the self-service kiosk.",
-      "step": "At the top of the Branding page, click on the '6IX Kiosk Branding' tab.",
-      "screenshotRef": "screenshot_4_1755959172221.jpg"
+      "answer": "The system provides a real-time preview panel, typically on the right side of the screen. As you make changes to the branding options, this panel updates to show you exactly how the kiosk interface will look before you save.",
+      "question": "How can I see my branding changes before they are applied?"
     },
     {
-      "explanation": "Branding settings are applied on a per-venue basis, allowing for unique branding at different locations.",
-      "step": "Click the 'Select Venue' dropdown menu and choose the venue you wish to customize.",
-      "screenshotRef": "screenshot_5_1755959172221.jpg"
-    },
-    {
-      "explanation": "This will be the main logo displayed on the kiosk's home screen.",
-      "step": "In the 'Logo Image (PNG)' section, click the area labeled 'Click or drop your file here to upload' and select your logo file from your computer.",
-      "screenshotRef": "screenshot_7_1755959172221.jpg"
-    },
-    {
-      "explanation": "The cropping tool ensures your logo fits correctly within the designated space on the kiosk screen.",
-      "step": "In the 'Crop Logo Image' window that appears, adjust the selection to fit your logo as desired, then click the 'CROP AND UPLOAD' button.",
-      "screenshotRef": "screenshot_11_1755959172221.jpg"
-    },
-    {
-      "explanation": "This text appears below the logo and can be used for a slogan or welcome message.",
-      "step": "Click inside the 'Tag Line' text field and enter your desired tagline.",
-      "screenshotRef": "screenshot_12_1755959172221.jpg"
-    },
-    {
-      "explanation": "The hero image is a large background or banner image that enhances the visual appeal of the kiosk.",
-      "step": "Under the 'Hero Image' section, click the 'Upload Image' button and select your hero image file.",
-      "screenshotRef": "screenshot_20_1755959172221.jpg"
-    },
-    {
-      "explanation": "Similar to the logo, cropping the hero image ensures it displays correctly on the kiosk.",
-      "step": "In the 'Crop Logo Image' window, adjust the image as needed and click 'CROP AND UPLOAD'.",
-      "screenshotRef": "screenshot_25_1755959172221.jpg"
-    },
-    {
-      "explanation": "This action applies all the configured branding changes to the selected venue's kiosk.",
-      "step": "After reviewing your changes in the preview panel, click the 'Save' button located at the top right of the page to apply your new branding.",
-      "screenshotRef": "screenshot_26_1755959172221.jpg"
+      "answer": "After you have finished customizing the branding elements and are satisfied with the preview, you must click the 'Save' button to apply the updates to the selected venue's kiosk.",
+      "question": "What is the final step to make my branding changes live?"
     }
   ],
-  "title": "Configuring 6IX Kiosk Branding"
+  "Introduction": {
+    "paragraphs": [
+      "This guide provides detailed instructions on how to customize the branding of your Kiosk application. The Branding section in the administrative console allows you to tailor the visual appearance of the kiosk to align with your brand identity. These settings can be applied to specific venues, ensuring a consistent and personalized experience for your customers."
+    ],
+    "outcomes": [
+      "Locate the Kiosk branding settings within the console.",
+      "Understand the different customization options available.",
+      "Upload a custom logo and hero image.",
+      "Set the primary and secondary colors for the kiosk theme.",
+      "Define a custom tagline.",
+      "Apply and save branding changes for a specific venue."
+    ],
+    "prerequisites": [
+      "Valid login credentials for the administrative console.",
+      "User role with permissions to access and modify Branding settings.",
+      "Digital assets (logo, hero image) prepared in a supported format."
+    ]
+  },
+  "Steps / How-To": [
+    {
+      "explanation": "Begin by accessing the main administrative portal where all settings are managed.",
+      "step": "Log in to the console with your user credentials."
+    },
+    {
+      "explanation": "The branding options are located within the main settings area of the console.",
+      "step": "Navigate to the 'Settings' section, and then select 'Branding'."
+    },
+    {
+      "explanation": "From the list of applications that support branding, you need to choose the kiosk.",
+      "step": "Select the 'Kiosk' application from the available options."
+    },
+    {
+      "explanation": "Branding is applied at a venue level, allowing for different branding at different locations.",
+      "step": "Choose the specific venue where you want to apply the new branding settings from the dropdown menu."
+    },
+    {
+      "explanation": "Upload your company's logo to be displayed on the kiosk interface. This is a key part of your brand identity.",
+      "step": "In the 'Logo' section, click the upload button to select and upload a custom logo file for the selected venue."
+    },
+    {
+      "explanation": "Set the main theme color for the kiosk. This color will be used for primary UI elements like headers and buttons.",
+      "step": "In the 'Primary Color' section, select a color that defines the kiosk's main theme."
+    },
+    {
+      "explanation": "Choose a contrasting color for text to ensure it is readable against the primary color.",
+      "step": "In the 'Secondary Color (Text Color)' section, select a color for the text elements."
+    },
+    {
+      "explanation": "Enter a short, memorable phrase that will be displayed on the kiosk interface to reinforce your brand message.",
+      "step": "In the 'Tagline' field, enter a short tagline to be displayed in the kiosk interface."
+    },
+    {
+      "explanation": "Upload a large, high-quality background or banner image to enhance the visual appeal of the kiosk's main screen.",
+      "step": "In the 'Hero Image' section, click the upload button to select and upload a hero image."
+    },
+    {
+      "explanation": "Before finalizing your changes, use the live preview to ensure all elements appear as expected.",
+      "step": "Review your branding updates in the real-time preview panel on the right side of the screen."
+    },
+    {
+      "explanation": "To make your new branding settings active for the selected venue's kiosk, you must save your work.",
+      "step": "Click the 'Save' button to apply the branding updates."
+    }
+  ],
+  "Title": "How to Customize Kiosk Application Branding",
+  "docTitle": "How to Customize Kiosk Application Branding",
+  "shortDescription": "A step-by-step guide on how to customize the visual branding of the kiosk application, including logo, colors, and images, for specific venues."
 }
