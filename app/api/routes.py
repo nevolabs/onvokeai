@@ -4,7 +4,7 @@ from pathlib import Path
 from typing import Optional
 import asyncio
 import concurrent.futures
-from fastapi import APIRouter, File, UploadFile, Form, HTTPException
+from fastapi import APIRouter, File, UploadFile, Form, HTTPException, BackgroundTasks
 from fastapi.responses import StreamingResponse
 from io import BytesIO
 
@@ -32,30 +32,25 @@ router = APIRouter()
 # Initialize workflow
 workflow = create_workflow()
 
-@router.post("/generate")
-async def generate_sop_api(
-    file: Optional[UploadFile] = File(None),
-    user_id: str = Form(...),
-    job_id: str = Form(...),
-    query: str = Form(...),
-    templates_id: str = Form(...),
-    integration_type: str = Form(...),
+async def process_sop_generation(
+    file_content: Optional[bytes],
+    file_filename: Optional[str],
+    user_id: str,
+    job_id: str,
+    query: str,
+    templates_id: str,
+    integration_type: str
 ):
     """
-    API endpoint to generate SOP using a component schema defined
-    in a user-specific template (from JSONB).
-    Updates the status in the generated_docs table.
+    Background task to handle SOP generation logic.
     """
     temp_files = []
     screenshot_info = []
     full_component_schema: Optional[dict] = None
-    contents = b""
-    if file is not None:
-        contents = await file.read()
     supabase = get_supabase_client()
 
     try:
-        logger.debug(f"Starting SOP generation for user_id={user_id}, job_id={job_id}, template_id='{templates_id}', integration_type='{integration_type}'")
+        logger.debug(f"Starting background SOP generation for user_id={user_id}, job_id={job_id}, template_id='{templates_id}', integration_type='{integration_type}'")
 
         # --- Initialize Record with 'pending' Status ---
         logger.info(f"Initializing generated_docs record with status='pending' for job_id={job_id}")
@@ -67,7 +62,8 @@ async def generate_sop_api(
             logger.info(f"Initialized generated_docs record for job_id={job_id}")
         except Exception as e:
             logger.error(f"Failed to initialize generated_docs record: {str(e)}")
-            raise HTTPException(status_code=500, detail=f"Failed to initialize document record: {str(e)}")
+            update_document_status(supabase, job_id, "failed")
+            return
 
         # --- Fetch Template Components Schema from Supabase ---
         try:
@@ -103,14 +99,12 @@ async def generate_sop_api(
                 else:
                     logger.error(f"No components found for template_id={templates_id} in both private and public tables")
                     update_document_status(supabase, job_id, "failed")
-                    raise HTTPException(status_code=404, detail="Template not found or no components available")
+                    return
 
-        except HTTPException as he:
-            raise he
         except Exception as e:
             logger.error(f"Failed to fetch template schema: {str(e)}")
             update_document_status(supabase, job_id, "failed")
-            raise HTTPException(status_code=500, detail=f"Failed to retrieve template schema: {str(e)}")
+            return
 
         # --- File Processing ---
         storage = supabase.storage.from_('log_dataa')
@@ -127,23 +121,22 @@ async def generate_sop_api(
         except Exception as e:
             logger.error(f"Failed to list storage directories: {str(e)}")
             update_document_status(supabase, job_id, "failed")
-            raise HTTPException(status_code=404, detail=f"Storage paths not found: {str(e)}")
+            return
 
         if not json_files and not screenshot_files:
             update_document_status(supabase, job_id, "failed")
-            raise HTTPException(status_code=404, detail="No JSON or screenshot files found")
+            return
 
         # Process uploaded file content based on file type
-        if file is not None:
-            file_extension = Path(file.filename).suffix.lower()
+        uploaded_file_content = ""
+        if file_content is not None and file_filename is not None:
+            file_extension = Path(file_filename).suffix.lower()
             if file_extension in ['.xlsx', '.xls']:
-                uploaded_file_content = read_excel_file(contents)
+                uploaded_file_content = read_excel_file(file_content)
             elif file_extension == '.pdf':
-                uploaded_file_content = read_pdf_file(contents)
+                uploaded_file_content = read_pdf_file(file_content)
             elif file_extension == '.docx':
-                uploaded_file_content = read_docx_file(contents)
-        else:
-            uploaded_file_content = ""
+                uploaded_file_content = read_docx_file(file_content)
 
         # Process screenshots in parallel
         if screenshot_files:
@@ -194,10 +187,10 @@ async def generate_sop_api(
 
         if not screenshot_info: 
             update_document_status(supabase, job_id, "failed")
-            raise HTTPException(status_code=404, detail="No valid screenshot files found")
+            return
         if not json_path: 
             update_document_status(supabase, job_id, "failed")
-            raise HTTPException(status_code=404, detail="No JSON file found in storage")
+            return
 
         # Create PDF
         pdf_temp_path = f"temp_{user_id}_{job_id}_generated.pdf"
@@ -211,7 +204,7 @@ async def generate_sop_api(
         except Exception as e:
             logger.error(f"Failed to create PDF: {str(e)}")
             update_document_status(supabase, job_id, "failed")
-            raise HTTPException(status_code=500, detail=f"Failed to create PDF: {str(e)}")
+            return
 
         # Process JSON data
         try:
@@ -224,7 +217,7 @@ async def generate_sop_api(
             if not isinstance(json_response, bytes):
                 logger.error(f"Failed download event JSON: {json_file_name_to_process}")
                 update_document_status(supabase, job_id, "failed")
-                raise HTTPException(status_code=500, detail="Failed to download event JSON data")
+                return
             with open(json_temp_path, "wb") as f: 
                 f.write(json_response)
             temp_files.append(json_temp_path)
@@ -233,16 +226,14 @@ async def generate_sop_api(
             logger.debug(f"Parsed event data type: {type(event_data)}")
             if not event_data: 
                 update_document_status(supabase, job_id, "failed")
-                raise HTTPException(status_code=400, detail="No valid event data parsed")
+                return
             if isinstance(event_data, list) and event_data and isinstance(event_data[0], dict) and "error" in event_data[0]:
                 update_document_status(supabase, job_id, "failed")
-                raise Exception(f"Event JSON parsing error: {event_data[0]['error']}")
-        except HTTPException as he: 
-            raise he
+                return
         except Exception as e:
             logger.error(f"Event JSON processing failed: {str(e)}")
             update_document_status(supabase, job_id, "failed")
-            raise HTTPException(status_code=500, detail=f"Event JSON processing failed: {str(e)}")
+            return
 
         # --- Fetch RAG Context ---
         rag_context = f"{integration_type.capitalize()} context unavailable."
@@ -266,7 +257,6 @@ async def generate_sop_api(
         knowledge_base = f"### Relevant {integration_type.capitalize()} Content:\n{rag_context}\n"
         logger.debug("Prepared knowledge base")
 
-        result = None
         try:
             logger.debug("Invoking workflow with component schema...")
             initial_state = SOPState(
@@ -285,7 +275,6 @@ async def generate_sop_api(
             logger.debug(f"SOP result type: {type(result)}")
 
             # --- Verify Status After Workflow ---
-            # Since generate_sop_docx updates status to 'success', verify it
             response = supabase.table('generated_docs').select('status').eq('id', job_id).single().execute()
             if response.data and response.data.get('status') != 'success':
                 logger.warning(f"Workflow completed but status is {response.data.get('status')} for job_id={job_id}")
@@ -294,30 +283,11 @@ async def generate_sop_api(
         except Exception as e:
             logger.error(f"SOP workflow failed: {str(e)}")
             update_document_status(supabase, job_id, "failed")
-            raise HTTPException(status_code=500, detail=f"SOP generation workflow failed: {str(e)}")
+            return
 
-        # --- Return Success Response ---
-        return {
-            "status": "success",
-            "result": result,
-            "metadata": {
-                "user_id": user_id,
-                "job_id": job_id,
-                "template_id": templates_id,
-                "integration_type": integration_type,
-                "files_processed": len(screenshot_info) + 1,
-                "components_schema_used": full_component_schema
-            }
-        }
-
-    except HTTPException as he:
-        logger.error(f"HTTP Error - Status: {he.status_code}, Detail: {he.detail}")
-        update_document_status(supabase, job_id, "failed")
-        raise he
     except Exception as e:
-        logger.error(f"Fatal unexpected error: {str(e)}")
+        logger.error(f"Fatal unexpected error in background task: {str(e)}")
         update_document_status(supabase, job_id, "failed")
-        raise HTTPException(status_code=500, detail=f"An unexpected error occurred: {str(e)}")
     finally:
         # --- Cleanup Temporary Files ---
         logger.debug(f"Cleaning up {len(temp_files)} temporary files...")
@@ -330,7 +300,82 @@ async def generate_sop_api(
             except Exception as e:
                 logger.warning(f"Temp file cleanup failed for {temp_file}: {str(e)}")
         logger.debug(f"Cleanup finished. Removed {cleaned_count} files.")
+
+@router.post("/generate")
+async def generate_sop_api(
+    background_tasks: BackgroundTasks,
+    file: Optional[UploadFile] = File(None),
+    user_id: str = Form(...),
+    job_id: str = Form(...),
+    query: str = Form(...),
+    templates_id: str = Form(...),
+    integration_type: str = Form(...)
+):
+    """
+    API endpoint to generate SOP using a component schema defined
+    in a user-specific template (from JSONB).
+    Returns immediate acknowledgment and processes SOP generation in the background.
+    Updates the status in the generated_docs table.
+    """
+    try:
+        logger.debug(f"Received SOP generation request for user_id={user_id}, job_id={job_id}, template_id='{templates_id}', integration_type='{integration_type}'")
+
+        # Read file content if provided
+        file_content = None
+        file_filename = None
+        if file is not None:
+            file_content = await file.read()
+            file_filename = file.filename
+
+        # Add SOP generation task to background
+        background_tasks.add_task(
+            process_sop_generation,
+            file_content,
+            file_filename,
+            user_id,
+            job_id,
+            query,
+            templates_id,
+            integration_type
+        )
+
+        # Return immediate acknowledgment
+        return {
+            "status": "queued",
+            "message": "SOP generation request received and is being processed",
+            "job_id": job_id,
+            "metadata": {
+                "user_id": user_id,
+                "template_id": templates_id,
+                "integration_type": integration_type
+            }
+        }
+
+    except Exception as e:
+        logger.error(f"Error queuing SOP generation: {str(e)}")
+        raise HTTPException(status_code=500, detail=f"Failed to queue SOP generation: {str(e)}")
+
+@router.get("/status/{job_id}")
+async def check_job_status(job_id: str):
+    """
+    API endpoint to check the status of a background SOP generation task.
+    """
+    try:
+        supabase = get_supabase_client()
+        response = supabase.table('generated_docs').select('status').eq('id', job_id).single().execute()
         
+        if response.data:
+            return {
+                "job_id": job_id,
+                "status": response.data.get('status', 'not_found')
+            }
+        else:
+            raise HTTPException(status_code=404, detail="Job not found")
+            
+    except Exception as e:
+        logger.error(f"Error checking job status for job_id={job_id}: {str(e)}")
+        raise HTTPException(status_code=500, detail=f"Failed to check job status: {str(e)}")
+
 @router.post("/rephrase")
 async def rephrase_markdown(
     query: str = Form(...),
@@ -396,8 +441,6 @@ async def rephrase_markdown(
         logger.error(f"Unexpected error in rephrase: {str(e)}")
         raise HTTPException(status_code=500, detail=f"An unexpected error occurred: {str(e)}")
 
-
-
 @router.post("/download")
 def convert_markdown(markdown_text: str = Form(...), 
                     format: str = Form(...), 
@@ -425,5 +468,3 @@ def convert_markdown(markdown_text: str = Form(...),
         )
     except RuntimeError as e:
         raise HTTPException(status_code=500, detail=str(e))
-
-
